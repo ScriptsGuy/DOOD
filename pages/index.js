@@ -7,6 +7,7 @@ import Rec from '../components/home/Rec';
 import Commande from '../components/home/Commande';
 import Ville from '../components/home/Ville';
 import Mobile from '../components/home/Mobile';
+import Description from '../components/home/Description';
 
 export default function Home() {
   return (
@@ -46,6 +47,9 @@ export default function Home() {
           COMMANDEZ AUSSI AVEC L’APPLI MOBILE.
         </Heading>
         <Mobile></Mobile>
+      </Box>
+      <Box>
+        <Description></Description>
       </Box>
     </Box>
   );
