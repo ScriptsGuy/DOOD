@@ -1,0 +1,50 @@
+import React from 'react';
+import { Box, Badge, Icon, Image, Divider } from '@chakra-ui/core';
+
+const StarIcon = () => <Icon name="star"></Icon>;
+
+export default function Rec() {
+  const property = {
+    imageUrl: 'https://bit.ly/2Z4KKcF',
+    imageAlt: 'Rear view of modern home with pool',
+
+    title: 'AU PAIN DE MON GRAND PERE',
+    reviewCount: 34,
+    rating: 4,
+  };
+
+  return (
+    <Box bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
+      <Image src={property.imageUrl} alt={property.imageAlt} />
+
+      <Box p="6">
+        <Box mt="1" fontWeight="semibold" as="h4" fontSize="20px" lineHeight="tight" isTruncated>
+          {property.title}
+        </Box>
+        <Box>
+          <Box
+            color="gray.500"
+            fontWeight="semibold"
+            letterSpacing="wide"
+            fontSize="md"
+            textTransform="uppercase"
+            ml="2"
+          >
+            69 rue Ney 69006 LYON
+          </Box>
+        </Box>
+        <Box d="flex" mt="2" alignItems="center">
+          {Array(5)
+            .fill('')
+            .map((_, i) => (
+              <StarIcon key={i} color={i < property.rating ? 'teal.500' : 'gray.300'} />
+            ))}
+          <Box as="span" ml="2" color="gray.600" fontSize="sm">
+            {property.reviewCount} reviews
+          </Box>
+        </Box>
+        <Divider orientation="vertical" />
+      </Box>
+    </Box>
+  );
+}

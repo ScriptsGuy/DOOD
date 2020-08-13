@@ -1,14 +1,16 @@
 import React from 'react';
-import { Box, Heading, Input, Flex } from '@chakra-ui/core';
+import { Box, Heading, Icon, Input, Flex, InputGroup, InputRightElement } from '@chakra-ui/core';
 
 export default function Hero() {
   return (
     <Box
+      className="hero"
       color="white"
-      bgImage="url('/images/hero.jpg')"
+      bg="gray.100"
+      bgImage="url('/images/main.jpg')"
       bgPos="center"
       bgRepeat="no-repeat"
-      height="600px"
+      height="500px"
     >
       <Flex p="150px" align="left" direction="column">
         <Heading fontSize="80px" size="2xl">
@@ -17,11 +19,11 @@ export default function Hero() {
         <Heading fontSize="80px" size="2xl">
           RETIRE SANS ATTENDRE.{' '}
         </Heading>
-        <Input
-          color="black"
-          width="50%"
-          placeholder="Saisissez une adresse ou le nom d’un restaurant"
-        ></Input>
+
+        <InputGroup size="lg" color="black" width="50%">
+          <Input size="lg" placeholder="Saisissez une adresse ou le nom d’un restaurant" />
+          <InputRightElement children={<Icon name="search-2" color="gray.500" />} />
+        </InputGroup>
       </Flex>
     </Box>
   );
