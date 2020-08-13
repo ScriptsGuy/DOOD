@@ -8,9 +8,9 @@ export default function Hero() {
       color="white"
       bg="gray.100"
       bgImage="url('/images/main.jpg')"
-      bgPos="center"
       bgRepeat="no-repeat"
       height="500px"
+      width="100%"
     >
       <Flex p="150px" align="left" direction="column">
         <Heading fontSize="80px" size="2xl">

@@ -6,10 +6,11 @@ import Hero from '../components/home/Hero';
 import Rec from '../components/home/Rec';
 import Commande from '../components/home/Commande';
 import Ville from '../components/home/Ville';
+import Mobile from '../components/home/Mobile';
 
 export default function Home() {
   return (
-    <div>
+    <Box>
       <Head>
         <title>Dood</title>
         <link rel="icon" href="/favicon.ico" />
@@ -40,11 +41,12 @@ export default function Home() {
         </Heading>
         <Ville></Ville>
       </Box>
-      <Box bg="white" p="30px" textAlign="center">
-        <Heading p="15px" size="lg" color="gray.500">
+      <Box bg="white" textAlign="center">
+        <Heading p="20px" size="lg" color="gray.500">
           COMMANDEZ AUSSI AVEC L’APPLI MOBILE.
         </Heading>
+        <Mobile></Mobile>
       </Box>
-    </div>
+    </Box>
   );
 }

@@ -15,6 +15,7 @@
     "next": "9.5.2",
     "next-images": "^1.4.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-icons": "^3.10.0"
   }
 }

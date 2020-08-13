@@ -26,7 +26,14 @@ function DrawerConnexion() {
   const btnRef = React.useRef();
 
   return (
-    <>
+    <Box
+      width={[
+        '100%', // base
+        '50%', // 480px upwards
+        '25%', // 768px upwards
+        '15%', // 992px upwards
+      ]}
+    >
       <Button ref={btnRef} variantColor="teal" onClick={onOpen}>
         CONNEXION
       </Button>
@@ -49,7 +56,7 @@ function DrawerConnexion() {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </>
+    </Box>
   );
 }
 

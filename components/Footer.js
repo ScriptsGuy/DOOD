@@ -1,5 +1,16 @@
 import React from 'react';
-import { Box, Flex, Heading, InputGroup, InputRightElement, Input, Icon } from '@chakra-ui/core';
+import {
+  Box,
+  Flex,
+  Heading,
+  InputGroup,
+  InputRightElement,
+  Input,
+  Icon,
+  Link,
+  Image,
+} from '@chakra-ui/core';
+import { FaFacebookF, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -16,14 +27,33 @@ export default function Footer() {
           </Flex>
         </Box>
         <Box p="30px" flexGrow="1">
-          section2
+          <Heading size="lg">Aide</Heading>
+          <Flex direction="column">
+            <Link>Nous contacter</Link>
+            <Link>F.A.Q. Client</Link>
+            <Link>F.A.Q. Commerçant</Link>
+            <Link>Support client</Link>
+            <Link>04 27 11 91 54</Link>
+          </Flex>
         </Box>
-        <Box flexGrow="1">section3</Box>
-        <Box flexGrow="1">section4</Box>
-        <Box flexGrow="1">section5</Box>
+        <Box flexGrow="1" p="30px">
+          <Heading size="lg">Télécharger l’app</Heading>
+          <Flex mt="10px">
+            <Image src={require('../images/apple.png')}></Image>
+            <Image src={require('../images/google.png')}></Image>
+          </Flex>
+        </Box>
+        {/* <Box flexGrow="1">section4</Box>
+        <Box flexGrow="1">section5</Box> */}
       </Flex>
-      <Box bg="white" p="10px">
-        social links
+      <Box fontSize="24px" color="gray.700" bg="white" p="10px">
+        <Flex>
+          <FaFacebookF style={{ margin: 10 }}></FaFacebookF>
+          <FaTwitter style={{ margin: 10 }}></FaTwitter>
+
+          <FaLinkedin style={{ margin: 10 }}></FaLinkedin>
+          <FaInstagram style={{ margin: 10 }}></FaInstagram>
+        </Flex>
       </Box>
     </Box>
   );
