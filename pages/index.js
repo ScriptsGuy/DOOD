@@ -40,7 +40,7 @@ export default function Home() {
         </Heading>
         <Ville></Ville>
       </Box>
-      <Box p="30px" textAlign="center">
+      <Box bg="white" p="30px" textAlign="center">
         <Heading p="15px" size="lg" color="gray.500">
           COMMANDEZ AUSSI AVEC L’APPLI MOBILE.
         </Heading>
