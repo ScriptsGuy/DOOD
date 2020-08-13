@@ -15,6 +15,8 @@ import {
   Input,
 } from '@chakra-ui/core';
 
+import { FaGoogle, FaFacebookF } from 'react-icons/fa';
+
 const MenuItems = ({ children }) => (
   <Link mt={{ base: 4, md: 0 }} mr={6} display="block">
     {children}
@@ -46,10 +48,10 @@ function DrawerConnexion() {
           <DrawerBody>
             <Input placeholder="Adresse e-mail ou numéro de portable" />
             <Flex mt="20px" justify="space-around">
-              <Button color="white" bg="blue.700">
+              <Button leftIcon={FaFacebookF} color="white" bg="blue.700">
                 Facebook
               </Button>
-              <Button color="white" bg="red.500">
+              <Button leftIcon={FaGoogle} color="white" bg="red.500">
                 Google
               </Button>
             </Flex>
