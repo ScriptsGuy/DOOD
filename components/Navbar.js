@@ -15,7 +15,7 @@ import {
   Input,
 } from '@chakra-ui/core';
 
-import { FaGoogle, FaFacebookF } from 'react-icons/fa';
+import { FaGoogle, FaFacebookF, FaHamburger } from 'react-icons/fa';
 
 const MenuItems = ({ children }) => (
   <Link mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -63,12 +63,14 @@ function DrawerConnexion() {
 }
 
 const Navbar = (props) => {
+  const [show, setShow] = React.useState(false);
+  const handleToggle = () => setShow(!show);
   return (
     <Flex
-      //   as="nav"
-      //   align="center"
+      as="nav"
+      align="center"
       justify="space-between"
-      //   wrap="wrap"
+      wrap="wrap"
       padding="1.5rem"
       bg="white"
       boxShadow="0px .5px 5px #999"
@@ -79,8 +81,17 @@ const Navbar = (props) => {
           DOOD
         </Heading>
       </Flex>
+      <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
+        <FaHamburger fontSize="24px"></FaHamburger>
+      </Box>
 
-      <Box display="flex" width="auto" alignItems="center" justifyContent="flex-end" flexGrow={1}>
+      <Box
+        display={{ base: show ? 'block' : 'none', md: 'flex' }}
+        width={{ base: 'full', md: 'auto' }}
+        alignItems="center"
+        justifyContent="flex-end"
+        flexGrow={1}
+      >
         <MenuItems>JE SUIS COMMERÇANT</MenuItems>
 
         <DrawerConnexion></DrawerConnexion>
