@@ -190,7 +190,7 @@ export default function details() {
           </Tag>
         </Flex>
       </Box>
-      <Box mt="170px" p="30px">
+      <Box mt={{ base: '100px', md: '170px' }} p="30px">
         <SimpleGrid spacing={12} justifyItems="center" columns={[1, 2, 2, 3]}>
           <Rec image="https://api.dood.com/files/uploads/8082.jpg"></Rec>
           <Rec image="https://api.dood.com/files/uploads/5198.jpg"></Rec>
