@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Badge, Icon, Image, Divider } from '@chakra-ui/core';
+// import Link from 'next/link';
 
 const StarIcon = () => <Icon name="star"></Icon>;
 

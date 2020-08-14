@@ -13,9 +13,10 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Input,
+  Badge,
 } from '@chakra-ui/core';
 
-import { FaGoogle, FaFacebookF, FaHamburger } from 'react-icons/fa';
+import { FaGoogle, FaFacebookF, FaHamburger, FaShoppingCart } from 'react-icons/fa';
 
 const MenuItems = ({ children }) => (
   <Link mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -29,6 +30,7 @@ function DrawerConnexion() {
 
   return (
     <Box
+      mt={{ base: '10px', md: '0' }}
       width={[
         '100%', // base
         '50%', // 480px upwards
@@ -62,23 +64,35 @@ function DrawerConnexion() {
   );
 }
 
+function ShopBadge(props) {
+  return (
+    <Box mt={{ base: '15px', md: '0' }} display="flex">
+      <FaShoppingCart fontSize="28px"></FaShoppingCart>
+      <Badge rounded="20px" fontSize="18px" ml="1" variantColor="green">
+        13
+      </Badge>
+    </Box>
+  );
+}
+
 const Navbar = (props) => {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
   return (
     <Flex
+      style={{ position: 'fixed', width: '100%', zIndex: '99', top: 0 }}
       as="nav"
       align="center"
       justify="space-between"
       wrap="wrap"
       padding="1.5rem"
       bg="white"
-      boxShadow="0px .5px 5px #999"
+      //   boxShadow="0px .5px 5px #999"
       {...props}
     >
       <Flex align="center" mr={5}>
         <Heading fontWeight="bold" as="h1" size="xl" letterSpacing={'-.1rem'}>
-          DOOD
+          <Link href="/">DOOD</Link>
         </Heading>
       </Flex>
       <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
@@ -93,8 +107,8 @@ const Navbar = (props) => {
         flexGrow={1}
       >
         <MenuItems>JE SUIS COMMERÇANT</MenuItems>
-
         <DrawerConnexion></DrawerConnexion>
+        <ShopBadge></ShopBadge>
       </Box>
     </Flex>
   );

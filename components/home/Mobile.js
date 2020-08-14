@@ -4,7 +4,7 @@ import { FaRegHandshake } from 'react-icons/fa';
 
 export default function Mobile() {
   return (
-    <Box overflow="hidden" maxH={['600px', '']}>
+    <Box overflow="hidden" maxH={['600px', '400px']}>
       <SimpleGrid columns={['1', '2', '2', '2']}>
         <Box mt="100px">
           <Heading p="20px" size="xl" color="gray.500">
