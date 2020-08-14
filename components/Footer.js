@@ -15,7 +15,7 @@ import { FaFacebookF, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 export default function Footer() {
   return (
     <Box color="gray.500" bg="gray.200">
-      <Flex justifyContent="space-between">
+      <Flex direction={['column', 'column', 'row', 'row']} justifyContent="space-between">
         <Box alignContent="center" textAlign="center" p="30px" flexGrow="2">
           <Heading size="lg">Feel Dood</Heading>
           <Heading size="sm">Recevez les bons plans et restez informé(e) des nouveautés</Heading>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Stack, Tag, TagLabel, Flex, Simpl } from '@chakra-ui/core';
+import { Stack, Tag, TagLabel, Flex, SimpleGrid } from '@chakra-ui/core';
 
 export default function Ville() {
   return (
-    <Flex justifyContent="center" align="center">
+    <Flex direction={['column', 'column', 'row', 'row']} justifyContent="center" align="center">
       <Tag p="3" m="10px" size="lg" rounded="full" variant="solid" variantColor="gray">
         <TagLabel fontSize="30px">Lyon</TagLabel>
       </Tag>

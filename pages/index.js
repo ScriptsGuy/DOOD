@@ -21,7 +21,7 @@ export default function Home() {
         <Heading p="15px" ml="20px" size="xl" color="gray.500">
           Vos commerçants préférés sont sur Dood
         </Heading>
-        <SimpleGrid spacing={12} justifyItems="center" columns={3}>
+        <SimpleGrid spacing={12} justifyItems="center" columns={[1, 2, 2, 3]}>
           <Rec></Rec>
           <Rec></Rec>
           <Rec></Rec>

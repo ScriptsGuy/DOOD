@@ -9,7 +9,7 @@ export default function Mobile() {
         <Image src={require('../../images/apple.png')}></Image>
         <Image src={require('../../images/google.png')}></Image>
       </Flex>
-      <SimpleGrid columns={2}>
+      <SimpleGrid columns={['1', '2', '2', '2']}>
         <Box
           className="coffe"
           height="400px"
@@ -17,7 +17,7 @@ export default function Mobile() {
           bgImage="url('/images/coffe.jpg')"
           bg="blue.500"
         ></Box>
-        <Box color="white" bg="gray.700">
+        <Box p="30px" color="white" bg="gray.700">
           <Flex justify="center">
             <FaRegHandshake fontSize="120px"></FaRegHandshake>
           </Flex>

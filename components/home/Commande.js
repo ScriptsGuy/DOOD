@@ -3,7 +3,7 @@ import { Box, Image, Link, SimpleGrid, Heading, Flex } from '@chakra-ui/core';
 
 export default function Commande() {
   return (
-    <SimpleGrid columns={7} spacing={5}>
+    <SimpleGrid columns={[3, 5, 5, 7]} spacing={5}>
       <Link>
         <Flex direction="column" align="center">
           <Image
