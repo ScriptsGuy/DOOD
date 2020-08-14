@@ -11,8 +11,8 @@ export default function Hero() {
       bgRepeat="no-repeat"
       height={[
         '300px', // base
-        '50%', // 480px upwards
-        '25%', // 768px upwards
+        '450px', // 480px upwards
+        '450px', // 768px upwards
         '500px', // 992px upwards
       ]}
       width="100%"
@@ -20,8 +20,8 @@ export default function Hero() {
       <Flex
         p={[
           '50px', // base
-          '50%', // 480px upwards
-          '25%', // 768px upwards
+          '80px', // 480px upwards
+          '100px', // 768px upwards
           '150px', // 992px upwards
         ]}
         align="left"
@@ -30,9 +30,9 @@ export default function Hero() {
         <Heading
           fontSize={[
             '40px', // base
-            '50%', // 480px upwards
-            '25%', // 768px upwards
-            '80px', // 992px upwards
+            '60px', // 480px upwards
+            '70px', // 768px upwards
+            '80px', // 992px upw
           ]}
         >
           COMMANDEZ.{' '}
@@ -40,8 +40,8 @@ export default function Hero() {
         <Heading
           fontSize={[
             '40px', // base
-            '50%', // 480px upwards
-            '25%', // 768px upwards
+            '60px', // 480px upwards
+            '70px', // 768px upwards
             '80px', // 992px upwards
           ]}
         >
@@ -53,13 +53,13 @@ export default function Hero() {
           color="black"
           width={[
             '100%', // base
-            '50%', // 480px upwards
-            '25%', // 768px upwards
+            '70%', // 480px upwards
+            '70%', // 768px upwards
             '50%', // 992px upwards
           ]}
         >
           <Input size="lg" placeholder="Saisissez une adresse ou le nom d’un restaurant" />
-          <InputRightElement children={<Icon name="search-2" color="gray.500" />} />
+          {/* <InputRightElement children={<Icon name="search-2" color="gray.500" />} /> */}
         </InputGroup>
       </Flex>
     </Box>

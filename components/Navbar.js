@@ -92,7 +92,9 @@ const Navbar = (props) => {
     >
       <Flex align="center" mr={5}>
         <Heading fontWeight="bold" as="h1" size="xl" letterSpacing={'-.1rem'}>
-          <Link href="/">DOOD</Link>
+          <Link style={{ textDecoration: 'none', outline: 'none' }} href="/">
+            DOOD
+          </Link>
         </Heading>
       </Flex>
       <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>

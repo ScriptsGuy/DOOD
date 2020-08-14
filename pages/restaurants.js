@@ -8,20 +8,20 @@ export default function details() {
   return (
     <Box p="30px" bg="white" mt="85px">
       <Box
-        p="30px"
+        p={{ base: '0', md: '30px' }}
         bg="white"
         style={{ position: 'fixed', width: '100%', zIndex: '98', top: 85, left: 0 }}
       >
         <Flex
-          overflowX={['auto']}
+          overflowX={{ base: 'auto', sm: 'auto' }}
           //   style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}
-          wrap={['nowrap', 'wrap', 'wrap', 'wrap']}
+          wrap={['nowrap', 'nowrap', 'wrap', 'wrap']}
           direction={['row', 'row', 'row', 'row']}
           //   align="center"
         >
           <Filter></Filter>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -33,7 +33,7 @@ export default function details() {
             <TagLabel fontSize="24px">Burger</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -45,7 +45,7 @@ export default function details() {
             <TagLabel fontSize="24px">Boulangrie</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -57,7 +57,7 @@ export default function details() {
             <TagLabel fontSize="24px">Street food</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -69,7 +69,7 @@ export default function details() {
             <TagLabel fontSize="24px">Traiteur</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -81,7 +81,7 @@ export default function details() {
             <TagLabel fontSize="24px"> Coffee Shop</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -93,7 +93,7 @@ export default function details() {
             <TagLabel fontSize="24px"> Pizza</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -105,7 +105,7 @@ export default function details() {
             <TagLabel fontSize="24px"> Healthy</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -117,7 +117,7 @@ export default function details() {
             <TagLabel fontSize="24px"> Japonais</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -129,7 +129,7 @@ export default function details() {
             <TagLabel fontSize="24px">Caviste</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -141,7 +141,7 @@ export default function details() {
             <TagLabel fontSize="24px"> Cuisines du monde</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -153,7 +153,7 @@ export default function details() {
             <TagLabel fontSize="24px"> Restaurant tradi.</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -165,7 +165,7 @@ export default function details() {
             <TagLabel fontSize="24px">Cave à Bière</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
@@ -177,7 +177,7 @@ export default function details() {
             <TagLabel fontSize="24px"> Pause sucrée</TagLabel>
           </Tag>
           <Tag
-            flex={['0 0 auto']}
+            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             m="10px"
             size="lg"
