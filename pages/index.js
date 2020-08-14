@@ -22,12 +22,12 @@ export default function Home() {
           Vos commerçants préférés sont sur Dood
         </Heading>
         <SimpleGrid spacing={12} justifyItems="center" columns={[1, 2, 2, 3]}>
-          <Rec></Rec>
-          <Rec></Rec>
-          <Rec></Rec>
-          <Rec></Rec>
-          <Rec></Rec>
-          <Rec></Rec>
+          <Rec image="https://api.dood.com/files/uploads/8082.jpg"></Rec>
+          <Rec image="https://api.dood.com/files/uploads/5198.jpg"></Rec>
+          <Rec image="https://api.dood.com/files/uploads/21701.jpg"></Rec>
+          <Rec image="https://api.dood.com/files/uploads/11380.jpg"></Rec>
+          <Rec image="https://api.dood.com/files/uploads/11983.jpg"></Rec>
+          <Rec image="https://api.dood.com/files/uploads/13276.jpg"></Rec>
         </SimpleGrid>
       </Box>
       <Box bg="white" p={['20px', '30px', '40px', '50px']}>
@@ -43,9 +43,6 @@ export default function Home() {
         <Ville></Ville>
       </Box>
       <Box bg="white" textAlign="center">
-        <Heading p="20px" size="lg" color="gray.500">
-          COMMANDEZ AUSSI AVEC L’APPLI MOBILE.
-        </Heading>
         <Mobile></Mobile>
       </Box>
       <Box>

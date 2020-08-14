@@ -3,9 +3,9 @@ import { Box, Badge, Icon, Image, Divider } from '@chakra-ui/core';
 
 const StarIcon = () => <Icon name="star"></Icon>;
 
-export default function Rec() {
+export default function Rec(props) {
   const property = {
-    imageUrl: 'https://bit.ly/2Z4KKcF',
+    imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with pool',
 
     title: 'AU PAIN DE MON GRAND PERE',
@@ -15,7 +15,7 @@ export default function Rec() {
 
   return (
     <Box bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
-      <Image src={property.imageUrl} alt={property.imageAlt} />
+      <Image src={props.image} alt={property.imageAlt} />
 
       <Box p="6">
         <Box mt="1" fontWeight="semibold" as="h4" fontSize="20px" lineHeight="tight" isTruncated>

@@ -8,10 +8,10 @@ export default function Commande() {
         <Flex direction="column" align="center">
           <Image
             rounded="3px"
-            src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"
+            src="https://api.dood.com/api/thumbnail/bcf8e6f6-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"
           ></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Burger
           </Heading>
         </Flex>
       </Link>
@@ -25,97 +25,97 @@ export default function Commande() {
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/ce71a8fb-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Street food
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/debf8fa9-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Traiteur
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/e732d3b3-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Coffee Shop
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/f064e681-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Pizza
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/f824779d-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Healthy
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/0140e7e7-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Japonais
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/0aa69187-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Caviste
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/12154f90-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Cuisines du monde
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/12154f90-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Restaurant tradi.
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/27206064-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Cave à Bière
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/2ee8ef1c-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Pause sucrée
           </Heading>
         </Flex>
       </Link>
       <Link textAlign="center">
         <Flex direction="column" align="center">
-          <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+          <Image src="https://api.dood.com/api/thumbnail/3ad08630-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
           <Heading mt="10px" size="lg" color="gray.700">
-            Boulangrie
+            Épicerie fine
           </Heading>
         </Flex>
       </Link>

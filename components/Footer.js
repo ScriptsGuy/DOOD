@@ -20,7 +20,7 @@ export default function Footer() {
           <Heading size="lg">Feel Dood</Heading>
           <Heading size="sm">Recevez les bons plans et restez informé(e) des nouveautés</Heading>
           <Flex justifyContent="center" align="center">
-            <InputGroup mt="20px" size="lg" color="black" width="50%">
+            <InputGroup mt="20px" size="lg" color="black" width={['100%', '50%', '50%', '50%']}>
               <Input size="lg" placeholder="Adresse email" />
               <InputRightElement children={<Icon name="search-2" color="gray.500" />} />
             </InputGroup>

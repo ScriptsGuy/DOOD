@@ -4,31 +4,19 @@ import { FaRegHandshake } from 'react-icons/fa';
 
 export default function Mobile() {
   return (
-    <Box>
-      <Flex p="30px" justify="center">
-        <Image src={require('../../images/apple.png')}></Image>
-        <Image src={require('../../images/google.png')}></Image>
-      </Flex>
+    <Box overflow="hidden" maxH={['600px', '']}>
       <SimpleGrid columns={['1', '2', '2', '2']}>
-        <Box
-          className="coffe"
-          height="400px"
-          bgRepeat="no-repeat"
-          bgImage="url('/images/coffe.jpg')"
-          bg="blue.500"
-        ></Box>
-        <Box p="30px" color="white" bg="gray.700">
-          <Flex justify="center">
-            <FaRegHandshake fontSize="120px"></FaRegHandshake>
-          </Flex>
-          <Heading m="10px" size="xl">
-            Boulangers, restaurateurs !
+        <Box mt="100px">
+          <Heading p="20px" size="xl" color="gray.500">
+            COMMANDEZ AUSSI AVEC L’APPLI MOBILE.
           </Heading>
-          <Heading size="xl">Rejoignez Dood, première plateforme </Heading>
-          <Heading size="xl">de click&collect. </Heading>
-          <Button m="20px" size="lg" borderRadius="5px" color="black">
-            Join
-          </Button>
+          <Flex justify="center">
+            <Image src="./images/apple.png"></Image>
+            <Image src="./images/google.png"></Image>
+          </Flex>
+        </Box>
+        <Box p="30px">
+          <Image src="./images/phone.png"></Image>
         </Box>
       </SimpleGrid>
     </Box>
