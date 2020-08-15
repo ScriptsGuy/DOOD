@@ -15,11 +15,12 @@ import {
   Input,
   Badge,
 } from '@chakra-ui/core';
+import NextLink from 'next/link';
 
 import { FaGoogle, FaFacebookF, FaHamburger, FaShoppingCart } from 'react-icons/fa';
 
 const MenuItems = ({ children }) => (
-  <Link mt={{ base: 4, md: 0 }} mr={6} display="block">
+  <Link href="/" mt={{ base: 4, md: 0 }} mr={6} display="block">
     {children}
   </Link>
 );
@@ -91,11 +92,11 @@ const Navbar = (props) => {
       {...props}
     >
       <Flex align="center" mr={5}>
-        <Heading fontWeight="bold" as="h1" size="xl" letterSpacing={'-.1rem'}>
-          <Link style={{ textDecoration: 'none', outline: 'none' }} href="/">
+        <NextLink style={{ textDecoration: 'none', outline: 'none' }} href="/">
+          <Heading fontWeight="bold" as="h1" size="xl" letterSpacing={'-.1rem'}>
             DOOD
-          </Link>
-        </Heading>
+          </Heading>
+        </NextLink>
       </Flex>
       <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
         <FaHamburger fontSize="24px"></FaHamburger>

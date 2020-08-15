@@ -28,8 +28,8 @@ export default function details() {
   };
   return (
     <Box mt="92.43px">
-      <SimpleGrid columns={2}>
-        <Box h="400px">
+      <SimpleGrid columns={[1, 1, 2, 2]}>
+        <Box>
           <Flex justifyContent="flex-end">
             <FaRegHeart style={{ marginRight: 15, marginTop: 15 }} fontSize="36px"></FaRegHeart>
           </Flex>
@@ -50,12 +50,12 @@ export default function details() {
                       <StarIcon key={i} color={i < property.rating ? 'teal.500' : 'gray.300'} />
                     ))}
                 </Box>
-                <Box display="flex">
+                <Box mt="2" display="flex">
                   <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
                 </Box>
-                <Box>
+                <Box mt="2">
                   <Text>STREET FOOD</Text>
                 </Box>
               </Box>
@@ -67,7 +67,7 @@ export default function details() {
               Les horaires sont variables, ils seront confirmés à la validation de votre commande.
             </Box>
           </Box>
-          <Box mt="20px" pr="50px" pl="50px">
+          <Box mt="20px" pr="50px" pl="50px" mb="30px">
             <Select placeholder="Select option">
               <option value="option1">Option 1</option>
               <option value="option2">Option 2</option>
@@ -75,22 +75,30 @@ export default function details() {
             </Select>
           </Box>
         </Box>
-        <Box className="detail-image" h="400pxs"></Box>
+        <Box className="detail-image"></Box>
       </SimpleGrid>
       <Box>
         <Tabs bg="white">
-          <TabList color="gray.500" p="20px">
-            <Tab fontSize="24px">Formules</Tab>
-            <Tab fontSize="24px">Gourmandises Salées</Tab>
-            <Tab fontSize="24px">Gourmandises Sucrées</Tab>
-            <Tab fontSize="24px">Boissons Fraîches</Tab>
+          <TabList overflowX="auto" color="gray.500" p="2px">
+            <Tab p="10px" fontSize="24px">
+              Formules
+            </Tab>
+            <Tab p="10px" fontSize="24px">
+              Gourmandises Salées
+            </Tab>
+            <Tab p="10px" fontSize="24px">
+              Gourmandises Sucrées
+            </Tab>
+            <Tab p="10px" fontSize="24px">
+              Boissons Fraîches
+            </Tab>
           </TabList>
 
           <TabPanels color="gray.600">
             <TabPanel>
               <Box p="30px">
                 <Heading>FORMULES</Heading>
-                <SimpleGrid mt="6" columns={3} spacing={12}>
+                <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
@@ -131,13 +139,133 @@ export default function details() {
               </Box>
             </TabPanel>
             <TabPanel>
-              <p>two!</p>
+              <Box p="30px">
+                <Heading>Gourmandises Salées</Heading>
+                <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                </SimpleGrid>
+              </Box>
             </TabPanel>
             <TabPanel>
-              <p>three!</p>
+              <Box p="30px">
+                <Heading>Gourmandises Sucrées</Heading>
+                <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                </SimpleGrid>
+              </Box>
             </TabPanel>
             <TabPanel>
-              <p>four!</p>
+              <Box p="30px">
+                <Heading>Boissons Fraîches</Heading>
+                <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                  <Box borderWidth="1px" rounded="lg" p="6">
+                    <Heading>Wrap & soda & cupcake</Heading>
+                    <Text fontSize="2xl">
+                      Les produits sont faits sur place et sont non modifiables
+                    </Text>
+                  </Box>
+                </SimpleGrid>
+              </Box>
             </TabPanel>
           </TabPanels>
         </Tabs>
