@@ -23,7 +23,7 @@ export default function details({ post }) {
   console.log(post);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
-    imageAlt: 'Rear view of modern home with ',
+    imageAlt: 'Rear view of modern home with coll',
 
     title: 'AU PAIN DE MON GRAND PERE',
     reviewCount: 34,

@@ -202,7 +202,7 @@ export default function details(props) {
             color="gray.500"
             bg="gray.100"
           >
-            <TagLabel fontSize="24px"> Épicerie fine</TagLabel>
+            <TagLabel fontSize="24px"> Epicerie fine</TagLabel>
           </Tag>
         </Flex>
       </Box>
