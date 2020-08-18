@@ -14,7 +14,7 @@ import {
   TabPanel,
 } from '@chakra-ui/core';
 import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
-import fetch from 'isomorphic-unfetch';
+// import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
@@ -23,7 +23,7 @@ export default function details({ post }) {
   console.log(post);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
-    imageAlt: 'Rear view of modern home with pool',
+    imageAlt: 'Rear view of modern home with ',
 
     title: 'AU PAIN DE MON GRAND PERE',
     reviewCount: 34,
