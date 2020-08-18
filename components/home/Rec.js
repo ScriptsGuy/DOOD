@@ -18,13 +18,13 @@ export default function Rec(props) {
   };
 
   return (
-    <Link href="/details">
+    <Link href={`/details/[id]`} as={`/details/${props.id}`}>
       <Box bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
         <Image src={props.image} alt={property.imageAlt} />
 
         <Box p="6">
           <Box mt="1" fontWeight="semibold" as="h4" fontSize="20px" lineHeight="tight" isTruncated>
-            {property.title}
+            {props.name}
           </Box>
           <Box>
             <Box
@@ -35,7 +35,7 @@ export default function Rec(props) {
               textTransform="uppercase"
               ml="2"
             >
-              69 rue Ney 69006 LYON
+              {props.adress}
             </Box>
           </Box>
           <Flex justifyContent="space-between">

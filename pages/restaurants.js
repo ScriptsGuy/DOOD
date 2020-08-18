@@ -4,7 +4,23 @@ import { FaFilter } from 'react-icons/fa';
 import Rec from '../components/home/Rec';
 import Filter from '../components/restaurants/Filter';
 
-export default function details() {
+export default function details(props) {
+  //   const [selected, setselected] = useState({
+  //     Burger: false,
+  //     Boulangrie: false,
+  //     Traiteur: false,
+  //     CoffeeShop: false,
+  //     Burger: false,
+  //     Burger: false,
+  //     Burger: false,
+  //     Burger: false,
+  //     Burger: false,
+  //     Burger: false,
+  //     Burger: false,
+  //     Burger: false,
+  //     Burger: false,
+  //     Burger: false,
+  //   });
   return (
     <Box p="30px" bg="white" mt="85px">
       <Box
@@ -27,8 +43,8 @@ export default function details() {
             size="lg"
             rounded="full"
             variant="solid"
-            color="gray.500"
-            bg="gray.100"
+            color="white"
+            bg="gray.700"
           >
             <TagLabel fontSize="24px">Burger</TagLabel>
           </Tag>
@@ -192,20 +208,36 @@ export default function details() {
       </Box>
       <Box mt={{ base: '100px', md: '170px' }} p="30px">
         <SimpleGrid spacing={12} justifyItems="center" columns={[1, 2, 2, 3]}>
-          <Rec image="https://api.dood.com/files/uploads/8082.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/5198.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/21701.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/11380.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/11983.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/13276.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/8082.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/5198.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/21701.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/11380.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/11983.jpg"></Rec>
-          <Rec image="https://api.dood.com/files/uploads/13276.jpg"></Rec>
+          {props.posts.map((post) => {
+            return (
+              <Rec
+                key={post.id}
+                id={post.id}
+                name={post.name}
+                adress={post.adress}
+                image={`https://dood.devzone-dz.com/storage/${post.image}`}
+              ></Rec>
+            );
+          })}
         </SimpleGrid>
       </Box>
     </Box>
   );
+}
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch(
+    'https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=10&offset=0'
+  );
+  const posts = await res.json();
+
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  };
 }

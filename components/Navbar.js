@@ -67,12 +67,14 @@ function DrawerConnexion() {
 
 function ShopBadge(props) {
   return (
-    <Box mt={{ base: '15px', md: '0' }} display="flex">
-      <FaShoppingCart fontSize="28px"></FaShoppingCart>
-      <Badge rounded="20px" fontSize="18px" ml="1" variantColor="green">
-        13
-      </Badge>
-    </Box>
+    <NextLink href="/cart">
+      <Box mt={{ base: '15px', md: '0' }} display="flex">
+        <FaShoppingCart fontSize="28px"></FaShoppingCart>
+        <Badge rounded="20px" fontSize="18px" ml="1" variantColor="green">
+          13
+        </Badge>
+      </Box>
+    </NextLink>
   );
 }
 

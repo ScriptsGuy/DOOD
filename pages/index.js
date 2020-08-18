@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 // import styles from '../styles/Home.module.css';
 import { Heading, Box, SimpleGrid } from '@chakra-ui/core';
 
@@ -9,7 +10,18 @@ import Ville from '../components/home/Ville';
 import Mobile from '../components/home/Mobile';
 import Description from '../components/home/Description';
 
-export default function Home() {
+export default function Home(props) {
+  console.log(props);
+  //   const [restaurants, setRestaurants] = React.useState();
+  //   React.useEffect(() => {
+  //     async function getData() {
+  //       const data = await fetch(
+  //         'https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=6&offset=0'
+  //       );
+  //       setRestaurants(data);
+  //     }
+  //     getData();
+  //   }, []);
   return (
     <Box>
       <Head>
@@ -23,12 +35,17 @@ export default function Home() {
             Vos commerçants préférés sont sur Dood
           </Heading>
           <SimpleGrid spacing={12} justifyItems="center" columns={[1, 2, 2, 3]}>
-            <Rec image="https://api.dood.com/files/uploads/8082.jpg"></Rec>
-            <Rec image="https://api.dood.com/files/uploads/5198.jpg"></Rec>
-            <Rec image="https://api.dood.com/files/uploads/21701.jpg"></Rec>
-            <Rec image="https://api.dood.com/files/uploads/11380.jpg"></Rec>
-            <Rec image="https://api.dood.com/files/uploads/11983.jpg"></Rec>
-            <Rec image="https://api.dood.com/files/uploads/13276.jpg"></Rec>
+            {props.posts.map((post) => {
+              return (
+                <Rec
+                  key={post.id}
+                  id={post.id}
+                  name={post.name}
+                  adress={post.adress}
+                  image={`https://dood.devzone-dz.com/storage/${post.image}`}
+                ></Rec>
+              );
+            })}
           </SimpleGrid>
         </Box>
         <Box bg="white" p={['20px', '30px', '40px', '50px']}>
@@ -52,4 +69,21 @@ export default function Home() {
       </Box>
     </Box>
   );
+}
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch(
+    'https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=6&offset=0'
+  );
+  const posts = await res.json();
+
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  };
 }

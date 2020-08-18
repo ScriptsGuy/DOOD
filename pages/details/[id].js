@@ -14,10 +14,13 @@ import {
   TabPanel,
 } from '@chakra-ui/core';
 import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
-export default function details() {
+export default function details({ post }) {
+  console.log(post);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with pool',
@@ -28,6 +31,9 @@ export default function details() {
   };
   return (
     <Box mt="92.43px">
+      <Head>
+        <title>{post.name}</title>
+      </Head>
       <SimpleGrid columns={[1, 1, 2, 2]}>
         <Box>
           <Flex justifyContent="flex-end">
@@ -35,11 +41,11 @@ export default function details() {
           </Flex>
 
           <Box pr="50px" pl="50px">
-            <Heading>CANDY COOKIE BOULEVARD</Heading>
+            <Heading>{post.name}</Heading>
             <Flex justifyContent="space-between">
               <Box>
-                <Text>20 RUE LANTERNE</Text>
-                <Text>69001 LYON</Text>
+                <Text> {post.adress} </Text>
+                {/* <Text>69001 LYON</Text> */}
                 <Text color="green.300">1 991,394 km</Text>
               </Box>
               <Box color="gray.500">
@@ -56,7 +62,7 @@ export default function details() {
                   <FaEuroSign></FaEuroSign>
                 </Box>
                 <Box mt="2">
-                  <Text>STREET FOOD</Text>
+                  <Text> {post.categories[0].name} </Text>
                 </Box>
               </Box>
             </Flex>
@@ -75,7 +81,16 @@ export default function details() {
             </Select>
           </Box>
         </Box>
-        <Box className="detail-image"></Box>
+        <Box
+          style={{
+            background: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('https://dood.devzone-dz.com/storage/${post.image}')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+          className="detail-image"
+        ></Box>
       </SimpleGrid>
       <Box>
         <Tabs bg="white">
@@ -104,36 +119,42 @@ export default function details() {
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                 </SimpleGrid>
               </Box>
@@ -147,36 +168,42 @@ export default function details() {
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                 </SimpleGrid>
               </Box>
@@ -190,36 +217,42 @@ export default function details() {
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                 </SimpleGrid>
               </Box>
@@ -233,36 +266,42 @@ export default function details() {
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                   <Box borderWidth="1px" rounded="lg" p="6">
                     <Heading>Wrap & soda & cupcake</Heading>
                     <Text fontSize="2xl">
                       Les produits sont faits sur place et sont non modifiables
                     </Text>
+                    <Heading size="lg">14.5 €</Heading>
                   </Box>
                 </SimpleGrid>
               </Box>
@@ -272,4 +311,14 @@ export default function details() {
       </Box>
     </Box>
   );
+}
+
+export async function getServerSideProps({ params }) {
+  // params contains the post `id`.
+  // If the route is like /posts/1, then params.id is 1
+  const res = await fetch(`https://dood.devzone-dz.com/api/restaurants/${params.id}`);
+  const post = await res.json();
+
+  // Pass post data to the page via props
+  return { props: { post } };
 }
