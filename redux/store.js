@@ -28,11 +28,20 @@ const middleware = [thunk];
 
 // export default store;
 
+const bindMiddleware = (middleware) => {
+  if (process.env.NODE_ENV !== 'production') {
+    const { composeWithDevTools } = require('redux-devtools-extension');
+    return composeWithDevTools(applyMiddleware(...middleware));
+  }
+  return applyMiddleware(...middleware);
+};
+
 function makeStore(initialState = initState) {
   return createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(...middleware))
+    // composeWithDevTools(applyMiddleware(...middleware))
+    bindMiddleware([thunk])
   );
 }
 
