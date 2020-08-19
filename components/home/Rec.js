@@ -20,13 +20,11 @@ export default function Rec(props) {
   return (
     <Link href={`/details/[id]`} as={`/details/${props.id}`}>
       <Box cursor="pointer" bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
-        <Skeleton isLoaded>
-          <Image src={props.image} alt={property.imageAlt} />
-        </Skeleton>
+        <Image src={props.image} alt={property.imageAlt} />
 
         <Box p="6">
           <Box mt="1" fontWeight="semibold" as="h4" fontSize="20px" lineHeight="tight" isTruncated>
-            <Skeleton isLoaded>{props.name}</Skeleton>
+            {props.name}
           </Box>
           <Box>
             <Box

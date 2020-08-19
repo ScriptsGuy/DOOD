@@ -94,7 +94,7 @@ const Navbar = (props) => {
       {...props}
     >
       <Flex align="center" mr={5}>
-        <NextLink style={{ textDecoration: 'none', outline: 'none' }} href="/">
+        <NextLink href="/">
           <Heading cursor="pointer" fontWeight="bold" as="h1" size="xl" letterSpacing={'-.1rem'}>
             DOOD
           </Heading>

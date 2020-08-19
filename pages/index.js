@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 // import styles from '../styles/Home.module.css';
-import { Heading, Box, SimpleGrid, Skeleton } from '@chakra-ui/core';
+import { Heading, Box, SimpleGrid } from '@chakra-ui/core';
 
 import Hero from '../components/home/Hero';
 import Rec from '../components/home/Rec';
@@ -11,17 +11,8 @@ import Mobile from '../components/home/Mobile';
 import Description from '../components/home/Description';
 
 export default function Home(props) {
-  console.log(props);
-  //   const [restaurants, setRestaurants] = React.useState();
-  //   React.useEffect(() => {
-  //     async function getData() {
-  //       const data = await fetch(
-  //         'https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=6&offset=0'
-  //       );
-  //       setRestaurants(data);
-  //     }
-  //     getData();
-  //   }, []);
+  //   console.log(props);
+
   return (
     <Box>
       <Head>
