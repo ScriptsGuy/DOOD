@@ -19,7 +19,7 @@ export default function Rec(props) {
 
   return (
     <Link href={`/details/[id]`} as={`/details/${props.id}`}>
-      <Box bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
+      <Box cursor="pointer" bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
         <Image src={props.image} alt={property.imageAlt} />
 
         <Box p="6">

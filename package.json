@@ -17,6 +17,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-images": "^1.4.1",
     "next-redux-wrapper": "^6.0.2",
+    "nprogress": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-icons": "^3.10.0",

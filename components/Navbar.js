@@ -68,7 +68,7 @@ function DrawerConnexion() {
 function ShopBadge(props) {
   return (
     <NextLink href="/cart">
-      <Box mt={{ base: '15px', md: '0' }} display="flex">
+      <Box cursor="pointer" mt={{ base: '15px', md: '0' }} display="flex">
         <FaShoppingCart fontSize="28px"></FaShoppingCart>
         <Badge rounded="20px" fontSize="18px" ml="1" variantColor="green">
           13
@@ -95,7 +95,7 @@ const Navbar = (props) => {
     >
       <Flex align="center" mr={5}>
         <NextLink style={{ textDecoration: 'none', outline: 'none' }} href="/">
-          <Heading fontWeight="bold" as="h1" size="xl" letterSpacing={'-.1rem'}>
+          <Heading cursor="pointer" fontWeight="bold" as="h1" size="xl" letterSpacing={'-.1rem'}>
             DOOD
           </Heading>
         </NextLink>
