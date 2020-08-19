@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 // import styles from '../styles/Home.module.css';
-import { Heading, Box, SimpleGrid } from '@chakra-ui/core';
+import { Heading, Box, SimpleGrid, Skeleton } from '@chakra-ui/core';
 
 import Hero from '../components/home/Hero';
 import Rec from '../components/home/Rec';

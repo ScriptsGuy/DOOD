@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Box, Badge, Icon, Image, Divider, Flex } from '@chakra-ui/core';
+import { Box, Badge, Icon, Image, Divider, Flex, Skeleton } from '@chakra-ui/core';
 import { FaEuroSign } from 'react-icons/fa';
 
 // import Link from 'next/link';
@@ -20,11 +20,13 @@ export default function Rec(props) {
   return (
     <Link href={`/details/[id]`} as={`/details/${props.id}`}>
       <Box cursor="pointer" bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
-        <Image src={props.image} alt={property.imageAlt} />
+        <Skeleton isLoaded>
+          <Image src={props.image} alt={property.imageAlt} />
+        </Skeleton>
 
         <Box p="6">
           <Box mt="1" fontWeight="semibold" as="h4" fontSize="20px" lineHeight="tight" isTruncated>
-            {props.name}
+            <Skeleton isLoaded>{props.name}</Skeleton>
           </Box>
           <Box>
             <Box

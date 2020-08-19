@@ -20,7 +20,14 @@ import Head from 'next/head';
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
 export default function details({ post }) {
+  const [heart, setHeart] = React.useState(false);
+
+  const handleHeart = () => {
+    heart ? setHeart(false) : setHeart(true);
+  };
+
   console.log(post);
+  console.log(heart);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with coll',
@@ -37,7 +44,18 @@ export default function details({ post }) {
       <SimpleGrid columns={[1, 1, 2, 2]}>
         <Box>
           <Flex justifyContent="flex-end">
-            <FaRegHeart style={{ marginRight: 15, marginTop: 15 }} fontSize="36px"></FaRegHeart>
+            {heart ? (
+              <Box onClick={handleHeart}>
+                <FaHeart
+                  style={{ marginRight: 15, marginTop: 15, color: 'red' }}
+                  fontSize="36px"
+                ></FaHeart>
+              </Box>
+            ) : (
+              <Box onClick={handleHeart}>
+                <FaRegHeart style={{ marginRight: 15, marginTop: 15 }} fontSize="36px"></FaRegHeart>
+              </Box>
+            )}
           </Flex>
 
           <Box pr="50px" pl="50px">
