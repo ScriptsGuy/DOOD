@@ -31,7 +31,7 @@ export default function details(props) {
       setselected((prevState) => ({ ...prevState, [param]: true }));
     }
   };
-  console.log(selected);
+  //   console.log(selected);
   return (
     <Box p="30px" bg="white" mt="85px">
       <Box
@@ -245,7 +245,7 @@ export default function details(props) {
           </Tag>
         </Flex>
       </Box>
-      <Box mt={{ base: '100px', md: '170px' }} p="30px">
+      <Box mt={{ base: '100px', md: '170px' }}>
         <SimpleGrid spacing={12} justifyItems="center" columns={[1, 2, 2, 3]}>
           {props.posts.map((post) => {
             return (

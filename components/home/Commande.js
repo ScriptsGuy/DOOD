@@ -9,10 +9,7 @@ export default function Commande() {
         <Skeleton isLoaded>
           <Box cursor="pointer">
             <Flex direction="column" align="center">
-              <Image
-                rounded="3px"
-                src="https://api.dood.com/api/thumbnail/bcf8e6f6-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"
-              ></Image>
+              <Image rounded="3px" src="./images/burger.png"></Image>
               <Heading mt="10px" size="lg" color="gray.700">
                 Burger
               </Heading>
@@ -23,7 +20,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/c4ee3e3b-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/boulangrie.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Boulangrie
             </Heading>
@@ -33,7 +30,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/ce71a8fb-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/street.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Street food
             </Heading>
@@ -43,7 +40,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/debf8fa9-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/traiteur.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Traiteur
             </Heading>
@@ -53,7 +50,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/e732d3b3-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/coffe.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Coffee Shop
             </Heading>
@@ -63,7 +60,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/f064e681-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/pizza.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Pizza
             </Heading>
@@ -73,7 +70,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/f824779d-c4d9-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/healthy.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Healthy
             </Heading>
@@ -83,7 +80,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/0140e7e7-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/japo.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Japonais
             </Heading>
@@ -94,7 +91,7 @@ export default function Commande() {
         <Skeleton isLoaded>
           <Box cursor="pointer">
             <Flex direction="column" align="center">
-              <Image src="https://api.dood.com/api/thumbnail/0aa69187-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+              <Image src="./images/caviste.png"></Image>
               <Heading mt="10px" size="lg" color="gray.700">
                 Caviste
               </Heading>
@@ -105,7 +102,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/12154f90-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/cuisin.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Cuisines du monde
             </Heading>
@@ -115,7 +112,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/12154f90-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/restaurant.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Restaurant tradi.
             </Heading>
@@ -125,7 +122,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/27206064-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/cave.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Cave à Bière
             </Heading>
@@ -135,7 +132,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/2ee8ef1c-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/pause.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Pause sucrée
             </Heading>
@@ -145,7 +142,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="https://api.dood.com/api/thumbnail/3ad08630-c4da-11ea-8236-063a98f7b06e/type-thumbnail"></Image>
+            <Image src="./images/fine.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Épicerie fine
             </Heading>
