@@ -11,7 +11,7 @@ import Mobile from '../components/home/Mobile';
 import Description from '../components/home/Description';
 
 export default function Home(props) {
-  //   console.log(props);
+  console.log(props);
 
   return (
     <Box>

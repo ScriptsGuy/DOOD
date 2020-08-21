@@ -266,9 +266,10 @@ export default function details(props) {
 
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
+
   // You can use any data fetching library
   const res = await fetch(
-    'https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=10&offset=0'
+    `https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=10&offset=0`
   );
   const posts = await res.json();
 

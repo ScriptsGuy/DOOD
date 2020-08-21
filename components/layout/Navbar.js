@@ -19,51 +19,53 @@ import NextLink from 'next/link';
 
 import { FaGoogle, FaFacebookF, FaHamburger, FaShoppingCart } from 'react-icons/fa';
 
+import Login from '../auth/Login';
+
 const MenuItems = ({ children }) => (
   <Link href="/" mt={{ base: 4, md: 0 }} mr={6} display="block">
     {children}
   </Link>
 );
 
-function DrawerConnexion() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
+// function DrawerConnexion() {
+//   const { isOpen, onOpen, onClose } = useDisclosure();
+//   const btnRef = React.useRef();
 
-  return (
-    <Box
-      mt={{ base: '10px', md: '0' }}
-      width={[
-        '100%', // base
-        '50%', // 480px upwards
-        '25%', // 768px upwards
-        '15%', // 992px upwards
-      ]}
-    >
-      <Button ref={btnRef} variantColor="teal" onClick={onOpen}>
-        CONNEXION
-      </Button>
-      <Drawer isOpen={isOpen} placement="left" onClose={onClose} finalFocusRef={btnRef}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Connexion</DrawerHeader>
+//   return (
+//     <Box
+//       mt={{ base: '10px', md: '0' }}
+//       width={[
+//         '100%', // base
+//         '50%', // 480px upwards
+//         '25%', // 768px upwards
+//         '15%', // 992px upwards
+//       ]}
+//     >
+//       <Button ref={btnRef} variantColor="teal" onClick={onOpen}>
+//         CONNEXION
+//       </Button>
+//       <Drawer isOpen={isOpen} placement="left" onClose={onClose} finalFocusRef={btnRef}>
+//         <DrawerOverlay />
+//         <DrawerContent>
+//           <DrawerCloseButton />
+//           <DrawerHeader>Connexion</DrawerHeader>
 
-          <DrawerBody>
-            <Input placeholder="Adresse e-mail ou numéro de portable" />
-            <Flex mt="20px" justify="space-around">
-              <Button leftIcon={FaFacebookF} color="white" bg="blue.700">
-                Facebook
-              </Button>
-              <Button leftIcon={FaGoogle} color="white" bg="red.500">
-                Google
-              </Button>
-            </Flex>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-    </Box>
-  );
-}
+//           <DrawerBody>
+//             <Input placeholder="Adresse e-mail ou numéro de portable" />
+//             <Flex mt="20px" justify="space-around">
+//               <Button leftIcon={FaFacebookF} color="white" bg="blue.700">
+//                 Facebook
+//               </Button>
+//               <Button leftIcon={FaGoogle} color="white" bg="red.500">
+//                 Google
+//               </Button>
+//             </Flex>
+//           </DrawerBody>
+//         </DrawerContent>
+//       </Drawer>
+//     </Box>
+//   );
+// }
 
 function ShopBadge(props) {
   return (
@@ -112,7 +114,7 @@ const Navbar = (props) => {
         flexGrow={1}
       >
         <MenuItems>JE SUIS COMMERÇANT</MenuItems>
-        <DrawerConnexion></DrawerConnexion>
+        <Login></Login>
         <ShopBadge></ShopBadge>
       </Box>
     </Flex>

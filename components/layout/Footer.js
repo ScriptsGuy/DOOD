@@ -39,8 +39,8 @@ export default function Footer() {
         <Box flexGrow="1" p="30px">
           <Heading size="lg">Télécharger l’app</Heading>
           <Flex mt="10px">
-            <Image src={require('../images/apple.png')}></Image>
-            <Image src={require('../images/google.png')}></Image>
+            <Image src="./images/apple.png"></Image>
+            <Image src="./images/google.png"></Image>
           </Flex>
         </Box>
         {/* <Box flexGrow="1">section4</Box>

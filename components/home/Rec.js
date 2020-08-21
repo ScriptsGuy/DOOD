@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import slugify from 'slugify';
 import { Box, Badge, Icon, Image, Divider, Flex, Skeleton } from '@chakra-ui/core';
 import { FaEuroSign } from 'react-icons/fa';
 
@@ -17,8 +18,13 @@ export default function Rec(props) {
     rating: 4,
   };
 
+  const slug = slugify(props.name);
+
   return (
-    <Link href={`/details/[id]`} as={`/details/${props.id}`}>
+    <Link
+      href={{ pathname: `/restaurant/[slug]`, query: { id: props.id } }}
+      as={{ pathname: `/restaurant/${slug}`, query: { id: props.id } }}
+    >
       <Box cursor="pointer" bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
         <Image src={props.image} alt={property.imageAlt} />
 
