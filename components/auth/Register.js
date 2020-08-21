@@ -110,7 +110,13 @@ function Signup(props) {
                   </Button>
                 </InputRightElement>
               </InputGroup>
-              <Button onClick={handleSubmit} type="submit" color="white" bg="teal.500">
+              <Button
+                isLoading={props.auth.loading}
+                onClick={handleSubmit}
+                type="submit"
+                color="white"
+                bg="teal.500"
+              >
                 Register
               </Button>
             </Stack>

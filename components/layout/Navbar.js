@@ -1,4 +1,20 @@
-import { Box, Heading, Flex, Link, Badge, Text } from '@chakra-ui/core';
+import {
+  Box,
+  Heading,
+  Flex,
+  Link,
+  Badge,
+  Text,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuGroup,
+  MenuDivider,
+  MenuOptionGroup,
+  MenuItemOption,
+  Icon,
+} from '@chakra-ui/core';
 import NextLink from 'next/link';
 
 import { FaGoogle, FaFacebookF, FaHamburger, FaShoppingCart } from 'react-icons/fa';
@@ -104,15 +120,34 @@ const Navbar = (props) => {
         <MenuItems>JE SUIS COMMERÇANT</MenuItems>
 
         {props.auth.data && (
-          <Text
-            onClick={() => props.Logout()}
-            mt={{ base: 4, md: 0 }}
-            mr={6}
-            cursor={'pointer'}
-            fontSize="lg"
-          >
-            Logout
-          </Text>
+          <>
+            <Menu>
+              <MenuButton
+                px={4}
+                py={2}
+                mt={{ base: 4, md: 0 }}
+                mr={6}
+                fontSize="lg"
+                transition="all 0.2s"
+                rounded="md"
+                _hover={{ bg: 'gray.100' }}
+                _focus={{ outline: 0, boxShadow: 'outline' }}
+              >
+                Account <Icon name="chevron-down" />
+              </MenuButton>
+              <MenuList>
+                <MenuItem>
+                  <Text fontSize="lg">Favories</Text>{' '}
+                </MenuItem>
+                <MenuItem>
+                  {' '}
+                  <Text onClick={() => props.Logout()} cursor={'pointer'} fontSize="lg">
+                    Logout
+                  </Text>
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </>
         )}
         {!props.auth.data && (
           <>

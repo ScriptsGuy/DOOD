@@ -17,7 +17,7 @@ import {
 
 import { connect } from 'react-redux';
 
-import { Login } from '../../redux/actions/authAction';
+import { Login, Logout } from '../../redux/actions/authAction';
 
 function Signin(props) {
   const [login, setLogin] = useState({ email: '', password: '' });
@@ -35,6 +35,12 @@ function Signin(props) {
     e.persist();
     setLogin((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
+
+  //   useEffect(() => {
+  //     return () => {
+  //       props.auth.error && props.Logout();
+  //     };
+  //   }, []);
 
   return (
     <Box
@@ -64,6 +70,11 @@ function Signin(props) {
 
           <DrawerBody>
             <Stack spacing={4}>
+              {props.auth.error && (
+                <Box color="red.700" p="2" textAlign="center" bg="red.100">
+                  {props.auth.error}
+                </Box>
+              )}
               <InputGroup>
                 <Input
                   onChange={handleChange}
@@ -115,6 +126,7 @@ function Signin(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     Login: (cerdentials) => dispatch(Login(cerdentials)),
+    Logout: () => dispatch(Logout()),
   };
 };
 

@@ -22,6 +22,12 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+    case t.AUTH_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.message,
+      };
     case t.AUTH_LOGOUT:
       return {
         data: null,

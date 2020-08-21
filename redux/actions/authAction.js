@@ -12,10 +12,17 @@ export const Login = ({ email, password }) => async (dispatch) => {
     .post('https://dood.devzone-dz.com/api/login', { email, password }, headers)
     .then((res) => {
       console.log(res);
-      dispatch({
-        type: t.AUTH_LOGIN,
-        payload: res.data,
-      });
+      if (res.data.message) {
+        dispatch({
+          type: t.AUTH_ERROR,
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: t.AUTH_LOGIN,
+          payload: res.data,
+        });
+      }
     })
     .catch((err) => {
       console.log(err);
