@@ -17,7 +17,7 @@ import {
 
 import { connect } from 'react-redux';
 
-import { Login, Logout } from '../../redux/actions/authAction';
+import { Login, ClearError } from '../../redux/actions/authAction';
 
 function Signin(props) {
   const [login, setLogin] = useState({ email: '', password: '' });
@@ -35,12 +35,6 @@ function Signin(props) {
     e.persist();
     setLogin((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
-
-  //   useEffect(() => {
-  //     return () => {
-  //       props.auth.error && props.Logout();
-  //     };
-  //   }, []);
 
   return (
     <Box
@@ -126,7 +120,7 @@ function Signin(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     Login: (cerdentials) => dispatch(Login(cerdentials)),
-    Logout: () => dispatch(Logout()),
+    ClearError: () => dispatch(ClearError()),
   };
 };
 

@@ -57,3 +57,7 @@ export const Logout = () => async (dispatch) => {
   console.log('logginout!!!!');
   dispatch({ type: t.AUTH_LOGOUT });
 };
+export const ClearError = () => async (dispatch) => {
+  console.log('CLEARING!!!!');
+  dispatch({ type: t.AUTH_CLEAR_ERROR });
+};

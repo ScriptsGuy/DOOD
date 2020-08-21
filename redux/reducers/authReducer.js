@@ -34,6 +34,11 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+    case t.AUTH_CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
+      };
     case t.AUTH_LOADING:
       return {
         ...state,
