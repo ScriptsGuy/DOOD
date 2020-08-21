@@ -25,7 +25,10 @@ export const Login = ({ email, password }) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: t.AUTH_ERROR,
+        payload: { message: 'Somthing went wrong!!!' },
+      });
     });
 
   console.log(data);

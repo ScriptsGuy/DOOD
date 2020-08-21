@@ -74,7 +74,7 @@ function Signin(props) {
                   onChange={handleChange}
                   name="email"
                   type="email"
-                  placeholder="Email Adress"
+                  placeholder="Username or Email Adress"
                 />
               </InputGroup>
 
