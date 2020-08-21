@@ -25,7 +25,7 @@ export default function Home(props) {
           <Heading p="15px" size="xl" color="gray.500">
             Vos commerçants préférés sont sur Dood
           </Heading>
-          <SimpleGrid spacing={12} justifyItems="center" columns={[1, 2, 2, 3]}>
+          <SimpleGrid spacing={10} justifyItems="center" columns={[1, 2, 3, 4]}>
             {props.posts.map((post) => {
               return (
                 <Rec

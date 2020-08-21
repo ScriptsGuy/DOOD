@@ -49,11 +49,18 @@ function Signin(props) {
       <Button ref={btnRef} variantColor="teal" onClick={onOpen}>
         CONNEXION
       </Button>
-      <Drawer size="sm" isOpen={isOpen} placement="left" onClose={onClose} finalFocusRef={btnRef}>
+      <Drawer
+        size="sm"
+        // isOpen={!props.auth.loading && !props.auth.error ? false : isOpen}
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Connexion</DrawerHeader>
+          <DrawerHeader>Login</DrawerHeader>
 
           <DrawerBody>
             <Stack spacing={4}>
@@ -79,7 +86,13 @@ function Signin(props) {
                   </Button>
                 </InputRightElement>
               </InputGroup>
-              <Button onClick={handleSubmit} type="submit" color="white" bg="teal.500">
+              <Button
+                isLoading={props.auth.loading}
+                onClick={handleSubmit}
+                type="submit"
+                color="white"
+                bg="teal.500"
+              >
                 Login
               </Button>
             </Stack>

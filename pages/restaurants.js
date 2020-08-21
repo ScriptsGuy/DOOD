@@ -246,7 +246,7 @@ export default function details(props) {
         </Flex>
       </Box>
       <Box mt={{ base: '100px', md: '170px' }}>
-        <SimpleGrid spacing={12} justifyItems="center" columns={[1, 2, 2, 3]}>
+        <SimpleGrid spacing={10} justifyItems="center" columns={[1, 2, 3, 4]}>
           {props.posts.map((post) => {
             return (
               <Rec

@@ -2,13 +2,11 @@
   "name": "dood",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://dood.devzone-dz.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
-  "testEnvironment": "node",
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
     "@emotion/core": "^10.0.34",

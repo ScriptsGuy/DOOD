@@ -1,19 +1,37 @@
 import * as t from '../types.js';
 
 const initialState = {
-  auth: null,
+  data: null,
   loading: false,
   error: null,
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case t.GET_LOGIN:
+    case t.AUTH_LOGIN:
       return {
         ...state,
-        auth: action.payload,
+        data: action.payload,
         loading: false,
         error: null,
+      };
+    case t.AUTH_REGISTER:
+      return {
+        ...state,
+        data: action.payload,
+        loading: false,
+        error: null,
+      };
+    case t.AUTH_LOGOUT:
+      return {
+        data: null,
+        loading: false,
+        error: null,
+      };
+    case t.AUTH_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
 
     default:

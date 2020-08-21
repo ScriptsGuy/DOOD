@@ -1,25 +1,13 @@
-import {
-  Box,
-  Heading,
-  Flex,
-  Link,
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  useDisclosure,
-  Input,
-  Badge,
-} from '@chakra-ui/core';
+import { Box, Heading, Flex, Link, Badge, Text } from '@chakra-ui/core';
 import NextLink from 'next/link';
 
 import { FaGoogle, FaFacebookF, FaHamburger, FaShoppingCart } from 'react-icons/fa';
+import { connect } from 'react-redux';
 
 import Login from '../auth/Login';
+import Register from '../auth/Register';
+
+import { Logout } from '../../redux/actions/authAction';
 
 const MenuItems = ({ children }) => (
   <Link href="/" mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -114,11 +102,40 @@ const Navbar = (props) => {
         flexGrow={1}
       >
         <MenuItems>JE SUIS COMMERÇANT</MenuItems>
-        <Login></Login>
+
+        {props.auth.data && (
+          <Text
+            onClick={() => props.Logout()}
+            mt={{ base: 4, md: 0 }}
+            mr={6}
+            cursor={'pointer'}
+            fontSize="lg"
+          >
+            Logout
+          </Text>
+        )}
+        {!props.auth.data && (
+          <>
+            <Register></Register>
+            <Login></Login>
+          </>
+        )}
         <ShopBadge></ShopBadge>
       </Box>
     </Flex>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    Logout: () => dispatch(Logout()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

@@ -1,3 +1,5 @@
 export const GET_POSTS = 'GET_POSTS';
-export const GET_LOGIN = 'GET_LOGIN';
-export const GET_REGISTER = 'GET_REGISTER';
+export const AUTH_LOGIN = 'AUTH_LOGIN';
+export const AUTH_REGISTER = 'AUTH_REGISTER';
+export const AUTH_LOADING = 'AUTH_LOADING';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
