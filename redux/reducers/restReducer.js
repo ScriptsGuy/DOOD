@@ -16,6 +16,10 @@ const postReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+    case t.ADD_FAVORY:
+      return {
+        ...state,
+      };
 
     default:
       return state;

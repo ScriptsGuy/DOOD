@@ -48,7 +48,7 @@ export default function Hero() {
           RETIRE SANS ATTENDRE.{' '}
         </Heading>
 
-        <InputGroup
+        {/* <InputGroup
           size="lg"
           color="black"
           width={[
@@ -59,8 +59,8 @@ export default function Hero() {
           ]}
         >
           <Input size="lg" placeholder="Saisissez une adresse ou le nom d’un restaurant" />
-          {/* <InputRightElement children={<Icon name="search-2" color="gray.500" />} /> */}
-        </InputGroup>
+
+        </InputGroup> */}
       </Flex>
     </Box>
   );

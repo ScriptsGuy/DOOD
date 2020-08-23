@@ -18,6 +18,10 @@ export default function Home(props) {
       <Head>
         <title>Dood</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
+        />
       </Head>
       <Box mt="85px">
         <Hero></Hero>

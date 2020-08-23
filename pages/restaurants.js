@@ -281,3 +281,151 @@ export async function getStaticProps() {
     },
   };
 }
+
+// import algoliasearch from 'algoliasearch/lite';
+// import React, { Component } from 'react';
+// import {
+//   InstantSearch,
+//   Hits,
+//   SearchBox,
+//   Pagination,
+//   Highlight,
+//   ClearRefinements,
+//   RefinementList,
+//   Configure,
+// } from 'react-instantsearch-dom';
+// import PropTypes from 'prop-types';
+// import Head from 'next/head';
+
+// const searchClient = algoliasearch('LMQ49UKOZA', 'a9adf7fd5943a630c82a62024c953e6e');
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div style={{ marginTop: 100 }} className="ais-InstantSearch">
+//         <Head>
+//           <title>Dood</title>
+//           <link rel="icon" href="/favicon.ico" />
+//           <link
+//             rel="stylesheet"
+//             href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
+//           />
+//         </Head>
+//         <h1>React InstantSearch e-commerce demo</h1>
+//         <InstantSearch indexName="restaurants" searchClient={searchClient}>
+//           <div className="left-panel">
+//             <ClearRefinements />
+//             <h2>Brands</h2>
+//             <RefinementList attribute="brand" />
+//             <Configure hitsPerPage={20} />
+//           </div>
+//           <div className="right-panel">
+//             <SearchBox />
+//             <Hits hitComponent={Hit} />
+//             <Pagination />
+//           </div>
+//         </InstantSearch>
+//       </div>
+//     );
+//   }
+// }
+
+// function Hit(props) {
+//   console.log(props.hit);
+//   return (
+//     <div>
+//       <img
+//         src={`https://dood.devzone-dz.com/storage/${props.hit.image}`}
+//         align="left"
+//         alt={props.hit.name}
+//       />
+//       <div className="hit-name">
+//         <Highlight attribute="name" hit={props.hit} />
+//       </div>
+//       <div className="hit-description">
+//         <Highlight attribute="description" hit={props.hit} />
+//       </div>
+//       <div className="hit-price">${props.hit.price}</div>
+//     </div>
+//   );
+// }
+
+// Hit.propTypes = {
+//   hit: PropTypes.object.isRequired,
+// };
+
+// export default App;
+
+// import React, { useEffect, useState, useRef } from 'react';
+
+// export default function Auto() {
+//   const [display, setDisplay] = useState(false);
+//   const [options, setOptions] = useState([]);
+//   const [search, setSearch] = useState('');
+//   const wrapperRef = useRef(null);
+
+//   useEffect(() => {
+//     const pokemon = [];
+//     const promises = new Array(20)
+//       .fill()
+//       .map((v, i) => fetch(`https://pokeapi.co/api/v2/pokemon-form/${i + 1}`));
+//     Promise.all(promises).then((pokemonArr) => {
+//       return pokemonArr.map((value) =>
+//         value
+//           .json()
+//           .then(({ name, sprites: { front_default: sprite } }) => pokemon.push({ name, sprite }))
+//       );
+//     });
+//     setOptions(pokemon);
+//   }, []);
+
+//   useEffect(() => {
+//     window.addEventListener('mousedown', handleClickOutside);
+//     return () => {
+//       window.removeEventListener('mousedown', handleClickOutside);
+//     };
+//   });
+
+//   const handleClickOutside = (event) => {
+//     const { current: wrap } = wrapperRef;
+//     if (wrap && !wrap.contains(event.target)) {
+//       setDisplay(false);
+//     }
+//   };
+
+//   const updatePokeDex = (poke) => {
+//     setSearch(poke);
+//     setDisplay(false);
+//   };
+
+//   return (
+//     <div style={{ margin: 200 }} ref={wrapperRef} className="flex-container flex-column pos-rel">
+//       <input
+//         id="auto"
+//         onClick={() => setDisplay(!display)}
+//         placeholder="Type to search"
+//         value={search}
+//         onChange={(event) => setSearch(event.target.value)}
+//       />
+//       {display && (
+//         <div className="autoContainer">
+//           {options
+//             .filter(({ name }) => name.indexOf(search.toLowerCase()) > -1)
+//             .map((value, i) => {
+//               return (
+//                 <div
+//                   onClick={() => updatePokeDex(value.name)}
+//                   className="option"
+//                   key={i}
+//                   tabIndex="0"
+//                 >
+//                   <span>{value.name}</span>
+//                   <img src={value.sprite} alt="pokemon" />
+//                 </div>
+//               );
+//             })}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }

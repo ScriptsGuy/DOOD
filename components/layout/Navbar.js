@@ -23,6 +23,8 @@ import { connect } from 'react-redux';
 import Login from '../auth/Login';
 import Register from '../auth/Register';
 
+import Search from './Search';
+
 import { Logout } from '../../redux/actions/authAction';
 
 const MenuItems = ({ children }) => (
@@ -106,6 +108,7 @@ const Navbar = (props) => {
           </Heading>
         </NextLink>
       </Flex>
+
       <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
         <FaHamburger fontSize="24px"></FaHamburger>
       </Box>
@@ -117,6 +120,7 @@ const Navbar = (props) => {
         justifyContent="flex-end"
         flexGrow={1}
       >
+        <Search></Search>
         <MenuItems>JE SUIS COMMERÇANT</MenuItems>
 
         {props.auth.data && (

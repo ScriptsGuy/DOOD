@@ -16,18 +16,20 @@ import {
 import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
 // import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
+import { connect } from 'react-redux';
+import { AddFavory } from '../../redux/actions/restAction';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
-export default function details({ post }) {
+function details({ post, AddFavory }) {
   const [heart, setHeart] = React.useState(false);
 
   const handleHeart = () => {
     heart ? setHeart(false) : setHeart(true);
   };
 
-  console.log(post);
-  console.log(heart);
+  //   console.log(post);
+  //   console.log(heart);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with coll',
@@ -53,7 +55,11 @@ export default function details({ post }) {
               </Box>
             ) : (
               <Box onClick={handleHeart}>
-                <FaRegHeart style={{ marginRight: 15, marginTop: 15 }} fontSize="36px"></FaRegHeart>
+                <FaRegHeart
+                  onClick={() => AddFavory(post.id)}
+                  style={{ marginRight: 15, marginTop: 15 }}
+                  fontSize="36px"
+                ></FaRegHeart>
               </Box>
             )}
           </Flex>
@@ -330,6 +336,20 @@ export default function details({ post }) {
     </Box>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    AddFavory: (id) => dispatch(AddFavory(id)),
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    rest: state.rest,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(details);
 
 export async function getServerSideProps(ctx) {
   // params contains the post `id`.

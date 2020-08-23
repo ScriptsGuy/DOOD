@@ -27,6 +27,7 @@ function Signin(props) {
   const btnRef = React.useRef();
 
   const handleSubmit = (e) => {
+    props.ClearError();
     props.Login(login);
     setLogin({ email: '', password: '' });
   };
