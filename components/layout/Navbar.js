@@ -89,6 +89,7 @@ function ShopBadge(props) {
 const Navbar = (props) => {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
+
   return (
     <Flex
       style={{ position: 'fixed', width: '100%', zIndex: '99', top: 0 }}

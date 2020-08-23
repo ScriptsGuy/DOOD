@@ -16,12 +16,14 @@ import {
 import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
 // import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
+import Router from 'next/router';
 import { connect } from 'react-redux';
 import { AddFavory } from '../../redux/actions/restAction';
+import { AlgoSearch } from '../../redux/actions/searchAction';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
-function details({ post, AddFavory }) {
+function details({ post, AddFavory, AlgoSearch }) {
   const [heart, setHeart] = React.useState(false);
 
   const handleHeart = () => {
@@ -340,6 +342,7 @@ function details({ post, AddFavory }) {
 const mapDispatchToProps = (dispatch) => {
   return {
     AddFavory: (id) => dispatch(AddFavory(id)),
+    AlgoSearch: (id) => dispatch(AlgoSearch(id)),
   };
 };
 
