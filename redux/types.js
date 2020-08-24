@@ -1,4 +1,6 @@
 export const GET_POSTS = 'GET_POSTS';
+export const GET_FILTERS = 'GET_FILTERS';
+export const CLEAR_FILTERS = 'CLEAR_FILTERS';
 export const GET_LOCATION = 'GET_LOCATION';
 export const AUTH_LOGIN = 'AUTH_LOGIN';
 export const AUTH_REGISTER = 'AUTH_REGISTER';

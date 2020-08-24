@@ -1,7 +1,7 @@
 import * as t from '../types.js';
 
 const initialState = {
-  posts: [],
+  posts: null,
   post: {},
   loading: false,
   error: null,
@@ -13,6 +13,20 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload,
+        loading: false,
+        error: null,
+      };
+    case t.GET_FILTERS:
+      return {
+        ...state,
+        posts: action.payload,
+        loading: false,
+        error: null,
+      };
+    case t.CLEAR_FILTERS:
+      return {
+        ...state,
+        posts: null,
         loading: false,
         error: null,
       };

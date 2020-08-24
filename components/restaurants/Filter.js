@@ -16,12 +16,18 @@ import {
   Heading,
   Radio,
   Text,
+  RadioGroup,
 } from '@chakra-ui/core';
 import { FaFilter, FaEuroSign } from 'react-icons/fa';
 
-export default function Filter() {
+export default function Filter({ setFilter }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+
+  const handleCheck = (e) => {
+    e.persist();
+    setFilter((prevState) => ({ ...prevState, distance: e.target.value }));
+  };
 
   return (
     <Box>
@@ -51,29 +57,27 @@ export default function Filter() {
 
           <DrawerBody color="gray.500">
             <Heading>Distance</Heading>
-            <Flex direction="column">
-              <Flex justifyContent="space-between">
-                <Text fontSize="xl">- de 0,5 km</Text>
-                <Radio></Radio>
+            <Flex justifyContent="space-between">
+              <Flex direction="column">
+                <Text fontSize="xl">- de 1000 km</Text>
+
+                <Text fontSize="xl">- de 2000 km</Text>
+
+                <Text fontSize="xl">- de 3000 km</Text>
+
+                <Text fontSize="xl">- de 4000 km</Text>
+
+                <Text fontSize="xl">- de 5000 km</Text>
               </Flex>
-              <Flex justifyContent="space-between">
-                <Text fontSize="xl">- de 0,5 km</Text>
-                <Radio></Radio>
-              </Flex>
-              <Flex justifyContent="space-between">
-                <Text fontSize="xl">- de 0,5 km</Text>
-                <Radio></Radio>
-              </Flex>
-              <Flex justifyContent="space-between">
-                <Text fontSize="xl">- de 0,5 km</Text>
-                <Radio></Radio>
-              </Flex>
-              <Flex justifyContent="space-between">
-                <Text fontSize="xl">- de 0,5 km</Text>
-                <Radio></Radio>
-              </Flex>
+              <RadioGroup onChange={handleCheck} defaultValue="1">
+                <Radio size="lg" name="hdsqj" value="1000"></Radio>
+                <Radio size="lg" name="distance" value="2000"></Radio>
+                <Radio size="lg" name="distance" value="3000"></Radio>
+                <Radio size="lg" name="distance" value="4000"></Radio>
+                <Radio size="lg" name="distance" value="5000"></Radio>
+              </RadioGroup>
             </Flex>
-            <Heading mt="20px">Prix</Heading>
+            {/* <Heading mt="20px">Prix</Heading>
             <Flex direction="column">
               <Flex justifyContent="space-between">
                 <FaEuroSign></FaEuroSign> <Radio></Radio>
@@ -104,7 +108,7 @@ export default function Filter() {
                 <Text fontSize="xl">Carte TR Edenred</Text>
                 <Radio></Radio>
               </Flex>
-            </Flex>
+            </Flex> */}
           </DrawerBody>
         </DrawerContent>
       </Drawer>

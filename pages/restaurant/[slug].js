@@ -18,7 +18,7 @@ import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
 import Head from 'next/head';
 import Router from 'next/router';
 import { connect } from 'react-redux';
-import { AddFavory } from '../../redux/actions/restAction';
+import { AddFavory, getFilters } from '../../redux/actions/restAction';
 import { AlgoSearch } from '../../redux/actions/searchAction';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
