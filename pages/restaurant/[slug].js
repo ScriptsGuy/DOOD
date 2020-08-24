@@ -23,7 +23,7 @@ import { AlgoSearch } from '../../redux/actions/searchAction';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
-function details({ post, AddFavory, AlgoSearch }) {
+function details({ post, AddFavory, AlgoSearch, position }) {
   const [heart, setHeart] = React.useState(false);
 
   const handleHeart = () => {
@@ -40,6 +40,25 @@ function details({ post, AddFavory, AlgoSearch }) {
     reviewCount: 34,
     rating: 4,
   };
+
+  let distance = null;
+  console.log('position', position);
+  if (position && post.latitude) {
+    const R = 6371e3; // metres
+    const φ1 = (post.latitude * Math.PI) / 180; // φ, λ in radians
+    const φ2 = (position.latitude * Math.PI) / 180;
+    const Δφ = ((position.latitude - post.latitude) * Math.PI) / 180;
+    const Δλ = ((position.longitude - post.longitude) * Math.PI) / 180;
+
+    const a =
+      Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+      Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const d = R * c; // in metres
+    distance = d / 1000;
+  }
+
   return (
     <Box mt="92.43px">
       <Head>
@@ -72,7 +91,7 @@ function details({ post, AddFavory, AlgoSearch }) {
               <Box>
                 <Text> {post.adress} </Text>
                 {/* <Text>69001 LYON</Text> */}
-                <Text color="green.300">1 991,394 km</Text>
+                <Text color="green.300"> {distance && distance.toFixed(1) + ' km'}</Text>
               </Box>
               <Box color="gray.500">
                 <Box d="flex" mt="2" alignItems="center">
@@ -349,6 +368,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     rest: state.rest,
+    position: state.location,
   };
 };
 
