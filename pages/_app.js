@@ -24,6 +24,7 @@ const TopProgressBar = dynamic(
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   const persistor = persistStore(store);
+
   return (
     <ThemeProvider>
       <Provider store={store}>

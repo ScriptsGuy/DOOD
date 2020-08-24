@@ -251,6 +251,8 @@ export default function details(props) {
             return (
               <Rec
                 key={post.id}
+                latitude={post.latitude}
+                longitude={post.longitude}
                 id={post.id}
                 name={post.name}
                 adress={post.adress}
@@ -269,7 +271,7 @@ export async function getStaticProps() {
 
   // You can use any data fetching library
   const res = await fetch(
-    `https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=10&offset=0`
+    `https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=50&offset=0`
   );
   const posts = await res.json();
 

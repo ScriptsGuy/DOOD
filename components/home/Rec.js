@@ -1,14 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
 import slugify from 'slugify';
-import { Box, Badge, Icon, Image, Divider, Flex, Skeleton } from '@chakra-ui/core';
+import { Box, Badge, Icon, Image, Divider, Flex, Skeleton, Text } from '@chakra-ui/core';
+import { connect } from 'react-redux';
 import { FaEuroSign } from 'react-icons/fa';
+import { getDistance } from 'geolib';
 
 // import Link from 'next/link';
 
 const StarIcon = () => <Icon name="star"></Icon>;
 
-export default function Rec(props) {
+function Rec(props) {
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with pool',
@@ -19,6 +21,23 @@ export default function Rec(props) {
   };
 
   const slug = slugify(props.name);
+  let distance = null;
+  console.log('position', props.position);
+  if (props.position && props.latitude) {
+    const R = 6371e3; // metres
+    const φ1 = (props.latitude * Math.PI) / 180; // φ, λ in radians
+    const φ2 = (props.position.latitude * Math.PI) / 180;
+    const Δφ = ((props.position.latitude - props.latitude) * Math.PI) / 180;
+    const Δλ = ((props.position.longitude - props.longitude) * Math.PI) / 180;
+
+    const a =
+      Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+      Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const d = R * c; // in metres
+    distance = d / 1000;
+  }
 
   return (
     <Link
@@ -26,7 +45,13 @@ export default function Rec(props) {
       as={{ pathname: `/restaurant/${slug}`, query: { id: props.id } }}
     >
       <Box cursor="pointer" bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
-        <Image src={props.image} alt={property.imageAlt} />
+        <Box bg="black" position="relative">
+          <Image opacity="0.7" objectFit="cover" src={props.image} alt={property.imageAlt} />
+          <Text color="white" position="absolute" top="10px" left="10px">
+            {' '}
+            {distance && distance.toFixed(1) + ' km'}
+          </Text>
+        </Box>
 
         <Box p="6">
           <Box mt="1" fontWeight="semibold" as="h4" fontSize="20px" lineHeight="tight" isTruncated>
@@ -66,3 +91,9 @@ export default function Rec(props) {
     </Link>
   );
 }
+
+const mapStateToProps = (state) => {
+  return { position: state.location };
+};
+
+export default connect(mapStateToProps, null)(Rec);

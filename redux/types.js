@@ -1,4 +1,5 @@
 export const GET_POSTS = 'GET_POSTS';
+export const GET_LOCATION = 'GET_LOCATION';
 export const AUTH_LOGIN = 'AUTH_LOGIN';
 export const AUTH_REGISTER = 'AUTH_REGISTER';
 export const AUTH_LOADING = 'AUTH_LOADING';

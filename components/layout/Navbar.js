@@ -26,6 +26,7 @@ import Register from '../auth/Register';
 import Search from './Search';
 
 import { Logout } from '../../redux/actions/authAction';
+import { getLocation } from '../../redux/actions/locAction';
 
 const MenuItems = ({ children }) => (
   <Link href="/" mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -89,6 +90,14 @@ function ShopBadge(props) {
 const Navbar = (props) => {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
+
+  React.useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      //   console.log('Latitude is :', position.coords.latitude);
+      //   console.log('Longitude is :', position.coords.longitude);
+      props.getLocation(position.coords.latitude, position.coords.longitude);
+    });
+  }, []);
 
   return (
     <Flex
@@ -169,12 +178,14 @@ const Navbar = (props) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    location: state.location,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     Logout: () => dispatch(Logout()),
+    getLocation: (lat, long) => dispatch(getLocation(lat, long)),
   };
 };
 
