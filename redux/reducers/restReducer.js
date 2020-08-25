@@ -3,12 +3,18 @@ import * as t from '../types.js';
 const initialState = {
   posts: null,
   post: {},
+  favs: null,
   loading: false,
   error: null,
 };
 
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
+    case t.GET_FAVORIES:
+      return {
+        ...state,
+        favs: action.payload,
+      };
     case t.GET_POSTS:
       return {
         ...state,
@@ -33,6 +39,11 @@ const postReducer = (state = initialState, action) => {
     case t.ADD_FAVORY:
       return {
         ...state,
+      };
+    case t.DELETE_FAVORY:
+      return {
+        ...state,
+        favs: action.payload,
       };
 
     default:

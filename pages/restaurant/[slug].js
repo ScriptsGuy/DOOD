@@ -12,6 +12,7 @@ import {
   TabPanels,
   Tab,
   TabPanel,
+  useToast,
 } from '@chakra-ui/core';
 import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
 // import fetch from 'isomorphic-unfetch';
@@ -24,6 +25,8 @@ import { AlgoSearch } from '../../redux/actions/searchAction';
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
 function details({ post, AddFavory, AlgoSearch, position }) {
+  const toast = useToast();
+
   const [heart, setHeart] = React.useState(false);
 
   const handleHeart = () => {
@@ -77,7 +80,16 @@ function details({ post, AddFavory, AlgoSearch, position }) {
             ) : (
               <Box onClick={handleHeart}>
                 <FaRegHeart
-                  onClick={() => AddFavory(post.id)}
+                  onClick={async () => {
+                    await AddFavory(post.id);
+                    toast({
+                      title: 'Favorite added',
+                      description: 'The restaurants has been added to your favourites',
+                      status: 'success',
+                      duration: 4000,
+                      isClosable: true,
+                    });
+                  }}
                   style={{ marginRight: 15, marginTop: 15 }}
                   fontSize="36px"
                 ></FaRegHeart>

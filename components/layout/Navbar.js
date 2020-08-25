@@ -150,8 +150,8 @@ const Navbar = (props) => {
                 Account <Icon name="chevron-down" />
               </MenuButton>
               <MenuList>
-                <MenuItem>
-                  <Text fontSize="lg">Favories</Text>{' '}
+                <MenuItem fontSize="lg">
+                  <NextLink href="/favories">Favories</NextLink>
                 </MenuItem>
                 <MenuItem>
                   {' '}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Heading, SimpleGrid, Tag, TagLabel, Flex } from '@chakra-ui/core';
+import { Box, Heading, SimpleGrid, Tag, TagLabel, Flex, useToast } from '@chakra-ui/core';
 import { FaFilter } from 'react-icons/fa';
 import { connect } from 'react-redux';
 
@@ -9,6 +9,8 @@ import Filter from '../components/restaurants/Filter';
 import { getFilters } from '../redux/actions/restAction';
 
 function details(props) {
+  const toast = useToast();
+
   const [selected, setselected] = useState({
     Burger: false,
     Boulangrie: false,
@@ -25,6 +27,19 @@ function details(props) {
     EpicerieFine: false,
     StreetFood: false,
   });
+
+  console.log(props.posts);
+
+  ///////////////
+  function filterPosts(post) {
+    let bol = post.categories.map((cat) => {
+      return cat.name === 'Pizza';
+    });
+  }
+  let filtred = props.posts.filter(filterPosts);
+  console.log('filterrrr', filtred);
+
+  /////////////////
 
   const [filter, setFilter] = useState({
     distance: null,

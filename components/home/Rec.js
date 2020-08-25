@@ -22,7 +22,7 @@ function Rec(props) {
 
   const slug = slugify(props.name);
   let distance = null;
-  console.log('position', props.position);
+  //   console.log('position', props.position);
   if (props.position && props.latitude) {
     const R = 6371e3; // metres
     const φ1 = (props.latitude * Math.PI) / 180; // φ, λ in radians
