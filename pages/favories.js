@@ -25,7 +25,14 @@ function favories({ deleteFavory, getFavories, favs }) {
   };
 
   return (
-    <Box bg="white" mt="150px" mr="50px" ml="50px" mb="100px" p="20px">
+    <Box
+      bg="white"
+      mt="150px"
+      mr={['20px', '50px', '50px', '50px']}
+      ml={['20px', '50px', '50px', '50px']}
+      mb="100px"
+      p="20px"
+    >
       <Heading size="lg" color="gray.500">
         Vos Favoris
       </Heading>
@@ -34,12 +41,29 @@ function favories({ deleteFavory, getFavories, favs }) {
           favs.map((fav) => {
             return (
               <PseudoBox _hover={{ bg: 'gray.50' }}>
-                <Grid p="3" gridTemplateColumns={'0.2fr 1fr '}>
-                  <Image
-                    rounded="5px"
-                    src={`https://dood.devzone-dz.com/storage/${fav.image}`}
-                    alt=""
-                  />
+                <Grid
+                  p="3"
+                  gridTemplateColumns={[' 1fr ', '0.2fr 1fr ', '0.2fr 1fr ', '0.2fr 1fr ']}
+                >
+                  <Link
+                    href={{
+                      pathname: `/restaurant/[slug]`,
+                      query: { id: fav.restaurant_id },
+                    }}
+                    as={{
+                      pathname: `/restaurant/${fav.slug}`,
+                      query: { id: fav.restaurant_id },
+                    }}
+                  >
+                    <Image
+                      cursor="pointer"
+                      mb={['10px', '0', '0', '0']}
+                      mt={['10px', '0', '0', '0']}
+                      rounded="5px"
+                      src={`https://dood.devzone-dz.com/storage/${fav.image}`}
+                      alt=""
+                    />
+                  </Link>
                   <Flex justifyContent="space-between">
                     <Box width="90%" pl="4">
                       <Link
@@ -52,7 +76,7 @@ function favories({ deleteFavory, getFavories, favs }) {
                           query: { id: fav.restaurant_id },
                         }}
                       >
-                        <Box>
+                        <Box cursor="pointer">
                           <Heading size="lg" color="gray.500">
                             {fav.name}
                           </Heading>
