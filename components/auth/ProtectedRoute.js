@@ -1,20 +1,16 @@
 import React, { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
-import { connect } from 'react-redux';
 
-export default function ProtectRoute(props) {
+import { useStore } from '../../redux/store';
+
+export function ProtectRoute(Component) {
+  const store = useStore();
+
   return () => {
-    const router = useRouter();
-
     useEffect(() => {
-      if (!props.auth.data && !props.auth.loading) Router.push('/');
-    }, [loading, isAuthenticated]);
+      if (!store.getState().auth.data && !store.getState().auth.loading) Router.replace('/');
+    }, [store]);
 
     return <Component {...arguments} />;
   };
 }
-const mapStateToProps = (state) => {
-  return { auth: state.auth };
-};
-
-export default connect(mapStateToProps, null)(ProtectRoute);

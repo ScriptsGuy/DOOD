@@ -114,7 +114,7 @@ const Navbar = (props) => {
       <Flex align="center" mr={5}>
         <NextLink href="/">
           <Heading cursor="pointer" fontWeight="bold" as="h1" size="xl" letterSpacing={'-.1rem'}>
-            DOOD
+            YAKOOL
           </Heading>
         </NextLink>
       </Flex>
@@ -131,7 +131,10 @@ const Navbar = (props) => {
         flexGrow={1}
       >
         <Search></Search>
-        <MenuItems>JE SUIS COMMERÇANT</MenuItems>
+        {/* <MenuItems>JE SUIS COMMERÇANT</MenuItems> */}
+        <Text mt={{ base: 4, md: 0 }} mr={6} display="block" fontSize="18px">
+          <NextLink href="/restaurants">Découvrir</NextLink>
+        </Text>
 
         {props.auth.data && (
           <>

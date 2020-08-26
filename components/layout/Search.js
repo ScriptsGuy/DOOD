@@ -65,7 +65,7 @@ function Search(props) {
 
   console.log(props.search.hits);
   return (
-    <Box width={['100%', '50%', '50%', '50%']} mr="6" position="relative">
+    <Box width={['100%', '50%', '50%', '50%']} mr="50px" position="relative">
       <Input
         onFocus={() => setbox(true)}
         variant="flushed"

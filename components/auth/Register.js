@@ -53,8 +53,8 @@ function Signup(props) {
         '9%', // 992px upwards
       ]}
     >
-      <Text cursor="pointer" ref={btnRef} variantColor="red" onClick={onOpen}>
-        REGISTER!
+      <Text fontSize="18px" cursor="pointer" ref={btnRef} variantColor="red" onClick={onOpen}>
+        Register!
       </Text>
       <Drawer size="sm" isOpen={isOpen} placement="left" onClose={onClose} finalFocusRef={btnRef}>
         <DrawerOverlay />

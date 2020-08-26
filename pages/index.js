@@ -16,7 +16,7 @@ export default function Home(props) {
   return (
     <Box>
       <Head>
-        <title>Dood</title>
+        <title>YAKOOL</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"

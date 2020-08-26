@@ -4,12 +4,17 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 import { getFavories, deleteFavory } from '../redux/actions/restAction';
 import { FaEuroSign } from 'react-icons/fa';
+import Router, { useRouter } from 'next/router';
 
-function favories({ deleteFavory, getFavories, favs }) {
+function favories({ deleteFavory, getFavories, favs, auth }) {
   const toast = useToast();
 
   useEffect(() => {
-    getFavories();
+    if (!auth.data && !auth.loading) {
+      Router.replace('/');
+    } else {
+      getFavories();
+    }
   }, []);
 
   const handelDelete = async (id) => {
@@ -33,39 +38,20 @@ function favories({ deleteFavory, getFavories, favs }) {
       mb="100px"
       p="20px"
     >
-      <Heading size="lg" color="gray.500">
-        Vos Favoris
-      </Heading>
-      <Box>
-        {favs &&
-          favs.map((fav) => {
-            return (
-              <PseudoBox _hover={{ bg: 'gray.50' }}>
-                <Grid
-                  p="3"
-                  gridTemplateColumns={[' 1fr ', '0.2fr 1fr ', '0.2fr 1fr ', '0.2fr 1fr ']}
-                >
-                  <Link
-                    href={{
-                      pathname: `/restaurant/[slug]`,
-                      query: { id: fav.restaurant_id },
-                    }}
-                    as={{
-                      pathname: `/restaurant/${fav.slug}`,
-                      query: { id: fav.restaurant_id },
-                    }}
-                  >
-                    <Image
-                      cursor="pointer"
-                      mb={['10px', '0', '0', '0']}
-                      mt={['10px', '0', '0', '0']}
-                      rounded="5px"
-                      src={`https://dood.devzone-dz.com/storage/${fav.image}`}
-                      alt=""
-                    />
-                  </Link>
-                  <Flex justifyContent="space-between">
-                    <Box width="90%" pl="4">
+      {auth.data && !auth.loading && (
+        <>
+          <Heading size="lg" color="gray.500">
+            Vos Favoris
+          </Heading>
+          <Box>
+            {favs &&
+              favs.map((fav) => {
+                return (
+                  <PseudoBox _hover={{ bg: 'gray.50' }}>
+                    <Grid
+                      p="3"
+                      gridTemplateColumns={[' 1fr ', '0.2fr 1fr ', '0.2fr 1fr ', '0.2fr 1fr ']}
+                    >
                       <Link
                         href={{
                           pathname: `/restaurant/[slug]`,
@@ -76,40 +62,63 @@ function favories({ deleteFavory, getFavories, favs }) {
                           query: { id: fav.restaurant_id },
                         }}
                       >
-                        <Box cursor="pointer">
-                          <Heading size="lg" color="gray.500">
-                            {fav.name}
-                          </Heading>
-                          <Text color="gray.500">{fav.adress}</Text>
-                          <Box
-                            fontSize="16px"
-                            color="gray.500"
-                            display="flex"
-                            dir="column"
-                            alignItems="flex-end"
-                          >
-                            <FaEuroSign></FaEuroSign>
-                            <FaEuroSign></FaEuroSign>
-                            <FaEuroSign></FaEuroSign>
-                          </Box>
-                        </Box>
+                        <Image
+                          cursor="pointer"
+                          mb={['10px', '0', '0', '0']}
+                          mt={['10px', '0', '0', '0']}
+                          rounded="5px"
+                          src={`https://dood.devzone-dz.com/storage/${fav.image}`}
+                          alt=""
+                        />
                       </Link>
-                    </Box>
-                    <Icon
-                      onClick={() => handelDelete(fav.favory_id)}
-                      cursor="pointer"
-                      color="red.400"
-                      mt="30px"
-                      mr="30px"
-                      size="24px"
-                      name="delete"
-                    ></Icon>
-                  </Flex>
-                </Grid>
-              </PseudoBox>
-            );
-          })}
-      </Box>
+                      <Flex justifyContent="space-between">
+                        <Box width="90%" pl="4">
+                          <Link
+                            href={{
+                              pathname: `/restaurant/[slug]`,
+                              query: { id: fav.restaurant_id },
+                            }}
+                            as={{
+                              pathname: `/restaurant/${fav.slug}`,
+                              query: { id: fav.restaurant_id },
+                            }}
+                          >
+                            <Box cursor="pointer">
+                              <Heading size="lg" color="gray.500">
+                                {fav.name}
+                              </Heading>
+                              <Text color="gray.500">{fav.adress}</Text>
+                              <Box
+                                fontSize="16px"
+                                color="gray.500"
+                                display="flex"
+                                dir="column"
+                                alignItems="flex-end"
+                              >
+                                <FaEuroSign></FaEuroSign>
+                                <FaEuroSign></FaEuroSign>
+                                <FaEuroSign></FaEuroSign>
+                              </Box>
+                            </Box>
+                          </Link>
+                        </Box>
+                        <Icon
+                          onClick={() => handelDelete(fav.favory_id)}
+                          cursor="pointer"
+                          color="red.400"
+                          mt="30px"
+                          mr="30px"
+                          size="24px"
+                          name="delete"
+                        ></Icon>
+                      </Flex>
+                    </Grid>
+                  </PseudoBox>
+                );
+              })}
+          </Box>
+        </>
+      )}
     </Box>
   );
 }
@@ -117,6 +126,7 @@ function favories({ deleteFavory, getFavories, favs }) {
 const mapStateToProps = (state) => {
   return {
     favs: state.rest.favs,
+    auth: state.auth,
   };
 };
 

@@ -104,7 +104,8 @@ function details(props) {
   return (
     <Box p="30px" bg="white" mt="85px">
       <Box
-        p={{ base: '0', md: '30px' }}
+        shadow="lg"
+        p={{ base: '0', md: '20px' }}
         bg="white"
         style={{ position: 'fixed', width: '100%', zIndex: '98', top: 85, left: 0 }}
       >
