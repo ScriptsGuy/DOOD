@@ -27,18 +27,42 @@ function details(props) {
     EpicerieFine: false,
     StreetFood: false,
   });
+  const [catFilter, setCatFilter] = useState([]);
+
+  let newPosts = null;
 
   console.log(props.posts);
 
   ///////////////
-  function filterPosts(post) {
-    let bol = post.categories.map((cat) => {
-      return cat.name === 'Pizza';
-    });
+  if (props.rest.posts) {
+    if (catFilter[0] !== undefined) {
+      catFilter.map((catFil) => {
+        newPosts = props.rest.posts.filter((post) => {
+          let bol = post.categories.map((cat) => {
+            return cat.name === catFil;
+          });
+          return bol.includes(true);
+        });
+        console.log(newPosts);
+      });
+    } else {
+      newPosts = props.rest.posts;
+    }
+  } else if (props.posts) {
+    if (catFilter[0] !== undefined) {
+      catFilter.map((catFil) => {
+        newPosts = props.posts.filter((post) => {
+          let bol = post.categories.map((cat) => {
+            return cat.name === catFil;
+          });
+          return bol.includes(true);
+        });
+        console.log(newPosts);
+      });
+    } else {
+      newPosts = props.posts;
+    }
   }
-  let filtred = props.posts.filter(filterPosts);
-  console.log('filterrrr', filtred);
-
   /////////////////
 
   const [filter, setFilter] = useState({
@@ -52,11 +76,23 @@ function details(props) {
     console.log(filter);
 
     props.getFilters(filter);
-  }, [filter]);
+  }, [filter, catFilter]);
 
-  const handleTagClick = (param, bol) => {
+  const handleTagClick = (filterParam, param, bol) => {
     console.log(param);
     console.log(bol);
+    if (catFilter.includes(filterParam)) {
+      var array = [...catFilter]; // make a separate copy of the array
+      var index = array.indexOf(filterParam);
+      if (index !== -1) {
+        array.splice(index, 1);
+        setCatFilter([...array]);
+      }
+    } else {
+      setCatFilter((prevState) => [...prevState, filterParam]);
+      console.log('changeddd', catFilter);
+    }
+
     if (bol) {
       setselected((prevState) => ({ ...prevState, [param]: false }));
     } else {
@@ -64,6 +100,7 @@ function details(props) {
     }
   };
   //   console.log(selected);
+
   return (
     <Box p="30px" bg="white" mt="85px">
       <Box
@@ -89,7 +126,7 @@ function details(props) {
             variant="solid"
             color={selected.Burger ? 'white' : 'gray.500'}
             bg={selected.Burger ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Burger', selected.Burger)}
+            onClick={() => handleTagClick('Burger', 'Burger', selected.Burger)}
           >
             <TagLabel fontSize="24px">Burger</TagLabel>
           </Tag>
@@ -103,7 +140,7 @@ function details(props) {
             variant="solid"
             color={selected.Boulangrie ? 'white' : 'gray.500'}
             bg={selected.Boulangrie ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Boulangrie', selected.Boulangrie)}
+            onClick={() => handleTagClick('Boulangrie', 'Boulangrie', selected.Boulangrie)}
           >
             <TagLabel fontSize="24px">Boulangrie</TagLabel>
           </Tag>
@@ -117,7 +154,7 @@ function details(props) {
             variant="solid"
             color={selected.StreetFood ? 'white' : 'gray.500'}
             bg={selected.StreetFood ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('StreetFood', selected.StreetFood)}
+            onClick={() => handleTagClick('Street food', 'StreetFood', selected.StreetFood)}
           >
             <TagLabel fontSize="24px">Street food</TagLabel>
           </Tag>
@@ -131,7 +168,7 @@ function details(props) {
             variant="solid"
             color={selected.Traiteur ? 'white' : 'gray.500'}
             bg={selected.Traiteur ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Traiteur', selected.Traiteur)}
+            onClick={() => handleTagClick('Traiteur', 'Traiteur', selected.Traiteur)}
           >
             <TagLabel fontSize="24px">Traiteur</TagLabel>
           </Tag>
@@ -145,7 +182,7 @@ function details(props) {
             variant="solid"
             color={selected.CoffeeShop ? 'white' : 'gray.500'}
             bg={selected.CoffeeShop ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('CoffeeShop', selected.CoffeeShop)}
+            onClick={() => handleTagClick('Coffee Shop', 'CoffeeShop', selected.CoffeeShop)}
           >
             <TagLabel fontSize="24px"> Coffee Shop</TagLabel>
           </Tag>
@@ -159,7 +196,7 @@ function details(props) {
             variant="solid"
             color={selected.Pizza ? 'white' : 'gray.500'}
             bg={selected.Pizza ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Pizza', selected.Pizza)}
+            onClick={() => handleTagClick('Pizza', 'Pizza', selected.Pizza)}
           >
             <TagLabel fontSize="24px"> Pizza</TagLabel>
           </Tag>
@@ -173,7 +210,7 @@ function details(props) {
             variant="solid"
             color={selected.Healthy ? 'white' : 'gray.500'}
             bg={selected.Healthy ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Healthy', selected.Healthy)}
+            onClick={() => handleTagClick('Healthy', 'Healthy', selected.Healthy)}
           >
             <TagLabel fontSize="24px"> Healthy</TagLabel>
           </Tag>
@@ -187,7 +224,7 @@ function details(props) {
             variant="solid"
             color={selected.Japonais ? 'white' : 'gray.500'}
             bg={selected.Japonais ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Japonais', selected.Japonais)}
+            onClick={() => handleTagClick('Japonais', 'Japonais', selected.Japonais)}
           >
             <TagLabel fontSize="24px"> Japonais</TagLabel>
           </Tag>
@@ -201,7 +238,7 @@ function details(props) {
             variant="solid"
             color={selected.Caviste ? 'white' : 'gray.500'}
             bg={selected.Caviste ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Caviste', selected.Caviste)}
+            onClick={() => handleTagClick('Caviste', 'Caviste', selected.Caviste)}
           >
             <TagLabel fontSize="24px">Caviste</TagLabel>
           </Tag>
@@ -215,7 +252,9 @@ function details(props) {
             variant="solid"
             color={selected.CuisinesDuMonde ? 'white' : 'gray.500'}
             bg={selected.CuisinesDuMonde ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('CuisinesDuMonde', selected.CuisinesDuMonde)}
+            onClick={() =>
+              handleTagClick('Cuisines du monde', 'CuisinesDuMonde', selected.CuisinesDuMonde)
+            }
           >
             <TagLabel fontSize="24px"> Cuisines du monde</TagLabel>
           </Tag>
@@ -229,7 +268,9 @@ function details(props) {
             variant="solid"
             color={selected.RestaurantTradi ? 'white' : 'gray.500'}
             bg={selected.RestaurantTradi ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('RestaurantTradi', selected.RestaurantTradi)}
+            onClick={() =>
+              handleTagClick('Restaurant tradi', 'RestaurantTradi', selected.RestaurantTradi)
+            }
           >
             <TagLabel fontSize="24px"> Restaurant tradi</TagLabel>
           </Tag>
@@ -243,7 +284,7 @@ function details(props) {
             variant="solid"
             color={selected.CaveABiere ? 'white' : 'gray.500'}
             bg={selected.CaveABiere ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('CaveABiere', selected.CaveABiere)}
+            onClick={() => handleTagClick('Cave à Bière', 'CaveABiere', selected.CaveABiere)}
           >
             <TagLabel fontSize="24px">Cave à Bière</TagLabel>
           </Tag>
@@ -257,7 +298,7 @@ function details(props) {
             variant="solid"
             color={selected.PauseSucree ? 'white' : 'gray.500'}
             bg={selected.PauseSucree ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('PauseSucree', selected.PauseSucree)}
+            onClick={() => handleTagClick('Pause sucrée', 'PauseSucree', selected.PauseSucree)}
           >
             <TagLabel fontSize="24px"> Pause sucrée</TagLabel>
           </Tag>
@@ -271,7 +312,7 @@ function details(props) {
             variant="solid"
             color={selected.EpicerieFine ? 'white' : 'gray.500'}
             bg={selected.EpicerieFine ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('EpicerieFine', selected.EpicerieFine)}
+            onClick={() => handleTagClick('Epicerie fine', 'EpicerieFine', selected.EpicerieFine)}
           >
             <TagLabel fontSize="24px"> Epicerie fine</TagLabel>
           </Tag>
@@ -279,7 +320,21 @@ function details(props) {
       </Box>
       <Box mt={{ base: '100px', md: '170px' }}>
         <SimpleGrid spacing={10} justifyItems="center" columns={[1, 2, 3, 4]}>
-          {props.rest.posts
+          {newPosts &&
+            newPosts.map((post) => {
+              return (
+                <Rec
+                  key={post.id}
+                  latitude={post.latitude}
+                  longitude={post.longitude}
+                  id={post.id}
+                  name={post.name}
+                  adress={post.adress}
+                  image={`https://dood.devzone-dz.com/storage/${post.image}`}
+                ></Rec>
+              );
+            })}
+          {/* {props.rest.posts
             ? props.rest.posts.map((post) => {
                 return (
                   <Rec
@@ -305,7 +360,7 @@ function details(props) {
                     image={`https://dood.devzone-dz.com/storage/${post.image}`}
                   ></Rec>
                 );
-              })}
+              })} */}
         </SimpleGrid>
       </Box>
     </Box>
@@ -332,7 +387,7 @@ export async function getStaticProps() {
 
   // You can use any data fetching library
   const res = await fetch(
-    `https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=50&offset=0`
+    `https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=1000&offset=0`
   );
   const posts = await res.json();
 
