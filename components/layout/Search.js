@@ -74,7 +74,7 @@ function Search(props) {
         onChange={handlechange}
       ></Input>
       {props.search.hits && box && (
-        <Box zIndex="999" width="100%" bg="gray.50" position="absolute">
+        <Box shadow="lg" zIndex="999" width="100%" bg="white" position="absolute">
           {props.search.hits.map((hit) => {
             return (
               <Link
@@ -103,7 +103,7 @@ function Search(props) {
                       alt={hit.name}
                     />
                     <Box pl="4">
-                      <Heading size="lg" color="gray.500">
+                      <Heading size="lg" color="gray.600">
                         {hit.name}
                       </Heading>
                       <Text color="gray.500">{hit.adress}</Text>
