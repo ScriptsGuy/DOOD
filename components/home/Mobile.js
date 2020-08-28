@@ -11,12 +11,12 @@ export default function Mobile() {
             COMMANDEZ AUSSI AVEC L’APPLI MOBILE.
           </Heading>
           <Flex justify="center">
-            <Image src="./images/apple.png"></Image>
-            <Image src="./images/google.png"></Image>
+            <Image src="./images/apple.png" alt="apple"></Image>
+            <Image src="./images/google.png" alt="google"></Image>
           </Flex>
         </Box>
         <Box p="30px">
-          <Image src="./images/phone.png"></Image>
+          <Image src="./images/phone.png" alt="mobile app"></Image>
         </Box>
       </SimpleGrid>
     </Box>

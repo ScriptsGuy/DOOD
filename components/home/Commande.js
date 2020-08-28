@@ -9,7 +9,7 @@ export default function Commande() {
         <Skeleton isLoaded>
           <Box cursor="pointer">
             <Flex direction="column" align="center">
-              <Image rounded="3px" src="./images/burger.png"></Image>
+              <Image alt=" Burger" rounded="3px" src="./images/burger.png"></Image>
               <Heading mt="10px" size="lg" color="gray.700">
                 Burger
               </Heading>
@@ -20,7 +20,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/boulangrie.png"></Image>
+            <Image alt="Boulangrie " src="./images/boulangrie.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Boulangrie
             </Heading>
@@ -30,7 +30,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/street.png"></Image>
+            <Image alt="Street food " src="./images/street.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Street food
             </Heading>
@@ -40,7 +40,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/traiteur.png"></Image>
+            <Image alt="Traiteur " src="./images/traiteur.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Traiteur
             </Heading>
@@ -50,7 +50,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/coffe.png"></Image>
+            <Image alt=" Coffee Shop" src="./images/coffe.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Coffee Shop
             </Heading>
@@ -60,7 +60,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/pizza.png"></Image>
+            <Image alt=" Pizza" src="./images/pizza.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Pizza
             </Heading>
@@ -70,7 +70,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/healthy.png"></Image>
+            <Image alt="Healthy " src="./images/healthy.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Healthy
             </Heading>
@@ -80,7 +80,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/japo.png"></Image>
+            <Image alt="Japonais " src="./images/japo.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Japonais
             </Heading>
@@ -91,7 +91,7 @@ export default function Commande() {
         <Skeleton isLoaded>
           <Box cursor="pointer">
             <Flex direction="column" align="center">
-              <Image src="./images/caviste.png"></Image>
+              <Image alt="Caviste " src="./images/caviste.png"></Image>
               <Heading mt="10px" size="lg" color="gray.700">
                 Caviste
               </Heading>
@@ -102,7 +102,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/cuisin.png"></Image>
+            <Image alt="Cuisines du monde " src="./images/cuisin.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Cuisines du monde
             </Heading>
@@ -112,7 +112,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/restaurant.png"></Image>
+            <Image alt="Restaurant tradi. " src="./images/restaurant.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Restaurant tradi.
             </Heading>
@@ -122,7 +122,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/cave.png"></Image>
+            <Image alt="Cave à Bière " src="./images/cave.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Cave à Bière
             </Heading>
@@ -132,7 +132,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/pause.png"></Image>
+            <Image alt=" Pause sucrée " src="./images/pause.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Pause sucrée
             </Heading>
@@ -142,7 +142,7 @@ export default function Commande() {
       <NextLink href="/restaurants">
         <Box cursor="pointer">
           <Flex direction="column" align="center">
-            <Image src="./images/fine.png"></Image>
+            <Image alt="Épicerie fine " src="./images/fine.png"></Image>
             <Heading mt="10px" size="lg" color="gray.700">
               Épicerie fine
             </Heading>

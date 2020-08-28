@@ -134,7 +134,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
               <Box>
                 <Text> {post.adress} </Text>
                 {/* <Text>69001 LYON</Text> */}
-                <Text color="green.300"> {distance && distance.toFixed(1) + ' km'}</Text>
+                <Text color="green.400"> {distance && distance.toFixed(1) + ' km'}</Text>
               </Box>
               <Box color="gray.500">
                 <Box d="flex" mt="2" alignItems="center">
@@ -149,7 +149,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
                   <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
                 </Box>
-                <Box mt="2">
+                <Box color="gray.600" mt="2">
                   <Text>
                     {post.categories.map((cat) => {
                       return cat.name + ',  ';
