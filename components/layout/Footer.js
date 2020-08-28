@@ -14,14 +14,14 @@ import { FaFacebookF, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 export default function Footer() {
   return (
-    <Box color="gray.500" bg="gray.200">
+    <Box color="gray.600" bg="gray.200">
       <Flex direction={['column', 'column', 'row', 'row']} justifyContent="space-between">
         <Box alignContent="center" textAlign="center" p="30px" flexGrow="2">
           <Heading size="lg">Feel Dood</Heading>
           <Heading size="sm">Recevez les bons plans et restez informé(e) des nouveautés</Heading>
           <Flex justifyContent="center" align="center">
             <InputGroup mt="20px" size="lg" color="black" width={['100%', '50%', '50%', '50%']}>
-              <Input size="lg" placeholder="Adresse email" />
+              <Input id="contact_footer" size="lg" placeholder="Adresse email" />
               <InputRightElement children={<Icon name="search-2" color="gray.500" />} />
             </InputGroup>
           </Flex>
@@ -39,8 +39,8 @@ export default function Footer() {
         <Box flexGrow="1" p="30px">
           <Heading size="lg">Télécharger l’app</Heading>
           <Flex mt="10px">
-            <Image src="./images/apple.png"></Image>
-            <Image src="./images/google.png"></Image>
+            <Image src="./images/apple.png" alt="apple"></Image>
+            <Image src="./images/google.png" alt="google"></Image>
           </Flex>
         </Box>
         {/* <Box flexGrow="1">section4</Box>

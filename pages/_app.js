@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
+import Head from 'next/head';
 
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 
@@ -26,18 +27,23 @@ function MyApp({ Component, pageProps }) {
   const persistor = persistStore(store);
 
   return (
-    <ThemeProvider>
-      <Provider store={store}>
-        <PersistGate loading={<Component {...pageProps} />} persistor={persistor}>
-          <CSSReset></CSSReset>
-          <TopProgressBar />
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <ThemeProvider>
+        <Provider store={store}>
+          <PersistGate loading={<Component {...pageProps} />} persistor={persistor}>
+            <CSSReset></CSSReset>
+            <TopProgressBar />
 
-          <Navbar></Navbar>
-          <Component {...pageProps} />
-          <Footer></Footer>
-        </PersistGate>
-      </Provider>
-    </ThemeProvider>
+            <Navbar></Navbar>
+            <Component {...pageProps} />
+            <Footer></Footer>
+          </PersistGate>
+        </Provider>
+      </ThemeProvider>
+    </>
   );
 }
 

@@ -19,22 +19,47 @@ import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
 import Head from 'next/head';
 import Router from 'next/router';
 import { connect } from 'react-redux';
-import { AddFavory, getFilters } from '../../redux/actions/restAction';
+import { AddFavory, getFilters, getFavories, deleteFavory } from '../../redux/actions/restAction';
 import { AlgoSearch } from '../../redux/actions/searchAction';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
-function details({ post, AddFavory, AlgoSearch, position }) {
+function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, rest, deleteFavory }) {
   const toast = useToast();
 
+  let index;
+  let isFav;
+
   const [heart, setHeart] = React.useState(false);
+  React.useEffect(() => {
+    async function getData() {
+      if (auth.data && !auth.loading) {
+        await getFavories();
+      }
+    }
+    getData();
+  }, [heart]);
+
+  let arrOfFavs =
+    rest.favs &&
+    rest.favs.map((fav) => {
+      return fav.restaurant_id === post.id;
+    });
+  //   console.log('arrrrroffavs', arrOfFavs);
+  index = arrOfFavs && arrOfFavs.indexOf(true);
+
+  isFav = arrOfFavs && arrOfFavs.includes(true);
+
+  //   console.log('favssss', rest.favs);
+  //   console.log('post', post);
 
   const handleHeart = () => {
-    heart ? setHeart(false) : setHeart(true);
+    // heart ? setHeart(false) : setHeart(true);
+    setHeart(true);
   };
 
-  //   console.log(post);
-  //   console.log(heart);
+  console.log(post);
+  console.log(heart);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with coll',
@@ -45,7 +70,7 @@ function details({ post, AddFavory, AlgoSearch, position }) {
   };
 
   let distance = null;
-  console.log('position', position);
+  //   console.log('position', position);
   if (position && post.latitude) {
     const R = 6371e3; // metres
     const φ1 = (post.latitude * Math.PI) / 180; // φ, λ in radians
@@ -62,6 +87,8 @@ function details({ post, AddFavory, AlgoSearch, position }) {
     distance = d / 1000;
   }
 
+  //   console.log(isFav, heart);
+
   return (
     <Box mt="92.43px">
       <Head>
@@ -70,18 +97,22 @@ function details({ post, AddFavory, AlgoSearch, position }) {
       <SimpleGrid columns={[1, 1, 2, 2]}>
         <Box>
           <Flex justifyContent="flex-end">
-            {heart ? (
-              <Box onClick={handleHeart}>
+            {isFav || heart ? (
+              <Box>
                 <FaHeart
+                  //   onClick={async () => {
+                  //     handleHeart();
+                  //   }}
                   style={{ marginRight: 15, marginTop: 15, color: 'red' }}
                   fontSize="36px"
                 ></FaHeart>
               </Box>
             ) : (
-              <Box onClick={handleHeart}>
+              <Box>
                 <FaRegHeart
-                  onClick={async () => {
-                    await AddFavory(post.id);
+                  onClick={() => {
+                    AddFavory(post.id);
+                    handleHeart();
                     toast({
                       title: 'Favorite added',
                       description: 'The restaurants has been added to your favourites',
@@ -119,7 +150,11 @@ function details({ post, AddFavory, AlgoSearch, position }) {
                   <FaEuroSign></FaEuroSign>
                 </Box>
                 <Box mt="2">
-                  <Text> {post.categories[0].name} </Text>
+                  <Text>
+                    {post.categories.map((cat) => {
+                      return cat.name + ',  ';
+                    })}
+                  </Text>
                 </Box>
               </Box>
             </Flex>
@@ -374,6 +409,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     AddFavory: (id) => dispatch(AddFavory(id)),
     AlgoSearch: (id) => dispatch(AlgoSearch(id)),
+    deleteFavory: (id) => dispatch(deleteFavory(id)),
+    getFavories: () => dispatch(getFavories()),
   };
 };
 
@@ -381,6 +418,7 @@ const mapStateToProps = (state) => {
   return {
     rest: state.rest,
     position: state.location,
+    auth: state.auth,
   };
 };
 
@@ -389,7 +427,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(details);
 export async function getServerSideProps(ctx) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-  console.log(ctx.query);
+  //   console.log(ctx.query);
   const res = await fetch(`https://dood.devzone-dz.com/api/restaurants/${ctx.query.id}`);
   const post = await res.json();
 

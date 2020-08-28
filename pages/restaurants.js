@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { Box, Heading, SimpleGrid, Tag, TagLabel, Flex, useToast } from '@chakra-ui/core';
 import { FaFilter } from 'react-icons/fa';
 import { connect } from 'react-redux';
@@ -10,28 +11,21 @@ import { getFilters } from '../redux/actions/restAction';
 
 function details(props) {
   const toast = useToast();
+  const obj = {};
+  for (let i = 0; i < props.cat.length; i++) {
+    obj[props.cat[i].name] = false;
+  }
 
-  const [selected, setselected] = useState({
-    Burger: false,
-    Boulangrie: false,
-    Traiteur: false,
-    CoffeeShop: false,
-    Pizza: false,
-    Healthy: false,
-    Japonais: false,
-    Caviste: false,
-    CuisinesDuMonde: false,
-    RestaurantTradi: false,
-    CaveABiere: false,
-    PauseSucree: false,
-    EpicerieFine: false,
-    StreetFood: false,
-  });
+  const [selected, setselected] = useState(obj);
+
+  console.log(obj);
+
   const [catFilter, setCatFilter] = useState([]);
 
   let newPosts = null;
 
   console.log(props.posts);
+  console.log(props.cat);
 
   ///////////////
   if (props.rest.posts) {
@@ -103,6 +97,9 @@ function details(props) {
 
   return (
     <Box p="30px" bg="white" mt="85px">
+      <Head>
+        <title>restaurants</title>
+      </Head>
       <Box
         shadow="lg"
         p={{ base: '0', md: '20px' }}
@@ -117,7 +114,25 @@ function details(props) {
           //   align="center"
         >
           <Filter setFilter={setFilter}></Filter>
-          <Tag
+          {props.cat.map((res) => {
+            return (
+              <Tag
+                flex={{ base: '0 0 auto', sm: '0 0 auto' }}
+                p="3"
+                cursor="pointer"
+                m="10px"
+                size="lg"
+                rounded="full"
+                variant="solid"
+                color={selected[res.name] ? 'white' : 'gray.500'}
+                bg={selected[res.name] ? 'gray.700' : 'gray.100'}
+                onClick={() => handleTagClick(res.name, res.name, selected[res.name])}
+              >
+                <TagLabel fontSize="24px">{res.name}</TagLabel>
+              </Tag>
+            );
+          })}
+          {/* <Tag
             flex={{ base: '0 0 auto', sm: '0 0 auto' }}
             p="3"
             cursor="pointer"
@@ -316,7 +331,7 @@ function details(props) {
             onClick={() => handleTagClick('Epicerie fine', 'EpicerieFine', selected.EpicerieFine)}
           >
             <TagLabel fontSize="24px"> Epicerie fine</TagLabel>
-          </Tag>
+          </Tag> */}
         </Flex>
       </Box>
       <Box mt={{ base: '100px', md: '170px' }}>
@@ -335,33 +350,6 @@ function details(props) {
                 ></Rec>
               );
             })}
-          {/* {props.rest.posts
-            ? props.rest.posts.map((post) => {
-                return (
-                  <Rec
-                    key={post.id}
-                    latitude={post.latitude}
-                    longitude={post.longitude}
-                    id={post.id}
-                    name={post.name}
-                    adress={post.adress}
-                    image={`https://dood.devzone-dz.com/storage/${post.image}`}
-                  ></Rec>
-                );
-              })
-            : props.posts.map((post) => {
-                return (
-                  <Rec
-                    key={post.id}
-                    latitude={post.latitude}
-                    longitude={post.longitude}
-                    id={post.id}
-                    name={post.name}
-                    adress={post.adress}
-                    image={`https://dood.devzone-dz.com/storage/${post.image}`}
-                  ></Rec>
-                );
-              })} */}
         </SimpleGrid>
       </Box>
     </Box>
@@ -390,13 +378,16 @@ export async function getStaticProps() {
   const res = await fetch(
     `https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=1000&offset=0`
   );
+  const catres = await fetch(`https://dood.devzone-dz.com/api/allCategrories`);
   const posts = await res.json();
+  const cat = await catres.json();
 
   // By returning { props: posts }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
       posts,
+      cat,
     },
   };
 }

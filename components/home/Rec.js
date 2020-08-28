@@ -41,12 +41,13 @@ function Rec(props) {
 
   return (
     <Link
+      key={props.key}
       href={{ pathname: `/restaurant/[slug]`, query: { id: props.id } }}
       as={{ pathname: `/restaurant/${slug}`, query: { id: props.id } }}
     >
       <Box cursor="pointer" bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
         <Box bg="black" position="relative">
-          <Image opacity="0.7" objectFit="cover" src={props.image} alt={property.imageAlt} />
+          <Image opacity="0.7" objectFit="cover" src={props.image} alt={props.name} />
           <Text color="white" position="absolute" top="10px" left="10px">
             {' '}
             {distance && distance.toFixed(1) + ' km'}
@@ -54,17 +55,17 @@ function Rec(props) {
         </Box>
 
         <Box p="6">
-          <Box mt="1" fontWeight="semibold" as="h4" fontSize="20px" lineHeight="tight" isTruncated>
+          <Box mt="1" fontWeight="bold" fontSize="20px" lineHeight="tight" isTruncated>
             {props.name}
           </Box>
           <Box>
             <Box
-              color="gray.500"
+              //   color="gray.600"
               fontWeight="semibold"
               letterSpacing="wide"
-              fontSize="md"
+              fontSize="sm"
               textTransform="uppercase"
-              ml="2"
+              //   ml="2"
             >
               {props.adress}
             </Box>
