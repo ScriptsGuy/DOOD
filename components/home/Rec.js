@@ -4,7 +4,6 @@ import slugify from 'slugify';
 import { Box, Badge, Icon, Image, Divider, Flex, Skeleton, Text } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import { FaEuroSign } from 'react-icons/fa';
-import { getDistance } from 'geolib';
 
 // import Link from 'next/link';
 
