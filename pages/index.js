@@ -27,7 +27,7 @@ export default function Home(props) {
         <Hero></Hero>
         <Box bg="gray.100" p={['20px', '30px', '40px', '50px']}>
           <Heading p="15px" size="xl" color="gray.500">
-            Vos commerçants préférés sont sur Dood
+            Vos commerçants préférés sont sur Yakool
           </Heading>
           <SimpleGrid spacing={10} justifyItems="center" columns={[1, 2, 3, 4]}>
             {props.posts.map((post) => {
@@ -47,13 +47,13 @@ export default function Home(props) {
         </Box>
         <Box bg="white" p={['20px', '30px', '40px', '50px']}>
           <Heading p="15px" size="xl" color="gray.500">
-            Vos commerçants préférés sont sur Dood
+            Vos commerçants préférés sont sur Yakool
           </Heading>
           <Commande></Commande>
         </Box>
         <Box textAlign="center" bg="gray.200" p={['20px', '30px', '40px', '50px']}>
           <Heading p="15px" size="xl" color="gray.500">
-            Dood est dans les plus belles villes
+            Yakool est dans les plus belles villes
           </Heading>
           <Ville></Ville>
         </Box>

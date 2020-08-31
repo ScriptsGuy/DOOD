@@ -1,3 +1,6 @@
+export const ADD_PLATE = 'ADD_PLATE';
+export const CLEAR_CART = 'CLEAR_CART';
+export const REMOVE_PLATE = 'REMOVE_PLATE';
 export const GET_POSTS = 'GET_POSTS';
 export const GET_FILTERS = 'GET_FILTERS';
 export const GET_FAVORIES = 'GET_FAVORIES';

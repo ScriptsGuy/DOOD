@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+
 import { Box, Heading, SimpleGrid, Tag, TagLabel, Flex, useToast } from '@chakra-ui/core';
 import { FaFilter } from 'react-icons/fa';
 import { connect } from 'react-redux';
@@ -10,6 +12,9 @@ import Filter from '../components/restaurants/Filter';
 import { getFilters } from '../redux/actions/restAction';
 
 function details(props) {
+  const router = useRouter();
+  console.log(router.query);
+
   const toast = useToast();
   const obj = {};
   for (let i = 0; i < props.cat.length; i++) {

@@ -17,7 +17,7 @@ export default function Footer() {
     <Box color="gray.600" bg="gray.200">
       <Flex direction={['column', 'column', 'row', 'row']} justifyContent="space-between">
         <Box alignContent="center" textAlign="center" p="30px" flexGrow="2">
-          <Heading size="lg">Feel Dood</Heading>
+          <Heading size="lg">Feel Yakool</Heading>
           <Heading size="sm">Recevez les bons plans et restez informé(e) des nouveautés</Heading>
           <Flex justifyContent="center" align="center">
             <InputGroup mt="20px" size="lg" color="black" width={['100%', '50%', '50%', '50%']}>

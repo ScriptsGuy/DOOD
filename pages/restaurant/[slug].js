@@ -19,15 +19,17 @@ import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
 import Head from 'next/head';
 import Router from 'next/router';
 import { connect } from 'react-redux';
+
 import { AddFavory, getFilters, getFavories, deleteFavory } from '../../redux/actions/restAction';
 import { AlgoSearch } from '../../redux/actions/searchAction';
+
+import Plat from '../../components/Plat';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
 function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, rest, deleteFavory }) {
   const toast = useToast();
 
-  let index;
   let isFav;
 
   const [heart, setHeart] = React.useState(false);
@@ -46,7 +48,6 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
       return fav.restaurant_id === post.id;
     });
   //   console.log('arrrrroffavs', arrOfFavs);
-  index = arrOfFavs && arrOfFavs.indexOf(true);
 
   isFav = arrOfFavs && arrOfFavs.includes(true);
 
@@ -58,8 +59,8 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
     setHeart(true);
   };
 
-  console.log(post);
-  console.log(heart);
+  console.log('possssssttttt', post);
+  //   console.log(heart);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with coll',
@@ -88,6 +89,62 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
   }
 
   //   console.log(isFav, heart);
+  const NotLoggedinHeart = () => (
+    <Box>
+      <FaRegHeart
+        onClick={() => {
+          toast({
+            position: 'top-right',
+
+            title: 'You not loggedin',
+            description: 'You need to login to add favorites',
+            status: 'info',
+            duration: 4000,
+            isClosable: true,
+          });
+        }}
+        style={{ marginRight: 15, marginTop: 15 }}
+        fontSize="36px"
+      ></FaRegHeart>
+    </Box>
+  );
+  const LoggedinHeart = () => {
+    if (isFav || heart) {
+      return (
+        <Box>
+          <FaHeart
+            //   onClick={async () => {
+            //     handleHeart();
+            //   }}
+            style={{ marginRight: 15, marginTop: 15, color: 'red' }}
+            fontSize="36px"
+          ></FaHeart>
+        </Box>
+      );
+    } else {
+      return (
+        <Box>
+          <FaRegHeart
+            onClick={() => {
+              AddFavory(post.id);
+              handleHeart();
+              toast({
+                position: 'top-right',
+
+                title: 'Favorite added',
+                description: 'The restaurants has been added to your favourites',
+                status: 'success',
+                duration: 4000,
+                isClosable: true,
+              });
+            }}
+            style={{ marginRight: 15, marginTop: 15 }}
+            fontSize="36px"
+          ></FaRegHeart>
+        </Box>
+      );
+    }
+  };
 
   return (
     <Box mt="92.43px">
@@ -97,34 +154,10 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
       <SimpleGrid columns={[1, 1, 2, 2]}>
         <Box>
           <Flex justifyContent="flex-end">
-            {isFav || heart ? (
-              <Box>
-                <FaHeart
-                  //   onClick={async () => {
-                  //     handleHeart();
-                  //   }}
-                  style={{ marginRight: 15, marginTop: 15, color: 'red' }}
-                  fontSize="36px"
-                ></FaHeart>
-              </Box>
+            {!auth.data && !auth.loading ? (
+              <NotLoggedinHeart></NotLoggedinHeart>
             ) : (
-              <Box>
-                <FaRegHeart
-                  onClick={() => {
-                    AddFavory(post.id);
-                    handleHeart();
-                    toast({
-                      title: 'Favorite added',
-                      description: 'The restaurants has been added to your favourites',
-                      status: 'success',
-                      duration: 4000,
-                      isClosable: true,
-                    });
-                  }}
-                  style={{ marginRight: 15, marginTop: 15 }}
-                  fontSize="36px"
-                ></FaRegHeart>
-              </Box>
+              <LoggedinHeart></LoggedinHeart>
             )}
           </Flex>
 
@@ -150,11 +183,13 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
                   <FaEuroSign></FaEuroSign>
                 </Box>
                 <Box color="gray.600" mt="2">
-                  <Text>
-                    {post.categories.map((cat) => {
-                      return cat.name + ',  ';
-                    })}
-                  </Text>
+                  {/* {post.categories[0] && (
+                    <Text>
+                      {post.categories.map((cat) => {
+                        return cat.name + ',  ';
+                      })}
+                    </Text>
+                  )} */}
                 </Box>
               </Box>
             </Flex>
@@ -184,223 +219,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
           className="detail-image"
         ></Box>
       </SimpleGrid>
-      <Box>
-        <Tabs bg="white">
-          <TabList overflowX="auto" color="gray.500" p="2px">
-            <Tab p="10px" fontSize="24px">
-              Formules
-            </Tab>
-            <Tab p="10px" fontSize="24px">
-              Gourmandises Salées
-            </Tab>
-            <Tab p="10px" fontSize="24px">
-              Gourmandises Sucrées
-            </Tab>
-            <Tab p="10px" fontSize="24px">
-              Boissons Fraîches
-            </Tab>
-          </TabList>
-
-          <TabPanels color="gray.600">
-            <TabPanel>
-              <Box p="30px">
-                <Heading>FORMULES</Heading>
-                <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                </SimpleGrid>
-              </Box>
-            </TabPanel>
-            <TabPanel>
-              <Box p="30px">
-                <Heading>Gourmandises Salées</Heading>
-                <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                </SimpleGrid>
-              </Box>
-            </TabPanel>
-            <TabPanel>
-              <Box p="30px">
-                <Heading>Gourmandises Sucrées</Heading>
-                <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                </SimpleGrid>
-              </Box>
-            </TabPanel>
-            <TabPanel>
-              <Box p="30px">
-                <Heading>Boissons Fraîches</Heading>
-                <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                  <Box borderWidth="1px" rounded="lg" p="6">
-                    <Heading>Wrap & soda & cupcake</Heading>
-                    <Text fontSize="2xl">
-                      Les produits sont faits sur place et sont non modifiables
-                    </Text>
-                    <Heading size="lg">14.5 €</Heading>
-                  </Box>
-                </SimpleGrid>
-              </Box>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </Box>
+      <Plat post={post}></Plat>
     </Box>
   );
 }

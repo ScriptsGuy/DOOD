@@ -34,53 +34,13 @@ const MenuItems = ({ children }) => (
   </Link>
 );
 
-// function DrawerConnexion() {
-//   const { isOpen, onOpen, onClose } = useDisclosure();
-//   const btnRef = React.useRef();
-
-//   return (
-//     <Box
-//       mt={{ base: '10px', md: '0' }}
-//       width={[
-//         '100%', // base
-//         '50%', // 480px upwards
-//         '25%', // 768px upwards
-//         '15%', // 992px upwards
-//       ]}
-//     >
-//       <Button ref={btnRef} variantColor="teal" onClick={onOpen}>
-//         CONNEXION
-//       </Button>
-//       <Drawer isOpen={isOpen} placement="left" onClose={onClose} finalFocusRef={btnRef}>
-//         <DrawerOverlay />
-//         <DrawerContent>
-//           <DrawerCloseButton />
-//           <DrawerHeader>Connexion</DrawerHeader>
-
-//           <DrawerBody>
-//             <Input placeholder="Adresse e-mail ou numéro de portable" />
-//             <Flex mt="20px" justify="space-around">
-//               <Button leftIcon={FaFacebookF} color="white" bg="blue.700">
-//                 Facebook
-//               </Button>
-//               <Button leftIcon={FaGoogle} color="white" bg="red.500">
-//                 Google
-//               </Button>
-//             </Flex>
-//           </DrawerBody>
-//         </DrawerContent>
-//       </Drawer>
-//     </Box>
-//   );
-// }
-
 function ShopBadge(props) {
   return (
     <NextLink href="/cart">
       <Box cursor="pointer" mt={{ base: '15px', md: '0' }} display="flex">
         <FaShoppingCart fontSize="28px"></FaShoppingCart>
         <Badge rounded="20px" fontSize="18px" ml="1" variantColor="green">
-          13
+          {props.itemNumber}
         </Badge>
       </Box>
     </NextLink>
@@ -108,7 +68,6 @@ const Navbar = (props) => {
       wrap="wrap"
       padding="1.5rem"
       bg="white"
-      //   boxShadow="0px .5px 5px #999"
       {...props}
     >
       <Flex align="center" mr={5}>
@@ -172,7 +131,7 @@ const Navbar = (props) => {
             <Login></Login>
           </>
         )}
-        <ShopBadge></ShopBadge>
+        <ShopBadge itemNumber={props.cart.cartItemNumber}></ShopBadge>
       </Box>
     </Flex>
   );
@@ -182,6 +141,7 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     location: state.location,
+    cart: state.cart,
   };
 };
 

@@ -21,6 +21,8 @@ function favories({ deleteFavory, getFavories, favs, auth }) {
     console.log(id);
     await deleteFavory(id);
     toast({
+      position: 'top-right',
+
       title: 'Favory Deleted',
       description: 'Favory Delete Successfuly',
       status: 'success',
