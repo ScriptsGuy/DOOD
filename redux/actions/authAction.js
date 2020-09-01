@@ -53,6 +53,10 @@ export const Register = ({ name, phone, email, password, confirm_password }) => 
     })
     .catch((err) => {
       console.log(err);
+      dispatch({
+        type: t.AUTH_ERROR,
+        payload: { message: 'Something went wrong!!!' },
+      });
     });
 
   console.log(data);

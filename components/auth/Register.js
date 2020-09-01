@@ -63,6 +63,11 @@ function Signup(props) {
           <DrawerHeader>Register</DrawerHeader>
 
           <DrawerBody>
+            {props.auth.error && (
+              <Box color="red.700" p="2" textAlign="center" bg="red.100">
+                {props.auth.error}
+              </Box>
+            )}
             <Stack spacing={4}>
               <InputGroup>
                 <Input onChange={handleChange} name="name" type="name" placeholder="Username" />
