@@ -3,8 +3,13 @@ import { Box, Heading, Grid, Text, Divider, Flex, Button, Textarea } from '@chak
 import { connect } from 'react-redux';
 
 import Quantity from '../components/cart/Quantity';
+import { ClearError } from '../redux/actions/authAction';
 
 function cart(props) {
+  React.useEffect(() => {
+    props.ClearError();
+  }, []);
+
   return (
     <Box mt="92.43px" p={['10px', '30px', '30px', '30px']}>
       <Grid gridTemplateColumns={['1fr ', '1fr ', '1fr 1.5fr', '1fr 1.5fr']}>
@@ -98,5 +103,8 @@ function cart(props) {
 const mapStateToProps = (state) => {
   return { cart: state.cart };
 };
+const mapDispatchToProps = (dispatch) => {
+  return { ClearError: () => dispatch(ClearError()) };
+};
 
-export default connect(mapStateToProps, null)(cart);
+export default connect(mapStateToProps, mapDispatchToProps)(cart);

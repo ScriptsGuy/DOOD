@@ -45,8 +45,8 @@ function Rec(props) {
       as={{ pathname: `/restaurant/${slug}`, query: { id: props.id } }}
     >
       <Box cursor="pointer" bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
-        <Box bg="black" position="relative">
-          <Image opacity="0.7" objectFit="cover" src={props.image} alt={props.name} />
+        <Box height="125px" overflow="hidden" bg="black" position="relative">
+          <Image opacity="0.7" src={props.image} alt={props.name} />
           <Text color="white" position="absolute" top="10px" left="10px">
             {' '}
             {distance && distance.toFixed(1) + ' km'}

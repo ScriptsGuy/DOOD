@@ -6,10 +6,14 @@ import { getFavories, deleteFavory } from '../redux/actions/restAction';
 import { FaEuroSign } from 'react-icons/fa';
 import Router, { useRouter } from 'next/router';
 
-function favories({ deleteFavory, getFavories, favs, auth }) {
+import { ClearError } from '../redux/actions/authAction';
+
+function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
   const toast = useToast();
 
   useEffect(() => {
+    ClearError();
+
     if (!auth.data && !auth.loading) {
       Router.replace('/');
     } else {
@@ -136,6 +140,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getFavories: () => dispatch(getFavories()),
     deleteFavory: (id) => dispatch(deleteFavory(id)),
+    ClearError: () => dispatch(ClearError()),
   };
 };
 
