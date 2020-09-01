@@ -1,14 +1,16 @@
 import React from 'react';
 import { Box } from '@chakra-ui/core';
+import { connect } from 'react-redux';
+import { qntUp, qntDown } from '../../redux/actions/cartAction';
 
-export default function Quantity() {
-  const [count, setCount] = React.useState(0);
-
+function Quantity({ formule, plate, qntDown, qntUp }) {
   return (
     <Box display="flex">
       <Box
+        as="button"
+        disabled={(formule && formule.qnt === 1) || (plate && plate.qnt === 1)}
         cursor="pointer"
-        onClick={() => (count === 0 ? 0 : setCount(count - 1))}
+        onClick={() => qntDown(formule, plate)}
         mt="3"
         textAlign="center"
         bg="gray.200"
@@ -29,10 +31,10 @@ export default function Quantity() {
         height="50px"
         fontSize="32px"
       >
-        {count}
+        {(formule && formule.qnt) || (plate && plate.qnt)}
       </Box>
       <Box
-        onClick={() => setCount(count + 1)}
+        onClick={() => qntUp(formule, plate)}
         mt="3"
         cursor="pointer"
         textAlign="center"
@@ -47,3 +49,12 @@ export default function Quantity() {
     </Box>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    qntUp: (formule, plate) => dispatch(qntUp(formule, plate)),
+    qntDown: (formule, plate) => dispatch(qntDown(formule, plate)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Quantity);

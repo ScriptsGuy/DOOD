@@ -1,6 +1,12 @@
 export const ADD_PLATE = 'ADD_PLATE';
+export const PLATE_QNT_UP = 'PLATE_QNT_UP';
+export const FORMULE_QNT_UP = 'FORMULE_QNT_UP';
+export const PLATE_QNT_DOWN = 'PLATE_QNT_DOWN';
+export const FORMULE_QNT_DOWN = 'FORMULE_QNT_DOWN';
+export const ADD_FORMULE = 'ADD_FORMULE';
 export const CLEAR_CART = 'CLEAR_CART';
 export const REMOVE_PLATE = 'REMOVE_PLATE';
+export const REMOVE_FORMULE = 'REMOVE_FORMULE';
 export const GET_POSTS = 'GET_POSTS';
 export const GET_FILTERS = 'GET_FILTERS';
 export const GET_FAVORIES = 'GET_FAVORIES';

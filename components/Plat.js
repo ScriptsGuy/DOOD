@@ -27,16 +27,53 @@ import {
   CheckboxGroup,
 } from '@chakra-ui/core';
 import { connect } from 'react-redux';
-import { addPlate, removePlate } from '../redux/actions/cartAction';
+import { addPlate, addFormule, removePlate } from '../redux/actions/cartAction';
 
-function Plat({ removePlate, addPlate, post, cart }) {
+function Plat({ removePlate, addPlate, addFormule, post, cart }) {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  let postName = post.name;
-  let postId = post.id;
-  console.log(postId);
+  const [formuleState, setFormuleState] = React.useState({
+    formuleName: '',
+    description: '',
+    price: '',
+    unit_price: '',
+    qnt: 1,
+    plates: [],
+  });
 
+  const handleFormuleChange = (e, plate) => {
+    e.persist();
+    let list;
+    if (e.target.checked) {
+      list = formuleState.plates;
+      setFormuleState((prevState) => ({
+        ...prevState,
+        formuleName: plate.name,
+        description: plate.description,
+        price: plate.price,
+        unit_price: plate.price,
+        plates: [...list, e.target.value],
+      }));
+    } else {
+      list = formuleState.plates.filter((value) => value !== e.target.value);
+      setFormuleState((prevState) => ({
+        ...prevState,
+        formuleName: plate.name,
+        description: plate.description,
+        price: plate.unit_price,
+        unit_price: plate.unit_price,
+        plates: [...list],
+      }));
+    }
+  };
+
+  const handleFormuleSubmit = async (formule, post) => {
+    await addFormule(formule, post);
+    onClose();
+  };
+
+  //   const [formuleSelected, setFormuleS] = React.useState({});
   const [selected, setSelected] = React.useState({
     FormuleBurger: false,
     FormuleRolls: false,
@@ -61,12 +98,12 @@ function Plat({ removePlate, addPlate, post, cart }) {
 
   console.log('selecteddddd', selected);
   const handleSelect = (name, bol, price, qnt, description) => {
-    let plate = { name, description, price, qnt };
+    let plate = { name, description, price, qnt, unit_price: price };
     if (bol) {
       removePlate(plate);
       setSelected((prevState) => ({ ...prevState, [name]: false }));
     } else {
-      addPlate(plate, postName, postId);
+      addPlate(plate, post);
       toast({
         title: 'Plate added ',
         description: 'Go to your cart to complete the order',
@@ -114,12 +151,16 @@ function Plat({ removePlate, addPlate, post, cart }) {
                         <Box
                           cursor="pointer"
                           onClick={onOpen}
-                          color={selected['FormuleBurger'] ? 'white' : 'gray.600'}
-                          bg={selected['FormuleBurger'] ? 'gray.700' : 'white'}
+                          color={selected[plate.name] ? 'white' : 'gray.600'}
+                          bg={selected[plate.name] ? 'gray.700' : 'white'}
                           borderWidth="1px"
                           rounded="lg"
                           p="6"
                         >
+                          <Heading> {plate.name} </Heading>
+                          <Text fontSize="2xl">{plate.description}</Text>
+                          <Heading size="lg">{plate.price} €</Heading>
+
                           <Modal isOpen={isOpen} onClose={onClose}>
                             <ModalOverlay />
                             <ModalContent>
@@ -128,23 +169,55 @@ function Plat({ removePlate, addPlate, post, cart }) {
                               <ModalBody>
                                 <Stack>
                                   {plate.plats.map((plato) => (
-                                    <Checkbox>{plato.name}</Checkbox>
+                                    <Checkbox
+                                      isChecked={formuleState.plates.includes(plato.name)}
+                                      onChange={(e) => handleFormuleChange(e, plate)}
+                                      name={plato.name}
+                                      value={plato.name}
+                                    >
+                                      {plato.name}
+                                    </Checkbox>
                                   ))}
-                                  <Checkbox>checkbox</Checkbox> <Checkbox>checkbox</Checkbox>{' '}
-                                  <Checkbox>checkbox</Checkbox>
+                                  <Checkbox
+                                    isChecked={formuleState.plates.includes('coca')}
+                                    onChange={(e) => handleFormuleChange(e, plate)}
+                                    name="coca"
+                                    value="coca"
+                                  >
+                                    coca
+                                  </Checkbox>
+                                  <Checkbox
+                                    isChecked={formuleState.plates.includes('bread')}
+                                    onChange={(e) => handleFormuleChange(e, plate)}
+                                    name="bread"
+                                    value="bread"
+                                  >
+                                    bread
+                                  </Checkbox>
+                                  <Checkbox
+                                    isChecked={formuleState.plates.includes('juse')}
+                                    onChange={(e) => handleFormuleChange(e, plate)}
+                                    name="juse"
+                                    value="juse"
+                                  >
+                                    juse
+                                  </Checkbox>
                                 </Stack>
+                                {/* {JSON.stringify(formuleState)} */}
                               </ModalBody>
 
                               <ModalFooter>
-                                <Button variantColor="blue" mr={3} onClick={onClose}>
+                                <Button
+                                  isDisabled={formuleState.plates[0] === undefined}
+                                  variantColor="blue"
+                                  mr={3}
+                                  onClick={() => handleFormuleSubmit(formuleState, post)}
+                                >
                                   Add Formule
                                 </Button>
                               </ModalFooter>
                             </ModalContent>
                           </Modal>
-                          <Heading> {plate.name} </Heading>
-                          <Text fontSize="2xl">{plate.description}</Text>
-                          <Heading size="lg">{plate.price} €</Heading>
                         </Box>
                       ))}
                     </SimpleGrid>
@@ -200,7 +273,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addPlate: (plate, postName, postId) => dispatch(addPlate(plate, postName, postId)),
+    addPlate: (plate, post) => dispatch(addPlate(plate, post)),
+    addFormule: (formule, post) => dispatch(addFormule(formule, post)),
     removePlate: (plate) => dispatch(removePlate(plate)),
   };
 };
