@@ -72,7 +72,7 @@ function cart(props) {
           </Heading>
           <Text fontSize="lg">{props.cart.restName}</Text>
           <Text color="gray.500" fontSize="lg">
-            {props.cart.post.adress}
+            {props.cart.post !== null && props.cart.post.adress}
           </Text>
           <Box mt="8">
             <Text mb="8px">Commentair</Text>
