@@ -30,9 +30,9 @@ export const addFormule = (formule, post) => async (dispatch, getState) => {
   }
 };
 
-export const removeFormule = (plate) => async (dispatch, getState) => {
-  console.log(plate);
-  dispatch({ type: t.REMOVE_FORMULE, payload: plate });
+export const removeFormule = (formule) => async (dispatch, getState) => {
+  console.log(formule);
+  dispatch({ type: t.REMOVE_FORMULE, payload: formule });
 };
 
 /////////////////////////////////////////////////

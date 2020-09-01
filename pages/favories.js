@@ -10,7 +10,7 @@ import { ClearError } from '../redux/actions/authAction';
 
 function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
   const toast = useToast();
-
+  console.log(favs);
   useEffect(() => {
     ClearError();
 

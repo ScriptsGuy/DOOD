@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Quantity from '../components/cart/Quantity';
 import { ClearError } from '../redux/actions/authAction';
+import { removePlate, removeFormule } from '../redux/actions/cartAction';
 
 function cart(props) {
   React.useEffect(() => {
@@ -35,6 +36,15 @@ function cart(props) {
                       {formule.price}$
                     </Text>
                   </Flex>
+                  <Flex mb="3" justifyContent="flex-end">
+                    <Button
+                      onClick={() => props.removeFormule(formule)}
+                      variantColor="red"
+                      variant="link"
+                    >
+                      remove
+                    </Button>
+                  </Flex>
                   <Divider></Divider>
                 </Box>
               );
@@ -56,6 +66,15 @@ function cart(props) {
                     <Text mt="20px" color="gray.600" fontWeight="black">
                       {plate.price}$
                     </Text>
+                  </Flex>
+                  <Flex mb="3" justifyContent="flex-end">
+                    <Button
+                      onClick={() => props.removePlate(plate)}
+                      variantColor="red"
+                      variant="link"
+                    >
+                      remove
+                    </Button>
                   </Flex>
                   <Divider></Divider>
                 </Box>
@@ -104,7 +123,11 @@ const mapStateToProps = (state) => {
   return { cart: state.cart };
 };
 const mapDispatchToProps = (dispatch) => {
-  return { ClearError: () => dispatch(ClearError()) };
+  return {
+    ClearError: () => dispatch(ClearError()),
+    removePlate: (plate) => dispatch(removePlate(plate)),
+    removeFormule: (formule) => dispatch(removeFormule(formule)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(cart);

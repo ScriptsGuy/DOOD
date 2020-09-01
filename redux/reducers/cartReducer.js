@@ -163,20 +163,22 @@ const cartReducer = (state = initialState, action) => {
           cartItemNumber: newFormulePositiveCartNumber,
         };
       }
-    // case t.REMOVE_FORMULE:
-    //   console.log('formule removed', action.payload);
-    //   let newFormules = state.formules.filter((res) => {
-    //     return res.name !== action.payload.name;
-    //   });
-    //   let negativePrice = state.totalPrice === 0 ? 0 : state.totalPrice - action.payload.price;
-    //   let newNegativeCartNumber = state.cartItemNumber === 0 ? 0 : state.cartItemNumber - 1;
+    case t.REMOVE_FORMULE:
+      console.log('formule removed', action.payload);
+      let newFormules = state.formules.filter((res) => {
+        return res.formuleName !== action.payload.formuleName;
+      });
+      console.log(newFormules);
+      let negativeFormulePrice =
+        state.totalPrice === 0 ? 0 : state.totalPrice - action.payload.price;
+      let newNegativeFormuleCartNumber = state.cartItemNumber === 0 ? 0 : state.cartItemNumber - 1;
 
-    //   return {
-    //     ...state,
-    //     plates: [...newPlates],
-    //     totalPrice: negativePrice,
-    //     cartItemNumber: newNegativeCartNumber,
-    //   };
+      return {
+        ...state,
+        formules: [...newFormules],
+        totalPrice: negativeFormulePrice,
+        cartItemNumber: newNegativeFormuleCartNumber,
+      };
 
     default:
       return state;
