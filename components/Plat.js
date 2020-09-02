@@ -28,10 +28,12 @@ import {
 } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import { addPlate, addFormule, removePlate } from '../redux/actions/cartAction';
+import PlateModal from './PlateModal';
 
 function Plat({ removePlate, addPlate, addFormule, post, cart }) {
   const toast = useToast();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  ///////////////formule
 
   const [formuleState, setFormuleState] = React.useState({
     formuleName: '',
@@ -70,10 +72,10 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
 
   const handleFormuleSubmit = async (formule, post) => {
     await addFormule(formule, post);
-    onClose();
   };
 
-  //   const [formuleSelected, setFormuleS] = React.useState({});
+  //////////////////////////formule
+
   const [selected, setSelected] = React.useState({
     FormuleBurger: false,
     FormuleRolls: false,
@@ -119,11 +121,10 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
     <Box>
       <Tabs bg="white">
         <TabList overflowX="auto" color="gray.500" p="2px">
-          {post.formules.map((formule) => (
-            <Tab p="10px" fontSize="24px">
-              {formule.name}
-            </Tab>
-          ))}
+          <Tab p="10px" fontSize="24px">
+            Formules
+          </Tab>
+
           {post.plat_categoriers.map((cat) => {
             return (
               <Tab p="10px" fontSize="24px">
@@ -142,96 +143,25 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
         <TabPanels color="gray.600">
           {post.formules && (
             <TabPanel bg="gray.50">
-              {post.formules.map((formule) => {
-                return (
-                  <Box p="30px">
-                    <Heading>{formule.name}</Heading>
-                    <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
-                      {formule.formule_categories.map((plate) => (
-                        <Box
-                          cursor="pointer"
-                          onClick={onOpen}
-                          color={selected[plate.name] ? 'white' : 'gray.600'}
-                          bg={selected[plate.name] ? 'gray.700' : 'white'}
-                          borderWidth="1px"
-                          rounded="lg"
-                          p="6"
-                        >
-                          <Heading> {plate.name} </Heading>
-                          <Text fontSize="2xl">{plate.description}</Text>
-                          <Heading size="lg">{plate.price} €</Heading>
-
-                          <Modal isOpen={isOpen} onClose={onClose}>
-                            <ModalOverlay />
-                            <ModalContent>
-                              <ModalHeader>{formule.name}</ModalHeader>
-                              <ModalCloseButton />
-                              <ModalBody>
-                                <Stack>
-                                  {plate.plats.map((plato) => (
-                                    <Checkbox
-                                      isChecked={formuleState.plates.includes(plato.name)}
-                                      onChange={(e) => handleFormuleChange(e, plate)}
-                                      name={plato.name}
-                                      value={plato.name}
-                                    >
-                                      {plato.name}
-                                    </Checkbox>
-                                  ))}
-                                  <Checkbox
-                                    isChecked={formuleState.plates.includes('coca')}
-                                    onChange={(e) => handleFormuleChange(e, plate)}
-                                    name="coca"
-                                    value="coca"
-                                  >
-                                    coca
-                                  </Checkbox>
-                                  <Checkbox
-                                    isChecked={formuleState.plates.includes('bread')}
-                                    onChange={(e) => handleFormuleChange(e, plate)}
-                                    name="bread"
-                                    value="bread"
-                                  >
-                                    bread
-                                  </Checkbox>
-                                  <Checkbox
-                                    isChecked={formuleState.plates.includes('juse')}
-                                    onChange={(e) => handleFormuleChange(e, plate)}
-                                    name="juse"
-                                    value="juse"
-                                  >
-                                    juse
-                                  </Checkbox>
-                                </Stack>
-                                {/* {JSON.stringify(formuleState)} */}
-                              </ModalBody>
-
-                              <ModalFooter>
-                                <Button
-                                  isDisabled={formuleState.plates[0] === undefined}
-                                  variantColor="blue"
-                                  mr={3}
-                                  onClick={() => handleFormuleSubmit(formuleState, post)}
-                                >
-                                  Add Formule
-                                </Button>
-                              </ModalFooter>
-                            </ModalContent>
-                          </Modal>
-                        </Box>
-                      ))}
-                    </SimpleGrid>
-                  </Box>
-                );
-              })}
+              <PlateModal
+                // formule={formule}
+                handleFormuleSubmit={handleFormuleSubmit}
+                handleFormuleChange={handleFormuleChange}
+                //   setModal={setModal}
+                //   modal={modal}
+                post={post}
+                // plate={plate}
+                formuleState={formuleState}
+                selected={selected}
+              ></PlateModal>
             </TabPanel>
           )}
-          {post.plat_categoriers && (
-            <TabPanel bg="gray.50">
-              {post.plat_categoriers.map((plate) => {
-                return (
+
+          {post.plat_categoriers &&
+            post.plat_categoriers.map((plate) => {
+              return (
+                <TabPanel bg="gray.50">
                   <Box p="30px">
-                    <Heading>{plate.name}</Heading>
                     <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
                       {plate.plats.map((plato) => (
                         <Box
@@ -257,10 +187,9 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
                       ))}
                     </SimpleGrid>
                   </Box>
-                );
-              })}
-            </TabPanel>
-          )}
+                </TabPanel>
+              );
+            })}
         </TabPanels>
       </Tabs>
     </Box>

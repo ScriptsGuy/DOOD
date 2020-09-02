@@ -29,6 +29,7 @@ const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
 function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, rest, deleteFavory }) {
   const toast = useToast();
+  const days = Object.keys(post.opening_hours);
 
   let isFav;
 
@@ -201,10 +202,12 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
             </Box>
           </Box>
           <Box mt="20px" pr="50px" pl="50px" mb="30px">
-            <Select placeholder="Select option">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
+            <Select placeholder="Select the day">
+              {days.map((day) => (
+                <>
+                  <option value={day}>{day}</option>
+                </>
+              ))}
             </Select>
           </Box>
         </Box>
