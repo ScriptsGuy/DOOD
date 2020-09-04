@@ -29,14 +29,21 @@ export default function PlateModal({
   formule,
   post,
 }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  //   const [modal, setModal] = React.useState(false);
-
+  const [reload, setReload] = React.useState(selected);
+  React.useEffect(() => {
+    console.log('reloadeddddddd');
+  }, [reload]);
   return (
     <Box p="30px">
       <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
         {post.formules.map((formule) => (
-          <ModalFormule formuleState={formuleState} post={post} formule={formule}></ModalFormule>
+          <ModalFormule
+            setReload={setReload}
+            selected={selected}
+            formuleState={formuleState}
+            post={post}
+            formule={formule}
+          ></ModalFormule>
         ))}
       </SimpleGrid>
     </Box>

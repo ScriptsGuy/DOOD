@@ -13,7 +13,6 @@ import { getFilters } from '../redux/actions/restAction';
 
 function details(props) {
   const router = useRouter();
-  console.log(router.query);
 
   const toast = useToast();
   const obj = {};
@@ -23,14 +22,9 @@ function details(props) {
 
   const [selected, setselected] = useState(obj);
 
-  console.log(obj);
-
   const [catFilter, setCatFilter] = useState([]);
 
   let newPosts = null;
-
-  console.log(props.posts);
-  console.log(props.cat);
 
   ///////////////
   if (props.rest.posts) {
@@ -42,7 +36,6 @@ function details(props) {
           });
           return bol.includes(true);
         });
-        console.log(newPosts);
       });
     } else {
       newPosts = props.rest.posts;
@@ -56,7 +49,6 @@ function details(props) {
           });
           return bol.includes(true);
         });
-        console.log(newPosts);
       });
     } else {
       newPosts = props.posts;
@@ -72,14 +64,10 @@ function details(props) {
   });
 
   useEffect(() => {
-    console.log(filter);
-
     props.getFilters(filter);
   }, [filter, catFilter]);
 
   const handleTagClick = (filterParam, param, bol) => {
-    console.log(param);
-    console.log(bol);
     if (catFilter.includes(filterParam)) {
       var array = [...catFilter]; // make a separate copy of the array
       var index = array.indexOf(filterParam);
@@ -89,7 +77,6 @@ function details(props) {
       }
     } else {
       setCatFilter((prevState) => [...prevState, filterParam]);
-      console.log('changeddd', catFilter);
     }
 
     if (bol) {
@@ -98,7 +85,6 @@ function details(props) {
       setselected((prevState) => ({ ...prevState, [param]: true }));
     }
   };
-  //   console.log(selected);
 
   return (
     <Box p="30px" bg="white" mt="85px">
@@ -137,206 +123,6 @@ function details(props) {
               </Tag>
             );
           })}
-          {/* <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.Burger ? 'white' : 'gray.500'}
-            bg={selected.Burger ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Burger', 'Burger', selected.Burger)}
-          >
-            <TagLabel fontSize="24px">Burger</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.Boulangrie ? 'white' : 'gray.500'}
-            bg={selected.Boulangrie ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Boulangrie', 'Boulangrie', selected.Boulangrie)}
-          >
-            <TagLabel fontSize="24px">Boulangrie</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.StreetFood ? 'white' : 'gray.500'}
-            bg={selected.StreetFood ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Street food', 'StreetFood', selected.StreetFood)}
-          >
-            <TagLabel fontSize="24px">Street food</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.Traiteur ? 'white' : 'gray.500'}
-            bg={selected.Traiteur ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Traiteur', 'Traiteur', selected.Traiteur)}
-          >
-            <TagLabel fontSize="24px">Traiteur</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.CoffeeShop ? 'white' : 'gray.500'}
-            bg={selected.CoffeeShop ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Coffee Shop', 'CoffeeShop', selected.CoffeeShop)}
-          >
-            <TagLabel fontSize="24px"> Coffee Shop</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.Pizza ? 'white' : 'gray.500'}
-            bg={selected.Pizza ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Pizza', 'Pizza', selected.Pizza)}
-          >
-            <TagLabel fontSize="24px"> Pizza</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.Healthy ? 'white' : 'gray.500'}
-            bg={selected.Healthy ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Healthy', 'Healthy', selected.Healthy)}
-          >
-            <TagLabel fontSize="24px"> Healthy</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.Japonais ? 'white' : 'gray.500'}
-            bg={selected.Japonais ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Japonais', 'Japonais', selected.Japonais)}
-          >
-            <TagLabel fontSize="24px"> Japonais</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.Caviste ? 'white' : 'gray.500'}
-            bg={selected.Caviste ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Caviste', 'Caviste', selected.Caviste)}
-          >
-            <TagLabel fontSize="24px">Caviste</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.CuisinesDuMonde ? 'white' : 'gray.500'}
-            bg={selected.CuisinesDuMonde ? 'gray.700' : 'gray.100'}
-            onClick={() =>
-              handleTagClick('Cuisines du monde', 'CuisinesDuMonde', selected.CuisinesDuMonde)
-            }
-          >
-            <TagLabel fontSize="24px"> Cuisines du monde</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.RestaurantTradi ? 'white' : 'gray.500'}
-            bg={selected.RestaurantTradi ? 'gray.700' : 'gray.100'}
-            onClick={() =>
-              handleTagClick('Restaurant tradi', 'RestaurantTradi', selected.RestaurantTradi)
-            }
-          >
-            <TagLabel fontSize="24px"> Restaurant tradi</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.CaveABiere ? 'white' : 'gray.500'}
-            bg={selected.CaveABiere ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Cave à Bière', 'CaveABiere', selected.CaveABiere)}
-          >
-            <TagLabel fontSize="24px">Cave à Bière</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.PauseSucree ? 'white' : 'gray.500'}
-            bg={selected.PauseSucree ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Pause sucrée', 'PauseSucree', selected.PauseSucree)}
-          >
-            <TagLabel fontSize="24px"> Pause sucrée</TagLabel>
-          </Tag>
-          <Tag
-            flex={{ base: '0 0 auto', sm: '0 0 auto' }}
-            p="3"
-            cursor="pointer"
-            m="10px"
-            size="lg"
-            rounded="full"
-            variant="solid"
-            color={selected.EpicerieFine ? 'white' : 'gray.500'}
-            bg={selected.EpicerieFine ? 'gray.700' : 'gray.100'}
-            onClick={() => handleTagClick('Epicerie fine', 'EpicerieFine', selected.EpicerieFine)}
-          >
-            <TagLabel fontSize="24px"> Epicerie fine</TagLabel>
-          </Tag> */}
         </Flex>
       </Box>
       <Box mt={{ base: '100px', md: '170px' }}>

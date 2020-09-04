@@ -2,7 +2,9 @@ import NextLink from 'next/link';
 import React from 'react';
 import { Box, Image, SimpleGrid, Heading, Flex, Link, Skeleton } from '@chakra-ui/core';
 
-export default function Commande() {
+export default function Commande(props) {
+  console.log(props.cat);
+
   return (
     <SimpleGrid columns={[3, 5, 5, 7]} spacing={5}>
       <NextLink href="/restaurants">

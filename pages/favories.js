@@ -10,7 +10,6 @@ import { ClearError } from '../redux/actions/authAction';
 
 function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
   const toast = useToast();
-  console.log(favs);
   useEffect(() => {
     ClearError();
 
@@ -22,7 +21,6 @@ function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
   }, []);
 
   const handelDelete = async (id) => {
-    console.log(id);
     await deleteFavory(id);
     toast({
       position: 'top-right',

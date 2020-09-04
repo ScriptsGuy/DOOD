@@ -20,19 +20,16 @@ function Search(props) {
 
   //   useEffect(() => {
 
-  //   console.log("mounted")
   //   if (query === "") {
   //       setHits([])
   //   }
   //     searchClient = algoliasearch('LMQ49UKOZA', 'a9adf7fd5943a630c82a62024c953e6e');
   //     index = searchClient.initIndex('restaurants');
   //     // data = await index.search("hape").then((res) => {
-  //     // console.log(res)
   //     //      setHits(res.hits);
 
   //     // });
   //     // return () => {
-  //     //   console.log("unmounted");
   //     //         setHits([])
 
   //     // };
@@ -44,12 +41,10 @@ function Search(props) {
 
   //     const result = await index.search(query);
   //     setHits(result.hits);
-  //     console.log(hits);
   //   }
   //   };
 
   useEffect(() => {
-    console.log(query.typeof);
     props.AlgoSearch(query);
   }, [query]);
 
@@ -63,7 +58,6 @@ function Search(props) {
     box ? setbox(false) : setbox(true);
   };
 
-  console.log(props.search.hits);
   return (
     <Box width={['100%', '50%', '50%', '50%']} mr="100px" position="relative">
       <Input

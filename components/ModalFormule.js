@@ -19,12 +19,16 @@ import {
   Radio,
   RadioGroup,
   Divider,
+  useToast,
 } from '@chakra-ui/core';
 import { connect } from 'react-redux';
-import { addPlate, addFormule, removePlate } from '../redux/actions/cartAction';
+import { addPlate, addFormule, removePlate, removeFormule } from '../redux/actions/cartAction';
 
-function ModalFormule({ removePlate, addPlate, addFormule, formule, post }) {
+function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
+  const toast = useToast();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selected, setSelected] = React.useState({});
 
   const [formuleState, setFormuleState] = React.useState({
     formuleName: '',
@@ -36,7 +40,15 @@ function ModalFormule({ removePlate, addPlate, addFormule, formule, post }) {
   });
   const [dishes, setDishes] = React.useState({});
   React.useEffect(() => {
-    console.log(dishes);
+    console.log(Object.values(dishes));
+    console.log(formuleState);
+    post.formules.map((formule) => {
+      setSelected((prevState) => ({ ...prevState, [formule.name]: false }));
+    });
+
+    cart.formules.map((formule) => {
+      setSelected((prevState) => ({ ...prevState, [formule.formuleName]: true }));
+    });
     setFormuleState((prevState) => ({
       ...prevState,
       formuleName: formule.name,
@@ -45,57 +57,53 @@ function ModalFormule({ removePlate, addPlate, addFormule, formule, post }) {
       unit_price: formule.price,
       plates: [...Object.values(dishes)],
     }));
+    // console.log('rernderddddddd');
+    // console.log(selected);
   }, [dishes]);
-  console.log(formuleState);
 
   const handleFormuleChange = (e, formule) => {
     e.persist();
-    console.log(e.target.value);
-    console.log(e.target.name);
-    console.log(formule);
     setDishes((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
-
-    //// getting the info from the formule instaed of plates so we good to go
-
-    /// we need to form array from the radio button value
-
-    // let list;
-    // if (e.target.checked) {
-    //   list = formuleState.plates;
-    //   setFormuleState((prevState) => ({
-    //     ...prevState,
-    //     formuleName: plate.name,
-    //     description: plate.description,
-    //     price: plate.price,
-    //     unit_price: plate.price,
-    //     plates: [...list, e.target.value],
-    //   }));
-    // } else {
-    //   list = formuleState.plates.filter((value) => value !== e.target.value);
-    //   setFormuleState((prevState) => ({
-    //     ...prevState,
-    //     formuleName: plate.name,
-    //     description: plate.description,
-    //     price: plate.unit_price,
-    //     unit_price: plate.unit_price,
-    //     plates: [...list],
-    //   }));
-    // }
   };
-  console.log(dishes);
 
   const handleFormuleSubmit = async (formule, post) => {
     await addFormule(formule, post);
+    toast({
+      title: 'Formule added ',
+      description: 'Go to your cart to complete the order',
+      status: 'info',
+      duration: 2000,
+      isClosable: true,
+    });
+    setSelected((prev) => ({ ...prev, [formule.formuleName]: true }));
+    setDishes({});
   };
+
+  console.log(formule.formule_categories.length);
+  console.log(Object.values(dishes).length);
 
   return (
     <Box
-      onClick={onOpen}
+      onClick={() => {
+        if (selected[formule.name]) {
+          removeFormule(formuleState);
+          toast({
+            title: 'Formule removed ',
+            description: 'the formule has been removed from your cart',
+            status: 'warning',
+            duration: 2000,
+            isClosable: true,
+          });
+          setSelected((prev) => ({ ...prev, [formuleState.formuleName]: false }));
+        } else {
+          onOpen();
+        }
+      }}
       // onClick={() =>
       //   handleSelect(plato.name, selected[plato.name], plato.unit_price, 1, plato.description)
       // }
-      // color={selected[plato.name] ? 'white' : 'gray.600'}
-      // bg={selected[plato.name] ? 'gray.700' : 'white'}
+      color={selected[formule.name] ? 'white' : 'gray.600'}
+      bg={selected[formule.name] ? 'gray.700' : 'white'}
       borderWidth="1px"
       rounded="lg"
       p="6"
@@ -106,7 +114,12 @@ function ModalFormule({ removePlate, addPlate, addFormule, formule, post }) {
           <ModalHeader mt="8" color="gray.500">
             {formule.name}
           </ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton
+            onClick={() => {
+              setDishes({});
+              onClose();
+            }}
+          />
           <ModalBody>
             <Stack>
               {formule.formule_categories.map((cat, i) => (
@@ -168,7 +181,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addPlate: (plate, post) => dispatch(addPlate(plate, post)),
     addFormule: (formule, post) => dispatch(addFormule(formule, post)),
-    removePlate: (plate) => dispatch(removePlate(plate)),
+    removeFormule: (formule) => dispatch(removeFormule(formule)),
   };
 };
 

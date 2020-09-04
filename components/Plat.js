@@ -84,9 +84,7 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
 
   React.useEffect(() => {
     post.formules.map((formule) => {
-      formule.formule_categories.map((plate) => {
-        setSelected((prevState) => ({ ...prevState, [plate.name]: false }));
-      });
+      setSelected((prevState) => ({ ...prevState, [formule.name]: false }));
     });
     post.plat_categoriers.map((plate) => {
       plate.plats.map((plato) => {
@@ -96,13 +94,22 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
     cart.plates.map((plate) => {
       setSelected((prevState) => ({ ...prevState, [plate.name]: true }));
     });
+    cart.formules.map((formule) => {
+      setSelected((prevState) => ({ ...prevState, [formule.formuleName]: true }));
+    });
   }, []);
 
-  console.log('selecteddddd', selected);
   const handleSelect = (name, bol, price, qnt, description) => {
     let plate = { name, description, price, qnt, unit_price: price };
     if (bol) {
       removePlate(plate);
+      toast({
+        title: 'Plate removed ',
+        description: 'the plate has been removed from your cart',
+        status: 'warning',
+        duration: 2000,
+        isClosable: true,
+      });
       setSelected((prevState) => ({ ...prevState, [name]: false }));
     } else {
       addPlate(plate, post);
