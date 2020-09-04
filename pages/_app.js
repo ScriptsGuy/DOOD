@@ -14,6 +14,7 @@ import '../styles/nprogress.css';
 
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import Up from '../components/Up';
 
 const TopProgressBar = dynamic(
   () => {
@@ -39,6 +40,7 @@ function MyApp({ Component, pageProps }) {
 
             <Navbar></Navbar>
             <Component {...pageProps} />
+            <Up></Up>
             <Footer></Footer>
           </PersistGate>
         </Provider>

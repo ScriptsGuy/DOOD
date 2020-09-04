@@ -25,6 +25,8 @@ import { AlgoSearch } from '../../redux/actions/searchAction';
 
 import Plat from '../../components/Plat';
 
+import MapDrawer from '../../components/restaurants/MapDrawer';
+
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
 function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, rest, deleteFavory }) {
@@ -52,16 +54,17 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
 
   isFav = arrOfFavs && arrOfFavs.includes(true);
 
-  //   console.log('favssss', rest.favs);
-  //   console.log('post', post);
+  console.log('favssss', rest.favs);
+  console.log('post', post);
 
   const handleHeart = () => {
     // heart ? setHeart(false) : setHeart(true);
     setHeart(true);
   };
 
-  console.log('possssssttttt', post);
-  //   console.log(heart);
+  //   console.log('possssssttttt', post);
+  console.log(heart);
+  console.log(isFav);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with coll',
@@ -194,6 +197,9 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
                 </Box>
               </Box>
             </Flex>
+          </Box>
+          <Box pr="50px" pl="50px">
+            <MapDrawer></MapDrawer>
           </Box>
           <Box mt="20px" pr="50px" pl="50px">
             <Text fontSize="2xl">Choisissez votre créneau de retrait</Text>

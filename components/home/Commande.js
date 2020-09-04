@@ -3,11 +3,27 @@ import React from 'react';
 import { Box, Image, SimpleGrid, Heading, Flex, Link, Skeleton } from '@chakra-ui/core';
 
 export default function Commande(props) {
-  console.log(props.cat);
+  console.log(props.cartegories);
 
   return (
     <SimpleGrid columns={[3, 5, 5, 7]} spacing={5}>
-      <NextLink href="/restaurants">
+      {props.cartegories.map((cat) => {
+        return (
+          <NextLink href="/restaurants">
+            <Skeleton isLoaded>
+              <Box cursor="pointer">
+                <Flex direction="column" align="center">
+                  {/* <Image alt=" Burger" rounded="3px" src="./images/burger.png"></Image> */}
+                  <Heading mt="10px" size="lg" color="gray.700">
+                    {cat.name}
+                  </Heading>
+                </Flex>
+              </Box>
+            </Skeleton>
+          </NextLink>
+        );
+      })}
+      {/* <NextLink href="/restaurants">
         <Skeleton isLoaded>
           <Box cursor="pointer">
             <Flex direction="column" align="center">
@@ -150,7 +166,7 @@ export default function Commande(props) {
             </Heading>
           </Flex>
         </Box>
-      </NextLink>
+      </NextLink> */}
     </SimpleGrid>
   );
 }

@@ -11,6 +11,7 @@ import Mobile from '../components/home/Mobile';
 import Description from '../components/home/Description';
 
 export default function Home(props) {
+  console.log(props.cat);
   return (
     <Box>
       <Head>
@@ -47,7 +48,7 @@ export default function Home(props) {
           <Heading p="15px" size="xl" color="gray.500">
             Vos commerçants préférés sont sur Yakool
           </Heading>
-          <Commande></Commande>
+          <Commande cartegories={props.cat}></Commande>
         </Box>
         <Box textAlign="center" bg="gray.200" p={['20px', '30px', '40px', '50px']}>
           <Heading p="15px" size="xl" color="gray.500">
@@ -72,13 +73,17 @@ export async function getStaticProps() {
   const res = await fetch(
     'https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=8&offset=0'
   );
+  const catres = await fetch(`https://dood.devzone-dz.com/api/allCategrories`);
   const posts = await res.json();
+  const cat = await catres.json();
+  console.log(cat);
 
   // By returning { props: posts }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
       posts,
+      cat,
     },
   };
 }

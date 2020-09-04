@@ -64,6 +64,7 @@ function Search(props) {
         onFocus={() => setbox(true)}
         variant="flushed"
         type="text"
+        name="search-algolia"
         placeholder="Saisissez une adresse ou le nom d’un restaurant"
         onChange={handlechange}
       ></Input>
