@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, Grid, Text, Divider, Flex, Button, Textarea } from '@chakra-ui/core';
+import { Box, Heading, Grid, Text, Divider, Flex, Button, Textarea, Input } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 
 import Quantity from '../components/cart/Quantity';
@@ -7,6 +7,13 @@ import { ClearError } from '../redux/actions/authAction';
 import { removePlate, removeFormule } from '../redux/actions/cartAction';
 
 function cart(props) {
+  const [info, setInfo] = React.useState();
+
+  const handleInputChange = (e) => {
+    e.persist();
+    setInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   React.useEffect(() => {
     props.ClearError();
   }, []);
@@ -28,7 +35,7 @@ function cart(props) {
                   <Heading color="gray.600" size="md">
                     {formule.formuleName}
                   </Heading>
-                  <Text color="gray.500">{formule.description}</Text>
+                  {/* <Text color="gray.500">{formule.description}</Text> */}
                   <Text color="gray.500">{formule.plates.join(' + ')}</Text>
                   <Flex mt="2" justifyContent="space-between">
                     <Quantity formule={formule}></Quantity>
@@ -90,7 +97,7 @@ function cart(props) {
             </Text>
           </Flex>
         </Box>
-        <Box height="500px" m="2" p="30px" bg="white">
+        <Box height="600px" m="2" p="30px" bg="white">
           <Heading mb="6" size="xl">
             Votre rendez-vous
           </Heading>
@@ -99,8 +106,22 @@ function cart(props) {
             {props.cart.post !== null && props.cart.post.adress}
           </Text>
           <Box mt="8">
+            <Text mb="8px">Votre adresse</Text>
+            <Input
+              name="user_adress"
+              onChange={handleInputChange}
+              placeholder="écrivez votre adresse ici "
+              size="sm"
+            />
+          </Box>
+          <Box mt="8">
             <Text mb="8px">Commentair</Text>
-            <Textarea placeholder="Write a comment " size="sm" />
+            <Textarea
+              name="comment"
+              onChange={handleInputChange}
+              placeholder="Write a comment "
+              size="sm"
+            />
           </Box>
           <Flex p="10px" mt="30px" justifyContent="space-between">
             <Text fontSize="lg" fontWeight="black">

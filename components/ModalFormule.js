@@ -16,10 +16,16 @@ import {
   Text,
   Heading,
   SimpleGrid,
+  Radio,
+  RadioGroup,
+  Divider,
 } from '@chakra-ui/core';
+import { connect } from 'react-redux';
+import { addPlate, addFormule, removePlate } from '../redux/actions/cartAction';
 
-export default function ModalFormule({ formule }) {
+function ModalFormule({ removePlate, addPlate, addFormule, formule, post }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const [formuleState, setFormuleState] = React.useState({
     formuleName: '',
     description: '',
@@ -28,6 +34,59 @@ export default function ModalFormule({ formule }) {
     qnt: 1,
     plates: [],
   });
+  const [dishes, setDishes] = React.useState({});
+  React.useEffect(() => {
+    console.log(dishes);
+    setFormuleState((prevState) => ({
+      ...prevState,
+      formuleName: formule.name,
+      description: formule.description,
+      price: formule.price,
+      unit_price: formule.price,
+      plates: [...Object.values(dishes)],
+    }));
+  }, [dishes]);
+  console.log(formuleState);
+
+  const handleFormuleChange = (e, formule) => {
+    e.persist();
+    console.log(e.target.value);
+    console.log(e.target.name);
+    console.log(formule);
+    setDishes((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+
+    //// getting the info from the formule instaed of plates so we good to go
+
+    /// we need to form array from the radio button value
+
+    // let list;
+    // if (e.target.checked) {
+    //   list = formuleState.plates;
+    //   setFormuleState((prevState) => ({
+    //     ...prevState,
+    //     formuleName: plate.name,
+    //     description: plate.description,
+    //     price: plate.price,
+    //     unit_price: plate.price,
+    //     plates: [...list, e.target.value],
+    //   }));
+    // } else {
+    //   list = formuleState.plates.filter((value) => value !== e.target.value);
+    //   setFormuleState((prevState) => ({
+    //     ...prevState,
+    //     formuleName: plate.name,
+    //     description: plate.description,
+    //     price: plate.unit_price,
+    //     unit_price: plate.unit_price,
+    //     plates: [...list],
+    //   }));
+    // }
+  };
+  console.log(dishes);
+
+  const handleFormuleSubmit = async (formule, post) => {
+    await addFormule(formule, post);
+  };
 
   return (
     <Box
@@ -50,23 +109,29 @@ export default function ModalFormule({ formule }) {
           <ModalCloseButton />
           <ModalBody>
             <Stack>
-              {formule.formule_categories.map((cat) => (
+              {formule.formule_categories.map((cat, i) => (
                 <>
-                  <Heading mb="2" mt="2" size="xl">
+                  <Heading color="gray.600" mb="2" mt="2" size="lg">
                     {cat.name}
                   </Heading>
-                  <CheckboxGroup>
+                  <RadioGroup
+                    bg="gray.50"
+                    p="15px"
+                    name={i}
+                    onChange={(e) => handleFormuleChange(e, formule)}
+                  >
                     {cat.plats.map((plate) => (
-                      <Checkbox
+                      <Radio
                         // isChecked={formuleState.plates.includes(plato.name)}
-                        //   onChange={(e) => handleFormuleChange(e, plate)}
+
                         name={plate.name}
                         value={plate.name}
                       >
                         {plate.name}
-                      </Checkbox>
+                      </Radio>
                     ))}
-                  </CheckboxGroup>
+                  </RadioGroup>
+                  <Divider></Divider>
                 </>
               ))}
             </Stack>
@@ -75,13 +140,13 @@ export default function ModalFormule({ formule }) {
 
           <ModalFooter>
             <Button
-              //   isDisabled={formuleState.plates[0] === undefined}
+              isDisabled={formule.formule_categories.length !== Object.values(dishes).length}
               variantColor="blue"
               mr={3}
-              //   onClick={() => {
-              //     handleFormuleSubmit(formuleState, post);
-              //     onClose();
-              //   }}
+              onClick={() => {
+                handleFormuleSubmit(formuleState, post);
+                onClose();
+              }}
             >
               Add Formule
             </Button>
@@ -94,3 +159,17 @@ export default function ModalFormule({ formule }) {
     </Box>
   );
 }
+
+const mapStateToProps = (state) => {
+  return { cart: state.cart };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addPlate: (plate, post) => dispatch(addPlate(plate, post)),
+    addFormule: (formule, post) => dispatch(addFormule(formule, post)),
+    removePlate: (plate) => dispatch(removePlate(plate)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalFormule);

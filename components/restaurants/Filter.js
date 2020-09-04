@@ -20,12 +20,13 @@ import {
 } from '@chakra-ui/core';
 import { FaFilter, FaEuroSign } from 'react-icons/fa';
 
-export default function Filter({ setFilter }) {
+export default function Filter({ setFilter, filter }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
   const handleCheck = (e) => {
     e.persist();
+    console.log(e.target.value);
     setFilter((prevState) => ({ ...prevState, distance: e.target.value }));
   };
 
@@ -69,7 +70,7 @@ export default function Filter({ setFilter }) {
 
                 <Text fontSize="xl">- de 5000 km</Text>
               </Flex>
-              <RadioGroup onChange={handleCheck} defaultValue="1">
+              <RadioGroup onChange={handleCheck} defaultValue={filter.distance}>
                 <Radio size="lg" name="hdsqj" value="1000"></Radio>
                 <Radio size="lg" name="distance" value="2000"></Radio>
                 <Radio size="lg" name="distance" value="3000"></Radio>

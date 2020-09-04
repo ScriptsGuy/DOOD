@@ -36,7 +36,7 @@ export default function PlateModal({
     <Box p="30px">
       <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
         {post.formules.map((formule) => (
-          <ModalFormule formuleState={formuleState} formule={formule}></ModalFormule>
+          <ModalFormule formuleState={formuleState} post={post} formule={formule}></ModalFormule>
         ))}
       </SimpleGrid>
     </Box>

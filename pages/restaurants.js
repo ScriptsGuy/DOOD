@@ -65,7 +65,7 @@ function details(props) {
   /////////////////
 
   const [filter, setFilter] = useState({
-    distance: null,
+    distance: '5000',
     latitude: props.position.latitude,
     longtitude: props.position.longitude,
     apiKey: 'azerty',
@@ -118,7 +118,7 @@ function details(props) {
           direction={['row', 'row', 'row', 'row']}
           //   align="center"
         >
-          <Filter setFilter={setFilter}></Filter>
+          <Filter filter={filter} setFilter={setFilter}></Filter>
           {props.cat.map((res) => {
             return (
               <Tag
