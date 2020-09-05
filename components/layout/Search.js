@@ -92,11 +92,13 @@ function Search(props) {
                   _hover={{ bg: 'gray.100' }}
                 >
                   <Grid gridTemplateColumns={'0.5fr 1fr'}>
-                    <img
-                      src={`https://dood.devzone-dz.com/storage/${hit.image}`}
-                      align="left"
-                      alt={hit.name}
-                    />
+                    <Box overflow="hidden" height="100px" width="200px">
+                      <img
+                        src={`https://dood.devzone-dz.com/storage/${hit.image}`}
+                        align="left"
+                        alt={hit.name}
+                      />
+                    </Box>
                     <Box pl="4">
                       <Heading size="lg" color="gray.600">
                         {hit.name}

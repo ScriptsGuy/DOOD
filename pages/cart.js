@@ -8,6 +8,7 @@ import { removePlate, removeFormule } from '../redux/actions/cartAction';
 
 function cart(props) {
   const [info, setInfo] = React.useState();
+  const [order, setOrder] = React.useState();
 
   const handleInputChange = (e) => {
     e.persist();
@@ -19,8 +20,8 @@ function cart(props) {
   }, []);
 
   return (
-    <Box mt="92.43px" p={['10px', '30px', '30px', '30px']}>
-      <Grid gridTemplateColumns={['1fr ', '1fr ', '1fr 1.5fr', '1fr 1.5fr']}>
+    <Box position="relative" className="cart" mt="92.43px" p={['10px', '30px', '30px', '30px']}>
+      <Grid gridTemplateColumns={['1fr ', '1fr ', '1.5fr 1fr', '1.5fr 1fr']}>
         <Box m="2" p="20px" bg="white">
           <Heading mb="6" size="xl">
             Commande
@@ -97,42 +98,44 @@ function cart(props) {
             </Text>
           </Flex>
         </Box>
-        <Box height="600px" m="2" p="30px" bg="white">
-          <Heading mb="6" size="xl">
-            Votre rendez-vous
-          </Heading>
-          <Text fontSize="lg">{props.cart.restName}</Text>
-          <Text color="gray.500" fontSize="lg">
-            {props.cart.post !== null && props.cart.post.adress}
-          </Text>
-          <Box mt="8">
-            <Text mb="8px">Votre adresse</Text>
-            <Input
-              name="user_adress"
-              onChange={handleInputChange}
-              placeholder="écrivez votre adresse ici "
-              size="sm"
-            />
-          </Box>
-          <Box mt="8">
-            <Text mb="8px">Commentair</Text>
-            <Textarea
-              name="comment"
-              onChange={handleInputChange}
-              placeholder="Write a comment "
-              size="sm"
-            />
-          </Box>
-          <Flex p="10px" mt="30px" justifyContent="space-between">
-            <Text fontSize="lg" fontWeight="black">
-              Total
+        <Box position="relative">
+          <Box position="sticky" top="80px" height="600px" m="2" p="30px" bg="white">
+            <Heading mb="6" size="xl">
+              Votre rendez-vous
+            </Heading>
+            <Text fontSize="lg">{props.cart.restName}</Text>
+            <Text color="gray.500" fontSize="lg">
+              {props.cart.post !== null && props.cart.post.adress}
             </Text>
-            <Text fontSize="lg" fontWeight="black">
-              {props.cart.totalPrice}$
-            </Text>
-          </Flex>
-          <Box display="flex" justifyContent="flex-end" mt="8">
-            <Button variantColor="teal">Complete Order</Button>
+            <Box mt="8">
+              <Text mb="8px">Votre adresse</Text>
+              <Input
+                name="user_adress"
+                onChange={handleInputChange}
+                placeholder="écrivez votre adresse ici "
+                size="sm"
+              />
+            </Box>
+            <Box mt="8">
+              <Text mb="8px">Commentair</Text>
+              <Textarea
+                name="comment"
+                onChange={handleInputChange}
+                placeholder="Write a comment "
+                size="sm"
+              />
+            </Box>
+            <Flex p="10px" mt="30px" justifyContent="space-between">
+              <Text fontSize="lg" fontWeight="black">
+                Total
+              </Text>
+              <Text fontSize="lg" fontWeight="black">
+                {props.cart.totalPrice}$
+              </Text>
+            </Flex>
+            <Box display="flex" justifyContent="flex-end" mt="8">
+              <Button variantColor="teal">Complete Order</Button>
+            </Box>
           </Box>
         </Box>
       </Grid>

@@ -73,7 +73,7 @@ export async function getStaticProps() {
   const res = await fetch(
     'https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=8&offset=0'
   );
-  const catres = await fetch(`https://dood.devzone-dz.com/api/allCategrories`);
+  const catres = await fetch(`https://dood.devzone-dz.com/api/allCategories`);
   const posts = await res.json();
   const cat = await catres.json();
   console.log(cat);

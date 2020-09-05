@@ -111,9 +111,12 @@ const Navbar = (props) => {
               >
                 Account <Icon name="chevron-down" />
               </MenuButton>
-              <MenuList>
+              <MenuList shadow="xl">
                 <MenuItem fontSize="lg">
                   <NextLink href="/favories">Favories</NextLink>
+                </MenuItem>
+                <MenuItem fontSize="lg">
+                  <NextLink href="/orders">Orders</NextLink>
                 </MenuItem>
                 <MenuItem>
                   {' '}

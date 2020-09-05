@@ -13,6 +13,7 @@ import { getFilters } from '../redux/actions/restAction';
 
 function details(props) {
   const router = useRouter();
+  console.log(router.query.filter);
 
   const toast = useToast();
   const obj = {};
@@ -65,7 +66,11 @@ function details(props) {
 
   useEffect(() => {
     props.getFilters(filter);
-  }, [filter, catFilter]);
+    if (router.query.filter !== undefined) {
+      setselected((prevState) => ({ ...prevState, [router.query.filter]: true }));
+      setCatFilter((prevState) => [...prevState, router.query.filter]);
+    }
+  }, [filter]); //it was catFilter in the array
 
   const handleTagClick = (filterParam, param, bol) => {
     if (catFilter.includes(filterParam)) {
@@ -169,7 +174,7 @@ export async function getStaticProps() {
   const res = await fetch(
     `https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=1000&offset=0`
   );
-  const catres = await fetch(`https://dood.devzone-dz.com/api/allCategrories`);
+  const catres = await fetch(`https://dood.devzone-dz.com/api/allCategories`);
   const posts = await res.json();
   const cat = await catres.json();
 

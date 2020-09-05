@@ -99,3 +99,12 @@ a {
   font-size: 14px;
   margin-bottom: 0.5em;
 }
+
+.sticky-order {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0;
+  background-color: yellow;
+  padding: 50px;
+  font-size: 20px;
+}
