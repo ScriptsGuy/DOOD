@@ -44,9 +44,9 @@ function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
     >
       {auth.data && !auth.loading && (
         <>
-          <Heading size="lg" color="gray.500">
-            Vos Favoris
-          </Heading>
+          <Box m="6" textAlign="center">
+            <Heading color="gray.500"> Vos Favoris</Heading>
+          </Box>
           <Box>
             {favs &&
               favs.map((fav) => {

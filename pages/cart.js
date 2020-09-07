@@ -17,6 +17,7 @@ import Quantity from '../components/cart/Quantity';
 import { ClearError } from '../redux/actions/authAction';
 import { removePlate, removeFormule } from '../redux/actions/cartAction';
 import { addOrder } from '../redux/actions/orderAction';
+import Empty from '../components/cart/Empty';
 
 function cart(props) {
   const toast = useToast();
@@ -60,86 +61,103 @@ function cart(props) {
       items,
     }));
   }, [props.cart]);
-  //   console.log(order);
+  console.log(order);
 
   return (
     <Box position="relative" className="cart" mt="92.43px" p={['10px', '30px', '30px', '30px']}>
       <Grid gridTemplateColumns={['1fr ', '1fr ', '1.5fr 1fr', '1.5fr 1fr']}>
         <Box m="2" p="20px" bg="white">
-          <Heading mb="6" size="xl">
-            Commande
-          </Heading>
-          <Box p="4" borderRadius="5px" border="1px solid gray" mb="20px">
-            <Heading textAlign="center" size="lg">
-              Formules
-            </Heading>
-            {props.cart.formules.map((formule) => {
-              return (
-                <Box>
-                  <Heading color="gray.600" size="md">
-                    {formule.formuleName}
-                  </Heading>
-                  {/* <Text color="gray.500">{formule.description}</Text> */}
-                  <Text color="gray.500">{formule.plates.join(' + ')}</Text>
-                  <Flex mt="2" justifyContent="space-between">
-                    <Quantity formule={formule}></Quantity>
-                    <Text mt="20px" color="gray.600" fontWeight="black">
-                      {formule.price}$
-                    </Text>
-                  </Flex>
-                  <Flex mb="3" justifyContent="flex-end">
-                    <Button
-                      onClick={() => props.removeFormule(formule)}
-                      variantColor="red"
-                      variant="link"
-                    >
-                      remove
-                    </Button>
-                  </Flex>
-                  <Divider></Divider>
-                </Box>
-              );
-            })}
-          </Box>
-          <Box p="4" borderRadius="5px" border="1px solid gray">
-            <Heading size="lg" textAlign="center">
-              Plates
-            </Heading>
-            {props.cart.plates.map((plate) => {
-              return (
-                <Box>
-                  <Heading color="gray.600" size="md">
-                    {plate.name}
-                  </Heading>
-                  <Text color="gray.500">{plate.description}</Text>
-                  <Flex mt="2" justifyContent="space-between">
-                    <Quantity plate={plate}></Quantity>
-                    <Text mt="20px" color="gray.600" fontWeight="black">
-                      {plate.price}$
-                    </Text>
-                  </Flex>
-                  <Flex mb="3" justifyContent="flex-end">
-                    <Button
-                      onClick={() => props.removePlate(plate)}
-                      variantColor="red"
-                      variant="link"
-                    >
-                      remove
-                    </Button>
-                  </Flex>
-                  <Divider></Divider>
-                </Box>
-              );
-            })}
-          </Box>
-          <Flex mt="30px" justifyContent="space-between">
-            <Text fontSize="lg" fontWeight="black">
-              Total
-            </Text>
-            <Text fontSize="lg" fontWeight="black">
-              {props.cart.totalPrice}$
-            </Text>
-          </Flex>
+          {props.cart.formules[0] === undefined ? (
+            <Box mt="8" width="100%" h="80%">
+              <Box display="flex" justifyContent="center">
+                <Empty></Empty>
+                {/* <Heading size="lg" color="gray.400">
+                  Empty Cart
+                </Heading> */}
+              </Box>
+              <Box mt="6" textAlign="center">
+                <Heading color="gray.300">Empty Cart</Heading>
+              </Box>
+            </Box>
+          ) : (
+            <>
+              <Heading mb="6" size="xl">
+                Commande
+              </Heading>
+              <Box p="4" borderRadius="5px" border="1px solid gray" mb="20px">
+                <Heading textAlign="center" size="lg">
+                  Formules
+                </Heading>
+
+                {props.cart.formules.map((formule) => {
+                  return (
+                    <Box>
+                      <Heading color="gray.600" size="md">
+                        {formule.formuleName}
+                      </Heading>
+                      {/* <Text color="gray.500">{formule.description}</Text> */}
+                      <Text color="gray.500">{formule.plates.join(' + ')}</Text>
+                      <Flex mt="2" justifyContent="space-between">
+                        <Quantity formule={formule}></Quantity>
+                        <Text mt="20px" color="gray.600" fontWeight="black">
+                          {formule.price}$
+                        </Text>
+                      </Flex>
+                      <Flex mb="3" justifyContent="flex-end">
+                        <Button
+                          onClick={() => props.removeFormule(formule)}
+                          variantColor="red"
+                          variant="link"
+                        >
+                          remove
+                        </Button>
+                      </Flex>
+                      <Divider></Divider>
+                    </Box>
+                  );
+                })}
+              </Box>
+              <Box p="4" borderRadius="5px" border="1px solid gray">
+                <Heading size="lg" textAlign="center">
+                  Plates
+                </Heading>
+                {props.cart.plates.map((plate) => {
+                  return (
+                    <Box>
+                      <Heading color="gray.600" size="md">
+                        {plate.name}
+                      </Heading>
+                      <Text color="gray.500">{plate.description}</Text>
+                      <Flex mt="2" justifyContent="space-between">
+                        <Quantity plate={plate}></Quantity>
+                        <Text mt="20px" color="gray.600" fontWeight="black">
+                          {plate.price}$
+                        </Text>
+                      </Flex>
+                      <Flex mb="3" justifyContent="flex-end">
+                        <Button
+                          onClick={() => props.removePlate(plate)}
+                          variantColor="red"
+                          variant="link"
+                        >
+                          remove
+                        </Button>
+                      </Flex>
+                      <Divider></Divider>
+                    </Box>
+                  );
+                })}
+              </Box>
+              <Flex mt="30px" justifyContent="space-between">
+                <Text fontSize="lg" fontWeight="black">
+                  Total
+                </Text>
+                <Text fontSize="lg" fontWeight="black">
+                  {props.cart.totalPrice}$
+                </Text>
+              </Flex>
+            </>
+          )}
         </Box>
         <Box position="relative">
           <Box position="sticky" top="80px" height="650px" m="2" p="30px" bg="white">
@@ -188,7 +206,9 @@ function cart(props) {
             <Box display="flex" justifyContent="flex-end" mt="8">
               <Button
                 isLoading={props.order.loading}
-                isDisabled={!order.phone || !order.adress || !order.comment}
+                isDisabled={
+                  !order.phone || !order.adress || !order.comment || order.items[0] === undefined
+                }
                 variantColor="teal"
                 onClick={() => {
                   if (!props.auth.data) {

@@ -3,6 +3,7 @@ import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import Router, { useRouter } from 'next/router';
 import dayjs from 'dayjs';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 
 import { getOrders } from '../redux/actions/orderAction';
 
@@ -27,24 +28,35 @@ function Orders({ orders, auth, getOrders }) {
     >
       {auth.data && !auth.loading && (
         <>
-          <Heading>orders page</Heading>
-          <SimpleGrid p="20px" bg="gray.50" mt="40px" columns={5} spacing={10}>
-            <Heading size="md">id</Heading>
-            <Heading size="md">Adress</Heading>
-            <Heading size="md">Method</Heading>
-            <Heading size="md">Order Status</Heading>
-            <Heading size="md">Created At</Heading>
-            {orders &&
-              orders.map((order) => (
-                <>
-                  <p>{order.id}</p>
-                  <p>{order.adress}</p>
-                  <p>{order.method}</p>
-                  <p>{order.order_status}</p>
-                  <p>{dayjs(order.created_at).format('DD/mm/YYYY')}</p>
-                </>
-              ))}
-          </SimpleGrid>
+          <Box m="6" textAlign="center">
+            <Heading color="gray.500">orders page</Heading>
+          </Box>
+
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>id</Th>
+                <Th>Adress</Th>
+                <Th>Method</Th>
+                <Th>Order Status</Th>
+                <Th>Created At</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {orders &&
+                orders.map((order) => (
+                  <>
+                    <Tr>
+                      <Td>{order.id}</Td>
+                      <Td>{order.adress}</Td>
+                      <Td>{order.method}</Td>
+                      <Td>{order.order_status}</Td>
+                      <Td>{dayjs(order.created_at).format('DD/mm/YYYY')}</Td>
+                    </Tr>
+                  </>
+                ))}
+            </Tbody>
+          </Table>
         </>
       )}
     </Box>

@@ -11,6 +11,7 @@ import { useStore } from '../redux/store';
 
 import '../styles/globals.css';
 import '../styles/nprogress.css';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';

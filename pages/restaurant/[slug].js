@@ -25,7 +25,7 @@ import { AlgoSearch } from '../../redux/actions/searchAction';
 
 import Plat from '../../components/Plat';
 
-import MapDrawer from '../../components/restaurants/MapDrawer';
+// import MapDrawer from '../../components/restaurants/MapDrawer';
 
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
@@ -198,9 +198,9 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
               </Box>
             </Flex>
           </Box>
-          <Box pr="50px" pl="50px">
+          {/* <Box pr="50px" pl="50px">
             <MapDrawer></MapDrawer>
-          </Box>
+          </Box> */}
           <Box mt="20px" pr="50px" pl="50px">
             <Text fontSize="2xl">Choisissez votre créneau de retrait</Text>
             <Box mt="10px" textAlign="center" bg="gray.700" w="100%" p={4} color="white">
