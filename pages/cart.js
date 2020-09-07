@@ -5,19 +5,49 @@ import { connect } from 'react-redux';
 import Quantity from '../components/cart/Quantity';
 import { ClearError } from '../redux/actions/authAction';
 import { removePlate, removeFormule } from '../redux/actions/cartAction';
+import { addOrder } from '../redux/actions/orderAction';
 
 function cart(props) {
-  const [info, setInfo] = React.useState();
-  const [order, setOrder] = React.useState();
+  const [order, setOrder] = React.useState({
+    adress: null,
+    comment: null,
+    phone: null,
+    restaurant_id: null,
+    items: null,
+    amount: null,
+  });
+
+  let items;
+  let reshapedFormules;
+  let reshapedPlates;
 
   const handleInputChange = (e) => {
     e.persist();
-    setInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setOrder((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+  const handleSubmit = () => {};
 
   React.useEffect(() => {
     props.ClearError();
-  }, []);
+    reshapedPlates = props.cart.plates.map((plate) => {
+      return { item: plate.name, price: plate.price, quantity: plate.qnt };
+    });
+    reshapedFormules = props.cart.formules.map((formule) => {
+      return { item: formule.plates.join(' + '), price: formule.price, quantity: formule.qnt };
+    });
+    items = [...reshapedFormules, ...reshapedPlates];
+    // console.log(reshapedPlates);
+    // console.log(reshapedFormules);
+    // console.log(props.cart);
+    // console.log(items);
+    setOrder((prev) => ({
+      ...prev,
+      amount: props.cart.totalPrice,
+      restaurant_id: props.cart.restId,
+      items,
+    }));
+  }, [props.cart]);
+  //   console.log(order);
 
   return (
     <Box position="relative" className="cart" mt="92.43px" p={['10px', '30px', '30px', '30px']}>
@@ -99,7 +129,7 @@ function cart(props) {
           </Flex>
         </Box>
         <Box position="relative">
-          <Box position="sticky" top="80px" height="600px" m="2" p="30px" bg="white">
+          <Box position="sticky" top="80px" height="650px" m="2" p="30px" bg="white">
             <Heading mb="6" size="xl">
               Votre rendez-vous
             </Heading>
@@ -110,9 +140,18 @@ function cart(props) {
             <Box mt="8">
               <Text mb="8px">Votre adresse</Text>
               <Input
-                name="user_adress"
+                name="adress"
                 onChange={handleInputChange}
                 placeholder="écrivez votre adresse ici "
+                size="sm"
+              />
+            </Box>
+            <Box mt="8">
+              <Text mb="8px">Phone Number</Text>
+              <Input
+                name="phone"
+                onChange={handleInputChange}
+                placeholder="écrivez votre numero ici "
                 size="sm"
               />
             </Box>
@@ -134,7 +173,14 @@ function cart(props) {
               </Text>
             </Flex>
             <Box display="flex" justifyContent="flex-end" mt="8">
-              <Button variantColor="teal">Complete Order</Button>
+              <Button
+                isLoading={props.order.loading}
+                isDisabled={!order.phone || !order.adress || !order.comment}
+                variantColor="teal"
+                onClick={() => props.addOrder(order)}
+              >
+                Complete Order
+              </Button>
             </Box>
           </Box>
         </Box>
@@ -144,13 +190,14 @@ function cart(props) {
 }
 
 const mapStateToProps = (state) => {
-  return { cart: state.cart };
+  return { cart: state.cart, order: state.order };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     ClearError: () => dispatch(ClearError()),
     removePlate: (plate) => dispatch(removePlate(plate)),
     removeFormule: (formule) => dispatch(removeFormule(formule)),
+    addOrder: (order) => dispatch(addOrder(order)),
   };
 };
 
