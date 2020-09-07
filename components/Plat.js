@@ -104,8 +104,8 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
     if (bol) {
       removePlate(plate);
       toast({
-        title: 'Plate removed ',
-        description: 'the plate has been removed from your cart',
+        title: 'plaque retirée ',
+        description: 'la plaque a été retirée de votre panier',
         status: 'warning',
         duration: 2000,
         isClosable: true,
@@ -114,8 +114,8 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
     } else {
       addPlate(plate, post);
       toast({
-        title: 'Plate added ',
-        description: 'Go to your cart to complete the order',
+        title: 'Plaque ajoutée ',
+        description: 'allez dans votre panier pour terminer la commande',
         status: 'info',
         duration: 2000,
         isClosable: true,

@@ -100,10 +100,10 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
           toast({
             position: 'top-right',
 
-            title: 'You not loggedin',
-            description: 'You need to login to add favorites',
+            title: "Vous n'êtes pas connecté",
+            description: 'Vous devez vous connecter pour ajouter des favoris',
             status: 'info',
-            duration: 4000,
+            duration: 3000,
             isClosable: true,
           });
         }}
@@ -135,10 +135,10 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
               toast({
                 position: 'top-right',
 
-                title: 'Favorite added',
-                description: 'The restaurants has been added to your favourites',
+                title: 'Favori ajouté',
+                description: 'Le restaurant a été ajouté à vos favoris',
                 status: 'success',
-                duration: 4000,
+                duration: 3000,
                 isClosable: true,
               });
             }}

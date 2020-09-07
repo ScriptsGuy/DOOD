@@ -29,17 +29,17 @@ function Orders({ orders, auth, getOrders }) {
       {auth.data && !auth.loading && (
         <>
           <Box m="6" textAlign="center">
-            <Heading color="gray.500">orders page</Heading>
+            <Heading color="gray.500">Vos Commandes</Heading>
           </Box>
 
           <Table>
             <Thead>
               <Tr>
                 <Th>id</Th>
-                <Th>Adress</Th>
-                <Th>Method</Th>
-                <Th>Order Status</Th>
-                <Th>Created At</Th>
+                <Th>Adresse</Th>
+                <Th>Méthode</Th>
+                <Th>Statut de la commande</Th>
+                <Th>Créé à</Th>
               </Tr>
             </Thead>
             <Tbody>

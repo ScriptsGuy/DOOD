@@ -121,7 +121,7 @@ const Navbar = (props) => {
                 <MenuItem>
                   {' '}
                   <Text onClick={() => props.Logout()} cursor={'pointer'} fontSize="lg">
-                    Logout
+                    Se déconnecter
                   </Text>
                 </MenuItem>
               </MenuList>

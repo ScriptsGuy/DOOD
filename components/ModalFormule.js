@@ -69,8 +69,8 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
   const handleFormuleSubmit = async (formule, post) => {
     await addFormule(formule, post);
     toast({
-      title: 'Formule added ',
-      description: 'Go to your cart to complete the order',
+      title: 'formule ajoutée',
+      description: 'allez dans votre panier pour terminer la commande',
       status: 'info',
       duration: 2000,
       isClosable: true,
@@ -88,8 +88,8 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
         if (selected[formule.name]) {
           removeFormule(formuleState);
           toast({
-            title: 'Formule removed ',
-            description: 'the formule has been removed from your cart',
+            title: 'Formule supprimée ',
+            description: 'la formule a été supprimée de votre panier',
             status: 'warning',
             duration: 2000,
             isClosable: true,
@@ -136,7 +136,7 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
                     {cat.plats.map((plate) => (
                       <Radio
                         // isChecked={formuleState.plates.includes(plato.name)}
-
+                        size="lg"
                         name={plate.name}
                         value={plate.name}
                       >
@@ -161,7 +161,7 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
                 onClose();
               }}
             >
-              Add Formule
+              ajouter une formule
             </Button>
           </ModalFooter>
         </ModalContent>

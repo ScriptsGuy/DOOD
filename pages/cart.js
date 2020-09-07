@@ -67,7 +67,7 @@ function cart(props) {
     <Box position="relative" className="cart" mt="92.43px" p={['10px', '30px', '30px', '30px']}>
       <Grid gridTemplateColumns={['1fr ', '1fr ', '1.5fr 1fr', '1.5fr 1fr']}>
         <Box m="2" p="20px" bg="white">
-          {props.cart.formules[0] === undefined ? (
+          {props.cart.formules[0] === undefined && props.cart.plates[0] === undefined ? (
             <Box mt="8" width="100%" h="80%">
               <Box display="flex" justifyContent="center">
                 <Empty></Empty>
@@ -76,7 +76,7 @@ function cart(props) {
                 </Heading> */}
               </Box>
               <Box mt="6" textAlign="center">
-                <Heading color="gray.300">Empty Cart</Heading>
+                <Heading color="gray.300">Panier Vide</Heading>
               </Box>
             </Box>
           ) : (
@@ -109,7 +109,7 @@ function cart(props) {
                           variantColor="red"
                           variant="link"
                         >
-                          remove
+                          retirer
                         </Button>
                       </Flex>
                       <Divider></Divider>
@@ -119,7 +119,7 @@ function cart(props) {
               </Box>
               <Box p="4" borderRadius="5px" border="1px solid gray">
                 <Heading size="lg" textAlign="center">
-                  Plates
+                  Assiettes
                 </Heading>
                 {props.cart.plates.map((plate) => {
                   return (
@@ -140,7 +140,7 @@ function cart(props) {
                           variantColor="red"
                           variant="link"
                         >
-                          remove
+                          retirer
                         </Button>
                       </Flex>
                       <Divider></Divider>
@@ -178,7 +178,7 @@ function cart(props) {
               />
             </Box>
             <Box mt="8">
-              <Text mb="8px">Phone Number</Text>
+              <Text mb="8px">numéro de téléphone</Text>
               <Input
                 name="phone"
                 onChange={handleInputChange}
@@ -214,8 +214,8 @@ function cart(props) {
                   if (!props.auth.data) {
                     toast({
                       position: 'top-right',
-                      title: 'You not loggedin',
-                      description: 'You need to login to add order',
+                      title: "Vous n'êtes pas connecté",
+                      description: 'Vous devez vous connecter pour ajouter une commande',
                       status: 'info',
                       duration: 4000,
                       isClosable: true,
@@ -225,7 +225,7 @@ function cart(props) {
                   }
                 }}
               >
-                Complete Order
+                Complétez la commande
               </Button>
             </Box>
           </Box>
