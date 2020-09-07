@@ -50,6 +50,7 @@ export const addOrder = (order) => async (dispatch, getState) => {
     })
     .catch((err) => {
       console.log(err);
+      dispatch({ type: t.ORDER_ERROR });
     });
 
   console.log(data);

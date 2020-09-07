@@ -1,6 +1,7 @@
 export const ADD_PLATE = 'ADD_PLATE';
 export const ADD_ORDER = 'ADD_ORDER';
 export const ORDER_LOADING = 'ORDER_LOADING';
+export const ORDER_ERROR = 'ORDER_ERROR';
 export const GET_ORDERS = 'GET_ORDERS';
 export const PLATE_QNT_UP = 'PLATE_QNT_UP';
 export const FORMULE_QNT_UP = 'FORMULE_QNT_UP';

@@ -1,5 +1,16 @@
 import React from 'react';
-import { Box, Heading, Grid, Text, Divider, Flex, Button, Textarea, Input } from '@chakra-ui/core';
+import {
+  Box,
+  Heading,
+  Grid,
+  Text,
+  Divider,
+  Flex,
+  Button,
+  Textarea,
+  Input,
+  useToast,
+} from '@chakra-ui/core';
 import { connect } from 'react-redux';
 
 import Quantity from '../components/cart/Quantity';
@@ -8,6 +19,8 @@ import { removePlate, removeFormule } from '../redux/actions/cartAction';
 import { addOrder } from '../redux/actions/orderAction';
 
 function cart(props) {
+  const toast = useToast();
+
   const [order, setOrder] = React.useState({
     adress: null,
     comment: null,
@@ -177,7 +190,20 @@ function cart(props) {
                 isLoading={props.order.loading}
                 isDisabled={!order.phone || !order.adress || !order.comment}
                 variantColor="teal"
-                onClick={() => props.addOrder(order)}
+                onClick={() => {
+                  if (!props.auth.data) {
+                    toast({
+                      position: 'top-right',
+                      title: 'You not loggedin',
+                      description: 'You need to login to add order',
+                      status: 'info',
+                      duration: 4000,
+                      isClosable: true,
+                    });
+                  } else {
+                    props.addOrder(order);
+                  }
+                }}
               >
                 Complete Order
               </Button>
@@ -190,7 +216,7 @@ function cart(props) {
 }
 
 const mapStateToProps = (state) => {
-  return { cart: state.cart, order: state.order };
+  return { cart: state.cart, order: state.order, auth: state.auth };
 };
 const mapDispatchToProps = (dispatch) => {
   return {

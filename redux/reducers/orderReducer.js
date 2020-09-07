@@ -25,7 +25,15 @@ const orderReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
+        error: null,
         loading: true,
+      };
+    case t.ORDER_LOADING:
+      console.log(action.payload);
+      return {
+        ...state,
+        error: 'something went wrong',
+        loading: null,
       };
 
     default:
