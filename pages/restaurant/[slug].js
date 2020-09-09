@@ -19,6 +19,10 @@ import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
 import Head from 'next/head';
 import Router from 'next/router';
 import { connect } from 'react-redux';
+import moment from 'moment';
+
+import isOpen from '../../components/isOpen';
+import Open from '../../components/Open';
 
 import { AddFavory, getFilters, getFavories, deleteFavory } from '../../redux/actions/restAction';
 import { AlgoSearch } from '../../redux/actions/searchAction';
@@ -32,6 +36,20 @@ const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, rest, deleteFavory }) {
   const toast = useToast();
   const days = Object.keys(post.opening_hours);
+
+  //   let restStatus = isOpen('8:00', '17:00');
+  let day = moment().format('dddd').toLowerCase();
+  let restDay = post.opening_hours['monday'];
+  let restStatus = restDay.map((range) => {
+    let arr = range.split('-');
+    let openTime = arr[0];
+    let closeTime = arr[1];
+    return isOpen(openTime, closeTime);
+  });
+  let restOpen = restStatus.includes('open');
+
+  console.log('resttttt dayyyyy', restDay);
+  console.log('rest statusssss', restStatus);
 
   let isFav;
 
@@ -55,14 +73,15 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
   isFav = arrOfFavs && arrOfFavs.includes(true);
 
   console.log('favssss', rest.favs);
-  console.log('post', post);
+  //   console.log('post', post);
+  console.log('is favvvv', isFav);
 
   const handleHeart = () => {
     // heart ? setHeart(false) : setHeart(true);
     setHeart(true);
   };
 
-  //   console.log('possssssttttt', post);
+  console.log('possssssttttt', post);
   console.log(heart);
   console.log(isFav);
   const property = {
@@ -203,11 +222,11 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
           </Box> */}
           <Box mt="20px" pr="50px" pl="50px">
             <Text fontSize="2xl">Choisissez votre créneau de retrait</Text>
-            <Box mt="10px" textAlign="center" bg="gray.700" w="100%" p={4} color="white">
+            <Box mb="30px" mt="10px" textAlign="center" bg="gray.700" w="100%" p={4} color="white">
               Les horaires sont variables, ils seront confirmés à la validation de votre commande.
             </Box>
           </Box>
-          <Box mt="20px" pr="50px" pl="50px" mb="30px">
+          {/* <Box mt="20px" pr="50px" pl="50px" mb="30px">
             <Select placeholder="Select the day">
               {days.map((day) => (
                 <>
@@ -215,7 +234,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
                 </>
               ))}
             </Select>
-          </Box>
+          </Box> */}
         </Box>
         <Box
           style={{
@@ -228,7 +247,18 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
           className="detail-image"
         ></Box>
       </SimpleGrid>
-      <Plat post={post}></Plat>
+      {restOpen ? (
+        <Plat post={post}></Plat>
+      ) : (
+        <Box p="40px" bg="white" width="100%" h="80%">
+          <Box display="flex" justifyContent="center">
+            <Open></Open>
+          </Box>
+          <Box mt="6" textAlign="center">
+            <Heading color="gray.600">le restaurant est fermé pour l'instant</Heading>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 }

@@ -3,6 +3,7 @@ import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import Router, { useRouter } from 'next/router';
 import dayjs from 'dayjs';
+import moment from 'moment';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 
 import { getOrders } from '../redux/actions/orderAction';
@@ -51,7 +52,8 @@ function Orders({ orders, auth, getOrders }) {
                       <Td>{order.adress}</Td>
                       <Td>{order.method}</Td>
                       <Td>{order.order_status}</Td>
-                      <Td>{dayjs(order.created_at).format('DD/mm/YYYY')}</Td>
+                      {/* <Td>{dayjs(order.created_at).format('DD/mm/YYYY')}</Td> */}
+                      <Td>{moment(order.created_at).format('DD/MM/YYYY')}</Td>
                     </Tr>
                   </>
                 ))}

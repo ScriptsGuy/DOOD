@@ -14,8 +14,10 @@ function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
     ClearError();
 
     if (!auth.data && !auth.loading) {
+      console.log('redirecting');
       Router.replace('/');
     } else {
+      console.log('stayying');
       getFavories();
     }
   }, []);
