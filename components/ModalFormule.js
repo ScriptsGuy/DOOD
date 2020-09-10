@@ -40,8 +40,8 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
   });
   const [dishes, setDishes] = React.useState({});
   React.useEffect(() => {
-    console.log(Object.values(dishes));
-    console.log(formuleState);
+    // console.log(Object.values(dishes));
+    // console.log(formuleState);
     post.formules.map((formule) => {
       setSelected((prevState) => ({ ...prevState, [formule.name]: false }));
     });
@@ -79,8 +79,8 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
     setDishes({});
   };
 
-  console.log(formule.formule_categories.length);
-  console.log(Object.values(dishes).length);
+  //   console.log(formule.formule_categories.length);
+  //   console.log(Object.values(dishes).length);
 
   return (
     <Box

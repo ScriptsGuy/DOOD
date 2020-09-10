@@ -11,7 +11,7 @@ export const Login = ({ email, password }) => async (dispatch) => {
   const data = await axios
     .post('https://dood.devzone-dz.com/api/login', { email, password }, { headers })
     .then((res) => {
-      console.log(res);
+      //   console.log(res);
       if (res.data.message) {
         dispatch({
           type: t.AUTH_ERROR,
@@ -32,7 +32,7 @@ export const Login = ({ email, password }) => async (dispatch) => {
       });
     });
 
-  console.log(data);
+  //   console.log(data);
 };
 export const Register = ({ name, phone, email, password, confirm_password }) => async (
   dispatch
@@ -45,7 +45,7 @@ export const Register = ({ name, phone, email, password, confirm_password }) => 
       { headers }
     )
     .then((res) => {
-      console.log(res);
+      //   console.log(res);
       dispatch({
         type: t.AUTH_REGISTER,
         payload: res.data,
@@ -59,7 +59,7 @@ export const Register = ({ name, phone, email, password, confirm_password }) => 
       });
     });
 
-  console.log(data);
+  //   console.log(data);
 };
 export const Logout = () => async (dispatch) => {
   console.log('logginout!!!!');

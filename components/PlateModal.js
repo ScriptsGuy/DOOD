@@ -31,7 +31,7 @@ export default function PlateModal({
 }) {
   const [reload, setReload] = React.useState(selected);
   React.useEffect(() => {
-    console.log('reloadeddddddd');
+    // console.log('reloadeddddddd');
   }, [reload]);
   return (
     <Box p="30px">

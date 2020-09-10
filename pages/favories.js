@@ -14,10 +14,10 @@ function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
     ClearError();
 
     if (!auth.data && !auth.loading) {
-      console.log('redirecting');
+      //   console.log('redirecting');
       Router.replace('/');
     } else {
-      console.log('stayying');
+      //   console.log('stayying');
       getFavories();
     }
   }, []);
@@ -53,7 +53,7 @@ function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
             {favs &&
               favs.map((fav) => {
                 return (
-                  <PseudoBox _hover={{ bg: 'gray.50' }}>
+                  <PseudoBox key={fav.favory_id} _hover={{ bg: 'gray.50' }}>
                     <Grid
                       p="3"
                       gridTemplateColumns={[' 1fr ', '0.2fr 1fr ', '0.2fr 1fr ', '0.2fr 1fr ']}

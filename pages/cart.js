@@ -61,25 +61,25 @@ function cart(props) {
       items,
     }));
   }, [props.cart]);
-  console.log(order);
+  //   console.log(order);
 
   return (
     <Box position="relative" className="cart" mt="92.43px" p={['10px', '30px', '30px', '30px']}>
-      <Grid gridTemplateColumns={['1fr ', '1fr ', '1.5fr 1fr', '1.5fr 1fr']}>
-        <Box m="2" p="20px" bg="white">
-          {props.cart.formules[0] === undefined && props.cart.plates[0] === undefined ? (
-            <Box mt="8" width="100%" h="80%">
-              <Box display="flex" justifyContent="center">
-                <Empty></Empty>
-                {/* <Heading size="lg" color="gray.400">
+      {props.cart.formules[0] === undefined && props.cart.plates[0] === undefined ? (
+        <Box bg="white" p="40px" mb="6">
+          <Box display="flex" justifyContent="center">
+            <Empty></Empty>
+            {/* <Heading size="lg" color="gray.400">
                   Empty Cart
                 </Heading> */}
-              </Box>
-              <Box mt="6" textAlign="center">
-                <Heading color="gray.300">Panier Vide</Heading>
-              </Box>
-            </Box>
-          ) : (
+          </Box>
+          <Box mt="6" textAlign="center">
+            <Heading color="gray.400">Panier Vide</Heading>
+          </Box>
+        </Box>
+      ) : (
+        <Grid gridTemplateColumns={['1fr ', '1fr ', '1.5fr 1fr', '1.5fr 1fr']}>
+          <Box m="2" p="20px" bg="white">
             <>
               <Heading mb="6" size="xl">
                 Commande
@@ -157,80 +157,80 @@ function cart(props) {
                 </Text>
               </Flex>
             </>
-          )}
-        </Box>
-        <Box position="relative">
-          <Box position="sticky" top="80px" height="650px" m="2" p="30px" bg="white">
-            <Heading mb="6" size="xl">
-              Votre rendez-vous
-            </Heading>
-            <Text fontSize="lg">{props.cart.restName}</Text>
-            <Text color="gray.500" fontSize="lg">
-              {props.cart.post !== null && props.cart.post.adress}
-            </Text>
-            <Box mt="8">
-              <Text mb="8px">Votre adresse</Text>
-              <Input
-                name="adress"
-                onChange={handleInputChange}
-                placeholder="écrivez votre adresse ici "
-                size="sm"
-              />
-            </Box>
-            <Box mt="8">
-              <Text mb="8px">numéro de téléphone</Text>
-              <Input
-                name="phone"
-                onChange={handleInputChange}
-                placeholder="écrivez votre numero ici "
-                size="sm"
-              />
-            </Box>
-            <Box mt="8">
-              <Text mb="8px">Commentair</Text>
-              <Textarea
-                name="comment"
-                onChange={handleInputChange}
-                placeholder="Write a comment "
-                size="sm"
-              />
-            </Box>
-            <Flex p="10px" mt="30px" justifyContent="space-between">
-              <Text fontSize="lg" fontWeight="black">
-                Total
+          </Box>
+          <Box position="relative">
+            <Box position="sticky" top="80px" height="650px" m="2" p="30px" bg="white">
+              <Heading mb="6" size="xl">
+                Votre rendez-vous
+              </Heading>
+              <Text fontSize="lg">{props.cart.restName}</Text>
+              <Text color="gray.500" fontSize="lg">
+                {props.cart.post !== null && props.cart.post.adress}
               </Text>
-              <Text fontSize="lg" fontWeight="black">
-                {props.cart.totalPrice}$
-              </Text>
-            </Flex>
-            <Box display="flex" justifyContent="flex-end" mt="8">
-              <Button
-                isLoading={props.order.loading}
-                isDisabled={
-                  !order.phone || !order.adress || !order.comment || order.items[0] === undefined
-                }
-                variantColor="teal"
-                onClick={() => {
-                  if (!props.auth.data) {
-                    toast({
-                      position: 'top-right',
-                      title: "Vous n'êtes pas connecté",
-                      description: 'Vous devez vous connecter pour ajouter une commande',
-                      status: 'info',
-                      duration: 4000,
-                      isClosable: true,
-                    });
-                  } else {
-                    props.addOrder(order);
+              <Box mt="8">
+                <Text mb="8px">Votre adresse</Text>
+                <Input
+                  name="adress"
+                  onChange={handleInputChange}
+                  placeholder="écrivez votre adresse ici "
+                  size="sm"
+                />
+              </Box>
+              <Box mt="8">
+                <Text mb="8px">numéro de téléphone</Text>
+                <Input
+                  name="phone"
+                  onChange={handleInputChange}
+                  placeholder="écrivez votre numero ici "
+                  size="sm"
+                />
+              </Box>
+              <Box mt="8">
+                <Text mb="8px">Commentair</Text>
+                <Textarea
+                  name="comment"
+                  onChange={handleInputChange}
+                  placeholder="Write a comment "
+                  size="sm"
+                />
+              </Box>
+              <Flex p="10px" mt="30px" justifyContent="space-between">
+                <Text fontSize="lg" fontWeight="black">
+                  Total
+                </Text>
+                <Text fontSize="lg" fontWeight="black">
+                  {props.cart.totalPrice}$
+                </Text>
+              </Flex>
+              <Box display="flex" justifyContent="flex-end" mt="8">
+                <Button
+                  isLoading={props.order.loading}
+                  isDisabled={
+                    !order.phone || !order.adress || !order.comment || order.items[0] === undefined
                   }
-                }}
-              >
-                Complétez la commande
-              </Button>
+                  variantColor="teal"
+                  onClick={() => {
+                    if (!props.auth.data) {
+                      toast({
+                        position: 'top-right',
+                        title: "Vous n'êtes pas connecté",
+                        description: 'Vous devez vous connecter pour ajouter une commande',
+                        status: 'info',
+                        duration: 4000,
+                        isClosable: true,
+                      });
+                    } else {
+                      props.addOrder(order);
+                    }
+                  }}
+                >
+                  Complétez la commande
+                </Button>
+              </Box>
             </Box>
           </Box>
-        </Box>
-      </Grid>
+        </Grid>
+      )}
     </Box>
   );
 }

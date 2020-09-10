@@ -8,7 +8,7 @@ const initialState = {
 const locReducer = (state = initialState, action) => {
   switch (action.type) {
     case t.GET_LOCATION:
-      console.log(action.payload);
+      //   console.log(action.payload);
       return {
         ...state,
         latitude: action.payload.lat,

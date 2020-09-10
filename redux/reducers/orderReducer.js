@@ -9,27 +9,27 @@ const initialState = {
 const orderReducer = (state = initialState, action) => {
   switch (action.type) {
     case t.GET_ORDERS:
-      console.log(action.payload);
+      //   console.log(action.payload);
       return {
         ...state,
         orders: action.payload,
       };
     case t.ADD_ORDER:
-      console.log(action.payload);
+      //   console.log(action.payload);
       return {
         ...state,
         error: null,
         loading: null,
       };
     case t.ORDER_LOADING:
-      console.log(action.payload);
+      //   console.log(action.payload);
       return {
         ...state,
         error: null,
         loading: true,
       };
     case t.ORDER_LOADING:
-      console.log(action.payload);
+      //   console.log(action.payload);
       return {
         ...state,
         error: 'something went wrong',

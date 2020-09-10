@@ -26,7 +26,7 @@ export default function Filter({ setFilter, filter }) {
 
   const handleCheck = (e) => {
     e.persist();
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setFilter((prevState) => ({ ...prevState, distance: e.target.value }));
   };
 

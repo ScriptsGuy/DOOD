@@ -8,7 +8,7 @@ export default function isOpen(openTime, closeTime, timezone) {
 
   // get the current date and time in the given time zone
   const now = moment();
-  console.log(now);
+  //   console.log(now);
 
   // Get the exact open and close times on that date in the given time zone
   // See https://github.com/moment/moment-timezone/issues/119

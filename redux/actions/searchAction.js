@@ -2,7 +2,7 @@ import * as t from '../types';
 import algoliasearch from 'algoliasearch/lite';
 
 export const AlgoSearch = (query) => async (dispatch, getState) => {
-  console.log('actionnnnnnn', query.typeof);
+  //   console.log('actionnnnnnn', query.typeof);
 
   const searchClient = algoliasearch('LMQ49UKOZA', 'a9adf7fd5943a630c82a62024c953e6e');
   const index = searchClient.initIndex('restaurants');
@@ -17,7 +17,7 @@ export const AlgoSearch = (query) => async (dispatch, getState) => {
     dispatch({ type: t.ALGO_CLEAR });
   } else {
     const result = await index.search(query);
-    console.log(result.hits);
+    // console.log(result.hits);
     if (result.hits[0] !== undefined) {
       dispatch({ type: t.ALGO_SEARCH, payload: result.hits });
     }

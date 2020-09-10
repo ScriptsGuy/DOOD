@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import Router, { useRouter } from 'next/router';
-import dayjs from 'dayjs';
 import moment from 'moment';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 
@@ -13,11 +12,11 @@ function Orders({ orders, auth, getOrders }) {
     if (!auth.data && !auth.loading) {
       Router.replace('/');
     } else {
-      console.log('order getttt');
+      //   console.log('order getttt');
       getOrders();
     }
   }, []);
-  console.log(orders);
+  //   console.log(orders);
   return (
     <Box
       bg="white"
@@ -46,7 +45,7 @@ function Orders({ orders, auth, getOrders }) {
             <Tbody>
               {orders &&
                 orders.map((order) => (
-                  <>
+                  <React.Fragment key={order.id}>
                     <Tr>
                       <Td>{order.id}</Td>
                       <Td>{order.adress}</Td>
@@ -55,7 +54,7 @@ function Orders({ orders, auth, getOrders }) {
                       {/* <Td>{dayjs(order.created_at).format('DD/mm/YYYY')}</Td> */}
                       <Td>{moment(order.created_at).format('DD/MM/YYYY')}</Td>
                     </Tr>
-                  </>
+                  </React.Fragment>
                 ))}
             </Tbody>
           </Table>

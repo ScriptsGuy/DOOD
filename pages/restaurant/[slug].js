@@ -39,7 +39,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
 
   //   let restStatus = isOpen('8:00', '17:00');
   let day = moment().format('dddd').toLowerCase();
-  let restDay = post.opening_hours['monday'];
+  let restDay = post.opening_hours[day];
   let restStatus = restDay.map((range) => {
     let arr = range.split('-');
     let openTime = arr[0];
@@ -48,8 +48,8 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
   });
   let restOpen = restStatus.includes('open');
 
-  console.log('resttttt dayyyyy', restDay);
-  console.log('rest statusssss', restStatus);
+  //   console.log('resttttt dayyyyy', restDay);
+  //   console.log('rest statusssss', restStatus);
 
   let isFav;
 
@@ -72,18 +72,18 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
 
   isFav = arrOfFavs && arrOfFavs.includes(true);
 
-  console.log('favssss', rest.favs);
+  //   console.log('favssss', rest.favs);
   //   console.log('post', post);
-  console.log('is favvvv', isFav);
+  //   console.log('is favvvv', isFav);
 
   const handleHeart = () => {
     // heart ? setHeart(false) : setHeart(true);
     setHeart(true);
   };
 
-  console.log('possssssttttt', post);
-  console.log(heart);
-  console.log(isFav);
+  //   console.log('possssssttttt', post);
+  //   console.log(heart);
+  //   console.log(isFav);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with coll',
@@ -250,11 +250,11 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
       {restOpen ? (
         <Plat post={post}></Plat>
       ) : (
-        <Box p="40px" bg="white" width="100%" h="80%">
+        <Box p="40px" bg="white" width="100%">
           <Box display="flex" justifyContent="center">
             <Open></Open>
           </Box>
-          <Box mt="6" textAlign="center">
+          <Box mt="20px" textAlign="center">
             <Heading color="gray.600">le restaurant est fermé pour l'instant</Heading>
           </Box>
         </Box>

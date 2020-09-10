@@ -6,8 +6,8 @@ export default function Empty() {
       id="ffc6eb9a-0ec0-429c-85a8-ff38b44048bf"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
-      width="50%"
-      height="50%"
+      width="300"
+      height="200"
       viewBox="0 0 896 747.97143"
     >
       <title>empty_cart</title>

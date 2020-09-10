@@ -11,7 +11,7 @@ import Mobile from '../components/home/Mobile';
 import Description from '../components/home/Description';
 
 export default function Home(props) {
-  console.log(props.cat);
+  //   console.log(props.cat);
   return (
     <Box>
       <Head>
@@ -76,7 +76,7 @@ export async function getStaticProps() {
   const catres = await fetch(`https://dood.devzone-dz.com/api/allCategories`);
   const posts = await res.json();
   const cat = await catres.json();
-  console.log(cat);
+  //   console.log(cat);
 
   // By returning { props: posts }, the Blog component
   // will receive `posts` as a prop at build time

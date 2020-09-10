@@ -3,31 +3,31 @@ import React from 'react';
 import { Box, Image, SimpleGrid, Heading, Flex, Link, Skeleton } from '@chakra-ui/core';
 
 export default function Commande(props) {
-  console.log(props.cartegories);
+  //   console.log(props.cartegories);
 
   return (
     <SimpleGrid columns={[3, 5, 5, 7]} spacing={5}>
       {props.cartegories.map((cat) => {
         return (
           <NextLink
+            key={cat.name}
             // href="/restaurants"
             href={{ pathname: `/restaurants/`, query: { filter: cat.name } }}
             as={{ pathname: `/restaurants/`, query: { filter: cat.name } }}
           >
-            <Skeleton isLoaded>
-              <Box cursor="pointer">
-                <Flex direction="column" align="center">
-                  <Image
-                    alt={cat.name}
-                    rounded="3px"
-                    src={`https://dood.devzone-dz.com/storage/${cat.image}`}
-                  ></Image>
-                  <Heading mt="10px" size="lg" color="gray.700">
-                    {cat.name}
-                  </Heading>
-                </Flex>
-              </Box>
-            </Skeleton>
+            <Box cursor="pointer">
+              <Flex direction="column" align="center">
+                <Image
+                  alt={cat.name}
+                  rounded="3px"
+                  src={`https://dood.devzone-dz.com/storage/${cat.image}`}
+                ></Image>
+
+                <Heading mt="10px" size="lg" color="gray.700">
+                  {cat.name}
+                </Heading>
+              </Flex>
+            </Box>
           </NextLink>
         );
       })}

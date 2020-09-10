@@ -27,23 +27,23 @@ const cartReducer = (state = initialState, action) => {
 
     ///////////////////////////////////////////////
     case t.FORMULE_QNT_UP:
-      console.log('formule qnt up', action.payload);
+      //   console.log('formule qnt up', action.payload);
 
       let newQntUpFormules = state.formules.filter((res, i) => {
         if (res.formuleName === action.payload.formuleName) {
           index = i;
-          console.log(index);
+          //   console.log(index);
         }
         return res.formuleName !== action.payload.formuleName;
       });
-      console.log(newQntUpFormules);
+      //   console.log(newQntUpFormules);
       let newUpFormuleObject = {
         ...action.payload,
         qnt: action.payload.qnt + 1,
         price: action.payload.price + action.payload.unit_price,
       };
 
-      console.log(newUpFormuleObject);
+      //   console.log(newUpFormuleObject);
       newQntUpFormules.splice(index, 0, newUpFormuleObject);
       return {
         ...state,
@@ -51,22 +51,22 @@ const cartReducer = (state = initialState, action) => {
         totalPrice: state.totalPrice + action.payload.unit_price,
       };
     case t.FORMULE_QNT_DOWN:
-      console.log('formule qnt down', action.payload);
+      //   console.log('formule qnt down', action.payload);
 
       let newQntDownFormules = state.formules.filter((res, i) => {
         if (res.formuleName === action.payload.formuleName) {
           index = i;
-          console.log(index);
+          //   console.log(index);
         }
         return res.formuleName !== action.payload.formuleName;
       });
-      console.log(newQntDownFormules);
+      //   console.log(newQntDownFormules);
       let newDownFormuleObject = {
         ...action.payload,
         qnt: action.payload.qnt - 1,
         price: action.payload.price - action.payload.unit_price,
       };
-      console.log(newDownFormuleObject);
+      //   console.log(newDownFormuleObject);
       newQntDownFormules.splice(index, 0, newDownFormuleObject);
 
       return {
@@ -75,44 +75,44 @@ const cartReducer = (state = initialState, action) => {
         totalPrice: state.totalPrice - action.payload.unit_price,
       };
     case t.PLATE_QNT_UP:
-      console.log('plate qnt up', action.payload);
+      //   console.log('plate qnt up', action.payload);
       let newQntUpPlates = state.plates.filter((res, i) => {
         if (res.name === action.payload.name) {
           index = i;
         }
         return res.name !== action.payload.name;
       });
-      console.log(newQntUpPlates);
+      //   console.log(newQntUpPlates);
       let newUpPlateObject = {
         ...action.payload,
         qnt: action.payload.qnt + 1,
         price: action.payload.price + action.payload.unit_price,
       };
-      console.log(newUpPlateObject);
-      console.log(newQntUpPlates);
+      //   console.log(newUpPlateObject);
+      //   console.log(newQntUpPlates);
       newQntUpPlates.splice(index, 0, newUpPlateObject);
-      console.log(newQntUpPlates);
+      //   console.log(newQntUpPlates);
       return {
         ...state,
         plates: [...newQntUpPlates],
         totalPrice: state.totalPrice + action.payload.unit_price,
       };
     case t.PLATE_QNT_DOWN:
-      console.log('plate qnt down', action.payload);
-      console.log('plate qnt up', action.payload);
+      //   console.log('plate qnt down', action.payload);
+      //   console.log('plate qnt up', action.payload);
       let newQntDownPlates = state.plates.filter((res, i) => {
         if (res.name === action.payload.name) {
           index = i;
         }
         return res.name !== action.payload.name;
       });
-      console.log(newQntDownPlates);
+      //   console.log(newQntDownPlates);
       let newDownPlateObject = {
         ...action.payload,
         qnt: action.payload.qnt - 1,
         price: action.payload.price - action.payload.unit_price,
       };
-      console.log(newDownPlateObject);
+      //   console.log(newDownPlateObject);
       newQntDownPlates.splice(index, 0, newDownPlateObject);
 
       return {
@@ -122,7 +122,7 @@ const cartReducer = (state = initialState, action) => {
       };
     ////////////////////////////////////////////////
     case t.ADD_PLATE:
-      console.log('added', action.payload.post.id);
+      //   console.log('added', action.payload.post.id);
       let oldPlates = state.plates;
       let positivePrice = state.totalPrice + action.payload.plate.price;
       let newPositiveCartNumber = state.cartItemNumber + 1;
@@ -150,7 +150,7 @@ const cartReducer = (state = initialState, action) => {
       }
 
     case t.REMOVE_PLATE:
-      console.log('removed', action.payload);
+      //   console.log('removed', action.payload);
       let newPlates = state.plates.filter((res) => {
         return res.name !== action.payload.name;
       });
@@ -164,7 +164,7 @@ const cartReducer = (state = initialState, action) => {
         cartItemNumber: newNegativeCartNumber,
       };
     case t.ADD_FORMULE:
-      console.log('formule added', action.payload);
+      //   console.log('formule added', action.payload);
       let oldFormules = state.formules;
       let formulePositivePrice = state.totalPrice + action.payload.formule.price;
       let newFormulePositiveCartNumber = state.cartItemNumber + 1;
@@ -190,11 +190,11 @@ const cartReducer = (state = initialState, action) => {
         };
       }
     case t.REMOVE_FORMULE:
-      console.log('formule removed', action.payload);
+      //   console.log('formule removed', action.payload);
       let newFormules = state.formules.filter((res) => {
         return res.formuleName !== action.payload.formuleName;
       });
-      console.log(newFormules);
+      //   console.log(newFormules);
       let negativeFormulePrice =
         state.totalPrice === 0 ? 0 : state.totalPrice - action.payload.price;
       let newNegativeFormuleCartNumber = state.cartItemNumber === 0 ? 0 : state.cartItemNumber - 1;

@@ -66,6 +66,7 @@ function details(props) {
 
   useEffect(() => {
     props.getFilters(filter);
+
     if (router.query.filter !== undefined) {
       setselected((prevState) => ({ ...prevState, [router.query.filter]: true }));
       setCatFilter((prevState) => [...prevState, router.query.filter]);
@@ -113,6 +114,7 @@ function details(props) {
           {props.cat.map((res) => {
             return (
               <Tag
+                key={res.name}
                 flex={{ base: '0 0 auto', sm: '0 0 auto' }}
                 p="3"
                 cursor="pointer"

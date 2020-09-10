@@ -7,7 +7,7 @@ const initialState = {
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case t.ALGO_SEARCH:
-      console.log(action.payload);
+      //   console.log(action.payload);
       return {
         ...state,
         hits: action.payload,

@@ -7,7 +7,7 @@ export default function Open() {
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       width="888"
-      height="485.489"
+      height="200"
       viewBox="0 0 888 485.489"
     >
       <title>breakfast</title>
