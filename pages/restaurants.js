@@ -119,14 +119,14 @@ function details(props) {
                 p="3"
                 cursor="pointer"
                 m="10px"
-                size="lg"
+                size="sm"
                 rounded="full"
                 variant="solid"
                 color={selected[res.name] ? 'white' : 'gray.500'}
                 bg={selected[res.name] ? 'gray.700' : 'gray.100'}
                 onClick={() => handleTagClick(res.name, res.name, selected[res.name])}
               >
-                <TagLabel fontSize="24px">{res.name}</TagLabel>
+                <TagLabel fontSize="18px">{res.name}</TagLabel>
               </Tag>
             );
           })}
@@ -144,7 +144,7 @@ function details(props) {
                   id={post.id}
                   name={post.name}
                   adress={post.adress}
-                  image={`https://dood.devzone-dz.com/storage/${post.image}`}
+                  image={`${process.env.api}/storage/${post.image}`}
                 ></Rec>
               );
             })}
@@ -173,10 +173,8 @@ export async function getStaticProps() {
   // Call an external API endpoint to get posts.
 
   // You can use any data fetching library
-  const res = await fetch(
-    `https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=1000&offset=0`
-  );
-  const catres = await fetch(`https://dood.devzone-dz.com/api/allCategories`);
+  const res = await fetch(`${process.env.api}/api/restaurants?apiKey=azerty&limit=1000&offset=0`);
+  const catres = await fetch(`${process.env.api}/api/allCategories`);
   const posts = await res.json();
   const cat = await catres.json();
 

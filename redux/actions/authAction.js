@@ -8,8 +8,9 @@ const headers = {
 
 export const Login = ({ email, password }) => async (dispatch) => {
   dispatch({ type: t.AUTH_LOADING });
+  console.log(email, password);
   const data = await axios
-    .post('https://dood.devzone-dz.com/api/login', { email, password }, { headers })
+    .post(`${process.env.api}/api/login`, { email, password }, { headers })
     .then((res) => {
       //   console.log(res);
       if (res.data.message) {
@@ -40,7 +41,7 @@ export const Register = ({ name, phone, email, password, confirm_password }) => 
   dispatch({ type: t.AUTH_LOADING });
   const data = await axios
     .post(
-      'https://dood.devzone-dz.com/api/register',
+      `${process.env.api}/api/register`,
       { name, phone, email, password, confirm_password },
       { headers }
     )

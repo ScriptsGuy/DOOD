@@ -44,7 +44,7 @@ function Orders({ orders, auth, getOrders }) {
             </Thead>
             <Tbody>
               {orders &&
-                orders.map((order) => (
+                orders.reverse().map((order) => (
                   <React.Fragment key={order.id}>
                     <Tr>
                       <Td>{order.id}</Td>

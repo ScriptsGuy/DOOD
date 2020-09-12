@@ -26,15 +26,16 @@ function Signin(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  const handleSubmit = (e) => {
-    props.ClearError();
-    props.Login(login);
-    setLogin({ email: '', password: '' });
+  const handleSubmit = async (e) => {
+    // props.ClearError();
+    await props.Login(login);
+    // setLogin({ email: '', password: '' });
   };
 
   const handleChange = (e) => {
     e.persist();
     setLogin((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    console.log(login);
   };
 
   return (

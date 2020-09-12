@@ -73,7 +73,7 @@ function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
                           mb={['10px', '0', '0', '0']}
                           mt={['10px', '0', '0', '0']}
                           rounded="5px"
-                          src={`https://dood.devzone-dz.com/storage/${fav.image}`}
+                          src={`${process.env.api}/storage/${fav.image}`}
                           alt=""
                         />
                       </Link>

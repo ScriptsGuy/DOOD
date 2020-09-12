@@ -94,7 +94,7 @@ function Search(props) {
                   <Grid gridTemplateColumns={'0.5fr 1fr'}>
                     <Box overflow="hidden" height="100px" width="200px">
                       <img
-                        src={`https://dood.devzone-dz.com/storage/${hit.image}`}
+                        src={`${process.env.api}/storage/${hit.image}`}
                         align="left"
                         alt={hit.name}
                       />

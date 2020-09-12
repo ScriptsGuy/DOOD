@@ -38,7 +38,7 @@ export default function Home(props) {
                   id={post.id}
                   name={post.name}
                   adress={post.adress}
-                  image={`https://dood.devzone-dz.com/storage/${post.image}`}
+                  image={`${process.env.api}/storage/${post.image}`}
                 ></Rec>
               );
             })}
@@ -70,10 +70,8 @@ export default function Home(props) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch(
-    'https://dood.devzone-dz.com/api/restaurants?apiKey=azerty&limit=8&offset=0'
-  );
-  const catres = await fetch(`https://dood.devzone-dz.com/api/allCategories`);
+  const res = await fetch(`${process.env.api}/api/restaurants?apiKey=azerty&limit=8&offset=0`);
+  const catres = await fetch(`${process.env.api}/api/allCategories`);
   const posts = await res.json();
   const cat = await catres.json();
   //   console.log(cat);

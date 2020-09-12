@@ -35,7 +35,7 @@ function Signup(props) {
 
   const handleSubmit = (e) => {
     props.Register(login);
-    setLogin({ name: '', phone: null, email: '', password: '', confirm_password: '' });
+    // setLogin({ name: '', phone: null, email: '', password: '', confirm_password: '' });
   };
 
   const handleChange = (e) => {

@@ -20,6 +20,11 @@ import {
   RadioGroup,
   Divider,
   useToast,
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+  AccordionIcon,
 } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import { addPlate, addFormule, removePlate, removeFormule } from '../redux/actions/cartAction';
@@ -124,11 +129,42 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
             <Stack>
               {formule.formule_categories.map((cat, i) => (
                 <>
+                  {/* <Accordion>
+                    <AccordionItem>
+                      <AccordionHeader>
+                        <Box flex="1" textAlign="left">
+                          Section 1 title
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionHeader>
+                      <AccordionPanel pb={4}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.
+                      </AccordionPanel>
+                    </AccordionItem>
+
+                    <AccordionItem>
+                      <AccordionHeader>
+                        <Box flex="1" textAlign="left">
+                          Section 2 title
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionHeader>
+                      <AccordionPanel pb={4}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </Accordion> */}
                   <Heading color="gray.600" mb="2" mt="2" size="lg">
                     {cat.name}
                   </Heading>
                   <RadioGroup
-                    bg="gray.50"
+                    bg="gray.100"
                     p="15px"
                     name={i}
                     onChange={(e) => handleFormuleChange(e, formule)}

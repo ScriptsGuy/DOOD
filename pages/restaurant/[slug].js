@@ -239,7 +239,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
         <Box
           style={{
             background: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://dood.devzone-dz.com/storage/${post.image}')`,
+    url('${process.env.api}/storage/${post.image}')`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -286,7 +286,7 @@ export async function getServerSideProps(ctx) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
   //   console.log(ctx.query);
-  const res = await fetch(`https://dood.devzone-dz.com/api/restaurants/${ctx.query.id}`);
+  const res = await fetch(`${process.env.api}/api/restaurants/${ctx.query.id}`);
   const post = await res.json();
 
   // Pass post data to the page via props

@@ -14,7 +14,7 @@ export const getOrders = () => async (dispatch, getState) => {
   };
 
   const data = await axios
-    .get('https://dood.devzone-dz.com/api/orders', { headers })
+    .get(`${process.env.api}/api/orders`, { headers })
     .then((res) => {
       //   console.log(res);
       dispatch({ type: t.GET_ORDERS, payload: res.data });
@@ -41,7 +41,7 @@ export const addOrder = (order) => async (dispatch, getState) => {
   };
   //   console.log(JSON.stringify(order));
   const data = await axios
-    .post(`https://dood.devzone-dz.com/api/orders`, { ...order, items: newItems }, { headers })
+    .post(`${process.env.api}/api/orders`, { ...order, items: newItems }, { headers })
     .then((res) => {
       //   console.log(res);
       dispatch({ type: t.ADD_ORDER });

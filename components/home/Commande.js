@@ -20,7 +20,7 @@ export default function Commande(props) {
                 <Image
                   alt={cat.name}
                   rounded="3px"
-                  src={`https://dood.devzone-dz.com/storage/${cat.image}`}
+                  src={`${process.env.api}/storage/${cat.image}`}
                 ></Image>
 
                 <Heading mt="10px" size="lg" color="gray.700">

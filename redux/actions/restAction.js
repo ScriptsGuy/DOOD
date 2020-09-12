@@ -11,7 +11,7 @@ export const AddFavory = (id) => async (dispatch, getState) => {
     Authorization: `Bearer ` + token,
   };
   const data = await axios
-    .post('https://dood.devzone-dz.com/api/favories', { restaurant_id: id }, { headers })
+    .post(`${process.env.api}/api/favories`, { restaurant_id: id }, { headers })
     .then((res) => {
       //   console.log(res);
     })
@@ -32,7 +32,7 @@ export const getFavories = (id) => async (dispatch, getState) => {
   };
 
   const data = await axios
-    .get('https://dood.devzone-dz.com/api/favories', { headers })
+    .get(`${process.env.api}/api/favories`, { headers })
     .then((res) => {
       //   console.log(res);
       dispatch({ type: t.GET_FAVORIES, payload: res.data });
@@ -55,7 +55,7 @@ export const deleteFavory = (id) => async (dispatch, getState) => {
   };
 
   const data = await axios
-    .delete(`https://dood.devzone-dz.com/api/favories/${id}`, { headers })
+    .delete(`${process.env.api}/api/favories/${id}`, { headers })
     .then((res) => {
       //   console.log(res);
       const newFavs = favs.filter((fav) => fav.favory_id !== id);
@@ -79,7 +79,7 @@ export const getFilters = (filters) => async (dispatch, getState) => {
   if (filters.distance) {
     const data = await axios
       .post(
-        `https://dood.devzone-dz.com/api/nearest?apiKey=${filters.apiKey}&&distance=${filters.distance}&&longitude=${filters.longtitude}&&latitude=${filters.latitude}&&limit=10`,
+        `${process.env.api}/api/nearest?apiKey=${filters.apiKey}&&distance=${filters.distance}&&longitude=${filters.longtitude}&&latitude=${filters.latitude}&&limit=10`,
         headers
       )
       .then((res) => {
