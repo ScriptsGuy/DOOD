@@ -14,6 +14,7 @@ import {
   InputGroup,
   InputRightElement,
   Text,
+  Divider,
 } from '@chakra-ui/core';
 
 import { connect } from 'react-redux';
@@ -123,6 +124,25 @@ function Signup(props) {
                 bg="teal.500"
               >
                 Register
+              </Button>
+              <Divider></Divider>
+              <Button
+                isLoading={props.auth.loading}
+                onClick={handleSubmit}
+                type="submit"
+                color="white"
+                bg="blue.500"
+              >
+                Facebook
+              </Button>
+              <Button
+                isLoading={props.auth.loading}
+                onClick={handleSubmit}
+                type="submit"
+                color="white"
+                bg="red.500"
+              >
+                Google
               </Button>
             </Stack>
           </DrawerBody>

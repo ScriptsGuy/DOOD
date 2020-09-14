@@ -21,13 +21,13 @@ import Router from 'next/router';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import isOpen from '../../components/isOpen';
-import Open from '../../components/Open';
+import isOpen from '../../components/restaurant/isOpen';
+import Open from '../../components/restaurant/Open';
 
 import { AddFavory, getFilters, getFavories, deleteFavory } from '../../redux/actions/restAction';
 import { AlgoSearch } from '../../redux/actions/searchAction';
 
-import Plat from '../../components/Plat';
+import Plat from '../../components/restaurant/Plat';
 
 // import MapDrawer from '../../components/restaurants/MapDrawer';
 
@@ -255,7 +255,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
             <Open></Open>
           </Box>
           <Box mt="20px" textAlign="center">
-            <Heading color="gray.600">le restaurant est fermé pour l'instant</Heading>
+            <Heading color="gray.400">le restaurant est fermé pour l'instant</Heading>
           </Box>
         </Box>
       )}

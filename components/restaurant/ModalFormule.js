@@ -27,7 +27,7 @@ import {
   AccordionIcon,
 } from '@chakra-ui/core';
 import { connect } from 'react-redux';
-import { addPlate, addFormule, removePlate, removeFormule } from '../redux/actions/cartAction';
+import { addPlate, addFormule, removePlate, removeFormule } from '../../redux/actions/cartAction';
 
 function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
   const toast = useToast();
@@ -113,7 +113,7 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
       rounded="lg"
       p="6"
     >
-      <Modal size="xl" isOpen={isOpen} onClose={onClose}>
+      <Modal closeOnOverlayClick={false} size="xl" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader mt="8" color="gray.500">

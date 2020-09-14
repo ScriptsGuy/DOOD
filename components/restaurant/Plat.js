@@ -27,7 +27,7 @@ import {
   CheckboxGroup,
 } from '@chakra-ui/core';
 import { connect } from 'react-redux';
-import { addPlate, addFormule, removePlate } from '../redux/actions/cartAction';
+import { addPlate, addFormule, removePlate } from '../../redux/actions/cartAction';
 import PlateModal from './PlateModal';
 
 function Plat({ removePlate, addPlate, addFormule, post, cart }) {

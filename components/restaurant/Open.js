@@ -9,6 +9,7 @@ export default function Open() {
       width="888"
       height="200"
       viewBox="0 0 888 485.489"
+      opacity="0.4"
     >
       <title>breakfast</title>
       <path

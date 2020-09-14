@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Router, { useRouter } from 'next/router';
 import moment from 'moment';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import Head from 'next/head';
 
 import { getOrders } from '../redux/actions/orderAction';
 
@@ -21,11 +22,14 @@ function Orders({ orders, auth, getOrders }) {
     <Box
       bg="white"
       mt="150px"
-      mr={['20px', '50px', '50px', '50px']}
-      ml={['20px', '50px', '50px', '50px']}
+      mr={['10px', '10px', '50px', '50px']}
+      ml={['10px', '10px', '50px', '50px']}
       mb="100px"
       p="20px"
     >
+      <Head>
+        <title>orders</title>
+      </Head>
       {auth.data && !auth.loading && (
         <>
           <Box m="6" textAlign="center">

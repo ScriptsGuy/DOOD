@@ -15,11 +15,11 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-import Up from '../components/Up';
+import Up from '../components/layout/Up';
 
 const TopProgressBar = dynamic(
   () => {
-    return import('../components/TopProgressBar');
+    return import('../components/layout/TopProgressBar');
   },
   { ssr: false }
 );

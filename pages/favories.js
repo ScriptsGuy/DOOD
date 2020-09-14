@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getFavories, deleteFavory } from '../redux/actions/restAction';
 import { FaEuroSign } from 'react-icons/fa';
 import Router, { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import { ClearError } from '../redux/actions/authAction';
 
@@ -44,6 +45,9 @@ function favories({ ClearError, deleteFavory, getFavories, favs, auth }) {
       mb="100px"
       p="20px"
     >
+      <Head>
+        <title>favories</title>
+      </Head>
       {auth.data && !auth.loading && (
         <>
           <Box m="6" textAlign="center">

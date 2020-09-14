@@ -60,18 +60,18 @@ export default function Filter({ setFilter, filter }) {
             <Heading>Distance</Heading>
             <Flex justifyContent="space-between">
               <Flex direction="column">
-                <Text fontSize="xl">- de 1000 km</Text>
+                <Text fontSize="xl">- de 0.5 km</Text>
 
-                <Text fontSize="xl">- de 2000 km</Text>
+                <Text fontSize="xl">- de 1.0 km</Text>
 
-                <Text fontSize="xl">- de 3000 km</Text>
+                <Text fontSize="xl">- de 1.5 km</Text>
 
-                <Text fontSize="xl">- de 4000 km</Text>
+                <Text fontSize="xl">- de 2.0 km</Text>
 
-                <Text fontSize="xl">- de 5000 km</Text>
+                <Text fontSize="xl">- de 3.0 km</Text>
               </Flex>
               <RadioGroup onChange={handleCheck} defaultValue={filter.distance}>
-                <Radio size="lg" name="hdsqj" value="1000"></Radio>
+                <Radio size="lg" name="hdsqj" value="0.5"></Radio>
                 <Radio size="lg" name="distance" value="2000"></Radio>
                 <Radio size="lg" name="distance" value="3000"></Radio>
                 <Radio size="lg" name="distance" value="4000"></Radio>

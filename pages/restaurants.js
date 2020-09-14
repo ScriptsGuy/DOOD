@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 
 import { Box, Heading, SimpleGrid, Tag, TagLabel, Flex, useToast } from '@chakra-ui/core';
 import { FaFilter } from 'react-icons/fa';
+import { CgSmileSad } from 'react-icons/cg';
+
 import { connect } from 'react-redux';
 
 import Rec from '../components/home/Rec';
@@ -56,6 +58,7 @@ function details(props) {
     }
   }
   /////////////////
+  //   console.log(newPosts);
 
   const [filter, setFilter] = useState({
     distance: '5000',
@@ -132,10 +135,10 @@ function details(props) {
           })}
         </Flex>
       </Box>
-      <Box mt={{ base: '100px', md: '170px' }}>
-        <SimpleGrid spacing={10} justifyItems="center" columns={[1, 2, 3, 4]}>
-          {newPosts &&
-            newPosts.map((post) => {
+      <Box mb="6" mt={{ base: '100px', md: '200px' }}>
+        {newPosts[0] ? (
+          <SimpleGrid spacing={10} justifyItems="center" columns={[1, 2, 3, 4]}>
+            {newPosts.map((post) => {
               return (
                 <Rec
                   key={post.id}
@@ -148,7 +151,17 @@ function details(props) {
                 ></Rec>
               );
             })}
-        </SimpleGrid>
+          </SimpleGrid>
+        ) : (
+          <Box p="50px">
+            <Box color="gray.300" fontSize="48px" display="flex" justifyContent="center">
+              <CgSmileSad></CgSmileSad>
+            </Box>
+            <Box display="flex" justifyContent="center">
+              <Heading color="gray.300">Aucun résultat trouvé</Heading>
+            </Box>
+          </Box>
+        )}
       </Box>
     </Box>
   );

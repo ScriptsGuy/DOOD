@@ -13,6 +13,7 @@ import {
   Stack,
   InputGroup,
   InputRightElement,
+  Divider,
 } from '@chakra-ui/core';
 
 import { connect } from 'react-redux';
@@ -102,16 +103,26 @@ function Signin(props) {
               >
                 Login
               </Button>
-            </Stack>
-
-            {/* <Flex mt="20px" justify="space-around">
-              <Button leftIcon={FaFacebookF} color="white" bg="blue.700">
+              <Divider></Divider>
+              <Button
+                isLoading={props.auth.loading}
+                onClick={handleSubmit}
+                type="submit"
+                color="white"
+                bg="blue.500"
+              >
                 Facebook
               </Button>
-              <Button leftIcon={FaGoogle} color="white" bg="red.500">
+              <Button
+                isLoading={props.auth.loading}
+                onClick={handleSubmit}
+                type="submit"
+                color="white"
+                bg="red.500"
+              >
                 Google
               </Button>
-            </Flex> */}
+            </Stack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

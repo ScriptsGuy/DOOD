@@ -44,7 +44,15 @@ function Rec(props) {
       href={{ pathname: `/restaurant/[slug]`, query: { id: props.id } }}
       as={{ pathname: `/restaurant/${slug}`, query: { id: props.id } }}
     >
-      <Box cursor="pointer" bg="white" maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
+      <Box
+        shadow="xl"
+        cursor="pointer"
+        bg="white"
+        maxW="sm"
+        borderWidth="1px"
+        rounded="lg"
+        overflow="hidden"
+      >
         <Box height="125px" overflow="hidden" bg="black" position="relative">
           <Image opacity="0.7" src={props.image} alt={props.name} />
           <Text color="white" position="absolute" top="10px" left="10px">

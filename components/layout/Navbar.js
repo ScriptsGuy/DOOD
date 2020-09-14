@@ -14,10 +14,20 @@ import {
   MenuOptionGroup,
   MenuItemOption,
   Icon,
+  useToast,
 } from '@chakra-ui/core';
 import NextLink from 'next/link';
 
 import { FaGoogle, FaFacebookF, FaHamburger, FaShoppingCart } from 'react-icons/fa';
+
+import {
+  BiCurrentLocation,
+  BiLogOutCircle,
+  BiInfoCircle,
+  BiStar,
+  BiShoppingBag,
+} from 'react-icons/bi';
+
 import { connect } from 'react-redux';
 
 import Login from '../auth/Login';
@@ -48,6 +58,8 @@ function ShopBadge(props) {
 }
 
 const Navbar = (props) => {
+  const toast = useToast();
+
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
 
@@ -57,7 +69,25 @@ const Navbar = (props) => {
       //   console.log('Longitude is :', position.coords.longitude);
       props.getLocation(position.coords.latitude, position.coords.longitude);
     });
+    console.log(props.location);
+    if (!props.location.latitude) {
+      toast({
+        title: "L'emplacement est bloqué",
+        description:
+          "Veuillez autoriser l'emplacement pour une meilleure expérience sur le site Web",
+        status: 'warning',
+        duration: null,
+        isClosable: false,
+      });
+    }
   }, []);
+
+  const allowLocation = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log(position);
+      props.getLocation(position.coords.latitude, position.coords.longitude);
+    });
+  };
 
   return (
     <Flex
@@ -92,9 +122,10 @@ const Navbar = (props) => {
         <Search></Search>
         {/* <MenuItems>JE SUIS COMMERÇANT</MenuItems> */}
         <Text mt={{ base: 4, md: 0 }} mr={6} display="block" fontSize="18px">
-          <NextLink href="/restaurants">Découvrir</NextLink>
+          <NextLink onClick={handleToggle} href="/restaurants">
+            Découvrir
+          </NextLink>
         </Text>
-
         {props.auth.data && (
           <>
             <Menu>
@@ -112,18 +143,46 @@ const Navbar = (props) => {
                 Account <Icon name="chevron-down" />
               </MenuButton>
               <MenuList shadow="xl">
-                <MenuItem fontSize="lg">
-                  <NextLink href="/favories">Favories</NextLink>
-                </MenuItem>
-                <MenuItem fontSize="lg">
-                  <NextLink href="/orders">Orders</NextLink>
-                </MenuItem>
-                <MenuItem>
-                  {' '}
-                  <Text onClick={() => props.Logout()} cursor={'pointer'} fontSize="lg">
-                    Se déconnecter
-                  </Text>
-                </MenuItem>
+                <NextLink onClick={handleToggle} href="/info">
+                  <MenuItem fontSize="lg">
+                    <Box display="flex">
+                      <Box mr="2" fontSize="24px">
+                        <BiInfoCircle></BiInfoCircle>
+                      </Box>
+                      <Text>Info</Text>
+                    </Box>
+                  </MenuItem>
+                </NextLink>
+                <NextLink onClick={handleToggle} href="/favories">
+                  <MenuItem fontSize="lg">
+                    <Box display="flex">
+                      <Box mr="2" fontSize="24px">
+                        <BiStar></BiStar>
+                      </Box>
+                      <Text>Favories</Text>
+                    </Box>
+                  </MenuItem>
+                </NextLink>
+                <NextLink onClick={handleToggle} href="/orders">
+                  <MenuItem fontSize="lg">
+                    <Box display="flex">
+                      <Box mr="2" fontSize="24px">
+                        <BiShoppingBag></BiShoppingBag>
+                      </Box>
+                      <Text>Orders</Text>
+                    </Box>
+                  </MenuItem>
+                </NextLink>
+                <Box onClick={() => props.Logout()} cursor={'pointer'} fontSize="lg">
+                  <MenuItem>
+                    <Box display="flex">
+                      <Box mr="2" fontSize="24px">
+                        <BiLogOutCircle></BiLogOutCircle>
+                      </Box>
+                      <Text>Se déconnecter</Text>
+                    </Box>
+                  </MenuItem>
+                </Box>
               </MenuList>
             </Menu>
           </>
@@ -135,6 +194,15 @@ const Navbar = (props) => {
           </>
         )}
         <ShopBadge itemNumber={props.cart.cartItemNumber}></ShopBadge>
+        <Box
+          onClick={() => allowLocation()}
+          cursor="pointer"
+          ml={['0', '0', '6', '6']}
+          mt={['6', '6', '0', '0']}
+          fontSize="28px"
+        >
+          <BiCurrentLocation></BiCurrentLocation>
+        </Box>
       </Box>
     </Flex>
   );

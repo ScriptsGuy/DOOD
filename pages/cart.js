@@ -12,6 +12,7 @@ import {
   useToast,
 } from '@chakra-ui/core';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 
 import Quantity from '../components/cart/Quantity';
 import { ClearError } from '../redux/actions/authAction';
@@ -65,6 +66,9 @@ function cart(props) {
 
   return (
     <Box position="relative" className="cart" mt="92.43px" p={['10px', '30px', '30px', '30px']}>
+      <Head>
+        <title>panier</title>
+      </Head>
       {props.cart.formules[0] === undefined && props.cart.plates[0] === undefined ? (
         <Box bg="white" p="40px" mb="6">
           <Box display="flex" justifyContent="center">
