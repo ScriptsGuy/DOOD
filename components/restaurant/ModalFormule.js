@@ -89,6 +89,7 @@ function ModalFormule({ removeFormule, addFormule, formule, post, cart }) {
 
   return (
     <Box
+      shadow="md"
       onClick={() => {
         if (selected[formule.name]) {
           removeFormule(formuleState);

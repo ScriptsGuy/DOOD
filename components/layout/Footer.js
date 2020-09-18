@@ -36,11 +36,18 @@ export default function Footer() {
             {/* <Link>04 27 11 91 54</Link> */}
           </Flex>
         </Box>
-        <Box flexGrow="1" p="30px">
+        <Box textAlign="center" flexGrow="1" p="30px">
           <Heading size="lg">Télécharger l’app</Heading>
-          <Flex mt="10px">
-            <Image src="./images/apple.png" alt="apple"></Image>
-            <Image src="./images/google.png" alt="google"></Image>
+          <Flex
+            mt="10px"
+            m="0 auto"
+            w={['50%', '50%', '100%', '100%']}
+            direction={['column', 'column', 'row', 'row']}
+            justify="center"
+          >
+            <Image m="4" src="./images/apple.png" alt="apple"></Image>
+            <Image m="4" src="./images/google.png" alt="google"></Image>
+            <Image m="4" src="./images/huawei.png" alt="huawei"></Image>
           </Flex>
         </Box>
         {/* <Box flexGrow="1">section4</Box>

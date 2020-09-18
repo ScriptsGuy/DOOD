@@ -12,11 +12,13 @@ import {
   TabPanels,
   Tab,
   TabPanel,
+  Button,
   useToast,
 } from '@chakra-ui/core';
 import { FaHeart, FaRegHeart, FaEuroSign } from 'react-icons/fa';
 // import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
+import Link from 'next/link';
 import Router from 'next/router';
 import { connect } from 'react-redux';
 import moment from 'moment';
@@ -34,6 +36,14 @@ import Plat from '../../components/restaurant/Plat';
 const StarIcon = () => <Icon fontSize="20px" name="star"></Icon>;
 
 function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, rest, deleteFavory }) {
+  const price = Number(post.prix);
+  console.log(price);
+  //   const Euro = () => {
+  //     for (let i = 0; i < price; i++) {
+  //       return <FaEuroSign></FaEuroSign>;
+  //     }
+  //   };
+
   const toast = useToast();
   const days = Object.keys(post.opening_hours);
 
@@ -73,7 +83,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
   isFav = arrOfFavs && arrOfFavs.includes(true);
 
   //   console.log('favssss', rest.favs);
-  //   console.log('post', post);
+  console.log('post', post);
   //   console.log('is favvvv', isFav);
 
   const handleHeart = () => {
@@ -94,7 +104,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
   };
 
   let distance = null;
-  //   console.log('position', position);
+  console.log('position', position);
   if (position && post.latitude) {
     const R = 6371e3; // metres
     const φ1 = (post.latitude * Math.PI) / 180; // φ, λ in radians
@@ -187,7 +197,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
           <Box pr="50px" pl="50px">
             <Heading>{post.name}</Heading>
             <Flex justifyContent="space-between">
-              <Box>
+              <Box w="50%">
                 <Text> {post.adress} </Text>
                 {/* <Text>69001 LYON</Text> */}
                 <Text color="green.400"> {distance && distance.toFixed(1) + ' km'}</Text>
@@ -204,22 +214,30 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
                   <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
+                  {/* <Euro></Euro> */}
                 </Box>
                 <Box color="gray.600" mt="2">
-                  {/* {post.categories[0] && (
+                  {post.categories[0] && (
                     <Text>
                       {post.categories.map((cat) => {
                         return cat.name + ',  ';
                       })}
                     </Text>
-                  )} */}
+                  )}
                 </Box>
               </Box>
             </Flex>
           </Box>
-          {/* <Box pr="50px" pl="50px">
-            <MapDrawer></MapDrawer>
-          </Box> */}
+          <Box pr="50px" pl="50px">
+            <a
+              target="_blank"
+              href={`https://www.google.com/maps/search/?api=1&query=${post.latitude},${post.longitude}`}
+            >
+              <Button rounded="20px" bg="gray.700" color="white">
+                Afficher l’itinéraire{' '}
+              </Button>
+            </a>
+          </Box>
           <Box mt="20px" pr="50px" pl="50px">
             <Text fontSize="2xl">Choisissez votre créneau de retrait</Text>
             <Box mb="30px" mt="10px" textAlign="center" bg="gray.700" w="100%" p={4} color="white">

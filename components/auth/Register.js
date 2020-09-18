@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/core';
 
 import { connect } from 'react-redux';
+import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
 import { Register } from '../../redux/actions/authAction';
 
@@ -133,6 +134,7 @@ function Signup(props) {
                 color="white"
                 bg="blue.500"
               >
+                <FaFacebook style={{ marginRight: 10 }}></FaFacebook>
                 Facebook
               </Button>
               <Button
@@ -142,6 +144,7 @@ function Signup(props) {
                 color="white"
                 bg="red.500"
               >
+                <FaGoogle style={{ marginRight: 10 }}></FaGoogle>
                 Google
               </Button>
             </Stack>

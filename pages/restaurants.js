@@ -65,7 +65,24 @@ function details(props) {
     latitude: props.position.latitude,
     longtitude: props.position.longitude,
     apiKey: 'azerty',
+    paiement: null,
+    prix: null,
   });
+  console.log(filter);
+
+  ///////filter for price and paiment
+  Object.filter = (obj, predicate) =>
+    Object.keys(obj)
+      .filter((key) => predicate(obj[key]))
+      .reduce((res, key) => ((res[key] = obj[key]), res), []);
+  if (filter.prix) {
+    newPosts = Object.filter(newPosts, (post) => post.prix === filter.prix);
+  }
+  if (filter.paiement) {
+    newPosts = Object.filter(newPosts, (post) => post.paiement === filter.paiement);
+  }
+  ///////////////////////////////
+  console.log(newPosts);
 
   useEffect(() => {
     props.getFilters(filter);

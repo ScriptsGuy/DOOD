@@ -25,9 +25,10 @@ export default function Filter({ setFilter, filter }) {
   const btnRef = React.useRef();
 
   const handleCheck = (e) => {
+    console.log(e.target);
     e.persist();
     // console.log(e.target.value);
-    setFilter((prevState) => ({ ...prevState, distance: e.target.value }));
+    setFilter((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -70,46 +71,49 @@ export default function Filter({ setFilter, filter }) {
 
                 <Text fontSize="xl">- de 3.0 km</Text>
               </Flex>
-              <RadioGroup onChange={handleCheck} defaultValue={filter.distance}>
-                <Radio size="lg" name="hdsqj" value="0.5"></Radio>
-                <Radio size="lg" name="distance" value="2000"></Radio>
-                <Radio size="lg" name="distance" value="3000"></Radio>
-                <Radio size="lg" name="distance" value="4000"></Radio>
-                <Radio size="lg" name="distance" value="5000"></Radio>
+              <RadioGroup name="distance" onChange={handleCheck} defaultValue={filter.distance}>
+                <Radio size="lg" value="0.5"></Radio>
+                <Radio size="lg" value="2000"></Radio>
+                <Radio size="lg" value="3000"></Radio>
+                <Radio size="lg" value="4000"></Radio>
+                <Radio size="lg" value="5000"></Radio>
               </RadioGroup>
             </Flex>
-            {/* <Heading mt="20px">Prix</Heading>
-            <Flex direction="column">
-              <Flex justifyContent="space-between">
-                <FaEuroSign></FaEuroSign> <Radio></Radio>
-              </Flex>
-              <Flex justifyContent="space-between">
-                <Box mt="15px" mb="15px" display="flex">
+            <Heading mt="20px">Prix</Heading>
+            <Flex justifyContent="space-between">
+              <Flex direction="column">
+                <Box display="flex" mt="10px" mb="5px">
+                  <FaEuroSign></FaEuroSign>
+                </Box>
+                <Box display="flex" mt="10px" mb="5px">
                   <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
                 </Box>
-                <Radio></Radio>
-              </Flex>
-              <Flex justifyContent="space-between">
-                <Box display="flex">
+                <Box display="flex" mt="10px" mb="5px">
                   <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
                 </Box>
-                <Radio></Radio>
               </Flex>
+              <RadioGroup name="prix" onChange={handleCheck}>
+                <Radio size="lg" value="1"></Radio>
+                <Radio size="lg" value="2"></Radio>
+                <Radio size="lg" value="3"></Radio>
+              </RadioGroup>
             </Flex>
+
             <Heading mt="20px">Paiement</Heading>
-            <Flex direction="column">
-              <Flex justifyContent="space-between">
+            <Flex justifyContent="space-between">
+              <Flex direction="column">
                 <Text fontSize="xl">Sur place</Text>
-                <Radio></Radio>
-              </Flex>
-              <Flex justifyContent="space-between">
+
                 <Text fontSize="xl">Carte TR Edenred</Text>
-                <Radio></Radio>
               </Flex>
-            </Flex> */}
+              <RadioGroup name="paiement" onChange={handleCheck}>
+                <Radio size="lg" value="Sur Place"></Radio>
+                <Radio size="lg" value="Carte TR Edenred"></Radio>
+              </RadioGroup>
+            </Flex>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

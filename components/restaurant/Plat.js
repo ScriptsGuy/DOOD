@@ -172,6 +172,7 @@ function Plat({ removePlate, addPlate, addFormule, post, cart }) {
                     <SimpleGrid mt="6" mb="50px" columns={[1, 1, 2, 3]} spacing={12}>
                       {plate.plats.map((plato) => (
                         <Box
+                          shadow="md"
                           onClick={() =>
                             handleSelect(
                               plato.name,

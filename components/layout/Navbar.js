@@ -143,13 +143,13 @@ const Navbar = (props) => {
                 Account <Icon name="chevron-down" />
               </MenuButton>
               <MenuList shadow="xl">
-                <NextLink onClick={handleToggle} href="/info">
+                <NextLink onClick={handleToggle} href="/profile">
                   <MenuItem fontSize="lg">
                     <Box display="flex">
                       <Box mr="2" fontSize="24px">
                         <BiInfoCircle></BiInfoCircle>
                       </Box>
-                      <Text>Info</Text>
+                      <Text>profile</Text>
                     </Box>
                   </MenuItem>
                 </NextLink>
