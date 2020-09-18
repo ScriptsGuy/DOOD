@@ -95,7 +95,7 @@ export default function Filter({ setFilter, filter }) {
                   <FaEuroSign></FaEuroSign>
                 </Box>
               </Flex>
-              <RadioGroup name="prix" onChange={handleCheck}>
+              <RadioGroup name="prix" onChange={handleCheck} defaultValue={filter.prix}>
                 <Radio size="lg" value="1"></Radio>
                 <Radio size="lg" value="2"></Radio>
                 <Radio size="lg" value="3"></Radio>
@@ -109,7 +109,7 @@ export default function Filter({ setFilter, filter }) {
 
                 <Text fontSize="xl">Carte TR Edenred</Text>
               </Flex>
-              <RadioGroup name="paiement" onChange={handleCheck}>
+              <RadioGroup name="paiement" onChange={handleCheck} defaultValue={filter.paiement}>
                 <Radio size="lg" value="Sur Place"></Radio>
                 <Radio size="lg" value="Carte TR Edenred"></Radio>
               </RadioGroup>
