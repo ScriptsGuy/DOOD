@@ -81,6 +81,7 @@ function details(props) {
   if (filter.paiement) {
     newPosts = Object.filter(newPosts, (post) => post.paiement === filter.paiement);
   }
+  newPosts = newPosts.filter((n) => n);
   ///////////////////////////////
   console.log(newPosts);
 
