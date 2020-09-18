@@ -17,6 +17,7 @@ import {
   Radio,
   Text,
   RadioGroup,
+  Select,
 } from '@chakra-ui/core';
 import { FaFilter, FaEuroSign } from 'react-icons/fa';
 
@@ -58,6 +59,26 @@ export default function Filter({ setFilter, filter }) {
           <DrawerHeader>Filter</DrawerHeader>
 
           <DrawerBody color="gray.500">
+            <Heading>City</Heading>
+            <Select
+              mt="4"
+              mb="4"
+              name="state"
+              placeholder="Select option"
+              defaultValue={filter.state}
+              onChange={handleCheck}
+            >
+              <option value="Paris">Paris</option>
+              <option value="Marseille">Marseille</option>
+              <option value="Lyon">Lyon</option>
+              <option value="Toulouse">Toulouse</option>
+              <option value="Nice">Nice</option>
+              <option value="Nantes">Nantes</option>
+              <option value="Strasbourg">Strasbourg</option>
+              <option value="Montpellier">Montpellier</option>
+              <option value="Bordeaux">Bordeaux</option>
+              <option value="Lille">Lille</option>
+            </Select>
             <Heading>Distance</Heading>
             <Flex justifyContent="space-between">
               <Flex direction="column">

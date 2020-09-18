@@ -67,6 +67,7 @@ function details(props) {
     apiKey: 'azerty',
     paiement: null,
     prix: null,
+    state: null,
   });
   console.log(filter);
 
@@ -80,6 +81,9 @@ function details(props) {
   }
   if (filter.paiement) {
     newPosts = Object.filter(newPosts, (post) => post.paiement === filter.paiement);
+  }
+  if (filter.state) {
+    newPosts = Object.filter(newPosts, (post) => post.state === filter.state);
   }
   newPosts = newPosts.filter((n) => n);
   ///////////////////////////////
