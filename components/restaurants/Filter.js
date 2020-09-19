@@ -59,7 +59,7 @@ export default function Filter({ setFilter, filter }) {
           <DrawerHeader>Filter</DrawerHeader>
 
           <DrawerBody color="gray.500">
-            <Heading>City</Heading>
+            <Heading size="lg">City</Heading>
             <Select
               mt="4"
               mb="4"
@@ -79,7 +79,7 @@ export default function Filter({ setFilter, filter }) {
               <option value="Bordeaux">Bordeaux</option>
               <option value="Lille">Lille</option>
             </Select>
-            <Heading>Distance</Heading>
+            <Heading size="lg">Distance</Heading>
             <Flex justifyContent="space-between">
               <Flex direction="column">
                 <Text fontSize="xl">- de 0.5 km</Text>
@@ -100,7 +100,9 @@ export default function Filter({ setFilter, filter }) {
                 <Radio size="lg" value="5000"></Radio>
               </RadioGroup>
             </Flex>
-            <Heading mt="20px">Prix</Heading>
+            <Heading size="lg" mt="10px">
+              Prix
+            </Heading>
             <Flex justifyContent="space-between">
               <Flex direction="column">
                 <Box display="flex" mt="10px" mb="5px">
@@ -123,7 +125,9 @@ export default function Filter({ setFilter, filter }) {
               </RadioGroup>
             </Flex>
 
-            <Heading mt="20px">Paiement</Heading>
+            <Heading size="lg" mt="10px">
+              Paiement
+            </Heading>
             <Flex justifyContent="space-between">
               <Flex direction="column">
                 <Text fontSize="xl">Sur place</Text>
