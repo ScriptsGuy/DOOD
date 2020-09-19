@@ -18,6 +18,7 @@ import {
   Text,
   RadioGroup,
   Select,
+  Button,
 } from '@chakra-ui/core';
 import { FaFilter, FaEuroSign } from 'react-icons/fa';
 
@@ -30,6 +31,16 @@ export default function Filter({ setFilter, filter }) {
     e.persist();
     // console.log(e.target.value);
     setFilter((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+  };
+  const reset = () => {
+    setFilter((prevState) => ({
+      ...prevState,
+      paiement: null,
+      prix: null,
+      state: null,
+      distance: null,
+    }));
+    onClose();
   };
 
   return (
@@ -57,11 +68,15 @@ export default function Filter({ setFilter, filter }) {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>Filter</DrawerHeader>
-
           <DrawerBody color="gray.500">
+            <Box display="flex" justifyContent="flex-end">
+              <Button rounded="20px" onClick={() => reset()} fontSize="14px" variantColor="blue">
+                reset
+              </Button>
+            </Box>
             <Heading size="lg">City</Heading>
             <Select
-              mt="4"
+              mt="2"
               mb="4"
               name="state"
               placeholder="Select option"

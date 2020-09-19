@@ -61,7 +61,7 @@ function details(props) {
   //   console.log(newPosts);
 
   const [filter, setFilter] = useState({
-    distance: '5000',
+    distance: null,
     latitude: props.position.latitude,
     longtitude: props.position.longitude,
     apiKey: 'azerty',
