@@ -63,7 +63,7 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
 
   let isFav;
 
-  const [heart, setHeart] = React.useState(false);
+  const [heart, setHeart] = React.useState();
   React.useEffect(() => {
     async function getData() {
       if (auth.data && !auth.loading) {
@@ -75,20 +75,22 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
 
   let arrOfFavs =
     rest.favs &&
-    rest.favs.map((fav) => {
+    rest.favs.filter((fav) => {
       return fav.restaurant_id === post.id;
     });
-  //   console.log('arrrrroffavs', arrOfFavs);
 
-  isFav = arrOfFavs && arrOfFavs.includes(true);
+  console.log('arrrrroffavs', arrOfFavs);
+  //   console.log('arrrrroffavs', arrOfFavs[0]);
+
+  //   isFav = arrOfFavs && arrOfFavs.includes(true);
 
   //   console.log('favssss', rest.favs);
   console.log('post', post);
   //   console.log('is favvvv', isFav);
 
-  const handleHeart = () => {
+  const handleHeart = (bol) => {
     // heart ? setHeart(false) : setHeart(true);
-    setHeart(true);
+    setHeart(bol);
   };
 
   //   console.log('possssssttttt', post);
@@ -142,13 +144,14 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
     </Box>
   );
   const LoggedinHeart = () => {
-    if (isFav || heart) {
+    if (arrOfFavs[0] || heart) {
       return (
         <Box>
           <FaHeart
-            //   onClick={async () => {
-            //     handleHeart();
-            //   }}
+            onClick={async () => {
+              await deleteFavory(arrOfFavs[0].favory_id);
+              handleHeart(false);
+            }}
             style={{ marginRight: 15, marginTop: 15, color: 'red' }}
             fontSize="36px"
           ></FaHeart>
@@ -158,9 +161,9 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
       return (
         <Box>
           <FaRegHeart
-            onClick={() => {
-              AddFavory(post.id);
-              handleHeart();
+            onClick={async () => {
+              await AddFavory(post.id);
+              handleHeart(true);
               toast({
                 position: 'top-right',
 
