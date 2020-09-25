@@ -38,7 +38,7 @@ function Profile({ auth, getProfile, profil, updateProfile, loading }) {
   };
 
   React.useEffect(() => {
-    if (!profil && !auth.loading) {
+    if (!auth.data && !auth.loading) {
       Router.replace('/');
     } else {
       getProfile();
