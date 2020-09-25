@@ -33,7 +33,7 @@ export default function Footer() {
             <Link>F.A.Q. Client</Link>
             <Link>F.A.Q. Commerçant</Link>
             <Link>Support client</Link>
-            {/* <Link>04 27 11 91 54</Link> */}
+            <Link>04 27 11 91 54</Link>
           </Flex>
         </Box>
         <Box textAlign="center" flexGrow="1" p="30px">
