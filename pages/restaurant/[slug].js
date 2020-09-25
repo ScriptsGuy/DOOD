@@ -214,9 +214,12 @@ function details({ post, AddFavory, AlgoSearch, position, getFavories, auth, res
                     ))}
                 </Box>
                 <Box mt="2" display="flex">
+                  {post.prix !== '' &&
+                    post.prix !== null &&
+                    [...Array(Number(post.prix))].map(() => <FaEuroSign></FaEuroSign>)}
+                  {/* <FaEuroSign></FaEuroSign>
                   <FaEuroSign></FaEuroSign>
-                  <FaEuroSign></FaEuroSign>
-                  <FaEuroSign></FaEuroSign>
+                  <FaEuroSign></FaEuroSign> */}
                   {/* <Euro></Euro> */}
                 </Box>
                 <Box color="gray.600" mt="2">

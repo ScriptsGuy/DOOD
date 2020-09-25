@@ -10,6 +10,7 @@ import { FaEuroSign } from 'react-icons/fa';
 const StarIcon = () => <Icon name="star"></Icon>;
 
 function Rec(props) {
+  console.log(props.prix);
   const property = {
     imageUrl: 'https://api.dood.com/files/uploads/8574.jpg',
     imageAlt: 'Rear view of modern home with pool',
@@ -89,9 +90,11 @@ function Rec(props) {
               </Box>
             </Box>
             <Box display="flex" dir="column" alignItems="flex-end">
-              <FaEuroSign></FaEuroSign>
-              <FaEuroSign></FaEuroSign>
-              <FaEuroSign></FaEuroSign>
+              {props.prix !== '' &&
+                props.prix !== null &&
+                [...Array(Number(props.prix))].map(() => <FaEuroSign></FaEuroSign>)}
+              {/* <FaEuroSign></FaEuroSign>
+              <FaEuroSign></FaEuroSign> */}
             </Box>
           </Flex>
         </Box>

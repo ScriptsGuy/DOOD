@@ -34,6 +34,7 @@ export default function Home(props) {
                 <Rec
                   key={post.id}
                   latitude={post.latitude}
+                  prix={post.prix}
                   longitude={post.longitude}
                   id={post.id}
                   name={post.name}

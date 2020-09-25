@@ -164,6 +164,7 @@ function details(props) {
               return (
                 <Rec
                   key={post.id}
+                  prix={post.prix}
                   latitude={post.latitude}
                   longitude={post.longitude}
                   id={post.id}

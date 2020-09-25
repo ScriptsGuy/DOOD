@@ -1,4 +1,7 @@
 export const ADD_PLATE = 'ADD_PLATE';
+export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+export const UPDATE_PROFILE_LOADING = 'UPDATE_PROFILE_LOADING';
+export const GET_PROFILE = 'GET_PROFILE';
 export const ADD_ORDER = 'ADD_ORDER';
 export const ORDER_LOADING = 'ORDER_LOADING';
 export const ORDER_ERROR = 'ORDER_ERROR';
