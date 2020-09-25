@@ -4,8 +4,8 @@ import algoliasearch from 'algoliasearch/lite';
 export const AlgoSearch = (query) => async (dispatch, getState) => {
   //   console.log('actionnnnnnn', query.typeof);
 
-  const searchClient = algoliasearch('LMQ49UKOZA', 'a9adf7fd5943a630c82a62024c953e6e');
-  const index = searchClient.initIndex('restaurants');
+  const searchClient = algoliasearch(process.env.algoliaAppKey, process.env.algoliaAdminKey);
+  const index = searchClient.initIndex(process.env.algoliaIndexName);
 
   if (query === ' ') {
     dispatch({ type: t.ALGO_CLEAR });
